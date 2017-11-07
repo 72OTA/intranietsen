@@ -190,26 +190,40 @@ class __TwigTemplate_761b4da976918418726fe5e7f4ab1368a0b1d8c0227970c2f2076bde49a
               </div>
             </div>
             <div class=\"box-body col-sm-4\">
-              <div class=\"form-group\">
-                <label class=\"col-sm-2 control-label\">Foto</label>
-                <div class=\"col-sm-5\">
-                  <input type=\"file\" name=\"foto\" id=\"foto\">
-                  <br/>
-                  ";
-        // line 83
+              <div class=\"row\">
+                <div class=\"form-group\">
+                  <label class=\"col-sm-2 control-label\">Foto</label>
+                  <div class=\"col-sm-5\">
+                    <input type=\"file\" name=\"foto\" id=\"foto\">
+                    <br/>
+                    ";
+        // line 84
         if ((twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_users"] ?? null), "foto", array()) == 1)) {
-            // line 84
-            echo "                    <img style=\"border:1px solid #eaeaea;border-radius:5px;\" src=\"views/app/images/avatares/";
+            // line 85
+            echo "                      <img style=\"border:1px solid #eaeaea;border-radius:5px;\" src=\"views/app/images/avatares/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_users"] ?? null), "name_foto", array()), "html", null, true);
             echo "\" width=\"128\">
-                  ";
+                    ";
         } else {
-            // line 86
-            echo "                    <img style=\"border:1px solid #eaeaea;border-radius:5px;\" src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" width=\"128\">
-                  ";
+            // line 87
+            echo "                      <img style=\"border:1px solid #eaeaea;border-radius:5px;\" src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" width=\"128\">
+                    ";
         }
-        // line 88
-        echo "                </div>
+        // line 89
+        echo "                  </div>
+                </div>
+              </div>
+              <div class=\"form-group\">
+                <div class=\"row\">
+                  <br/>
+                  <label class=\"col-sm-4  control-label\">Rut Asocia Trabajador</label>
+                  <div class=\"col-sm-5\">
+                    <input class=\"form-control\" name=\"rut_trabajador\"        id=\"rut_trabajador\"        type=\"text\"     placeholder=\"xxxxxxxx s/digito\" value='";
+        // line 97
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_users"] ?? null), "rut_personal", array()), "html", null, true);
+        echo "'/>
+                  </div>
+                </div>
               </div>
             </div>
           </form>
@@ -220,10 +234,10 @@ class __TwigTemplate_761b4da976918418726fe5e7f4ab1368a0b1d8c0227970c2f2076bde49a
 ";
     }
 
-    // line 97
+    // line 108
     public function block_appScript($context, array $blocks = array())
     {
-        // line 98
+        // line 109
         echo "    <script src=\"views/app/js/administracion/administracion.js\"></script>
 ";
     }
@@ -240,11 +254,11 @@ class __TwigTemplate_761b4da976918418726fe5e7f4ab1368a0b1d8c0227970c2f2076bde49a
 
     public function getDebugInfo()
     {
-        return array (  227 => 98,  224 => 97,  212 => 88,  208 => 86,  202 => 84,  200 => 83,  184 => 69,  180 => 67,  176 => 65,  174 => 64,  168 => 60,  160 => 58,  152 => 56,  144 => 54,  141 => 53,  135 => 52,  131 => 50,  127 => 48,  125 => 47,  119 => 43,  115 => 41,  111 => 39,  108 => 38,  101 => 37,  93 => 35,  85 => 33,  82 => 32,  77 => 31,  69 => 26,  65 => 25,  61 => 24,  57 => 23,  50 => 19,  32 => 3,  29 => 2,  11 => 1,);
+        return array (  241 => 109,  238 => 108,  223 => 97,  213 => 89,  209 => 87,  203 => 85,  201 => 84,  184 => 69,  180 => 67,  176 => 65,  174 => 64,  168 => 60,  160 => 58,  152 => 56,  144 => 54,  141 => 53,  135 => 52,  131 => 50,  127 => 48,  125 => 47,  119 => 43,  115 => 41,  111 => 39,  108 => 38,  101 => 37,  93 => 35,  85 => 33,  82 => 32,  77 => 31,  69 => 26,  65 => 25,  61 => 24,  57 => 23,  50 => 19,  32 => 3,  29 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "administracion/edit_user.twig", "C:\\xampp\\htdocs\\proyectos\\login\\app\\templates\\administracion\\edit_user.twig");
+        return new Twig_Source("", "administracion/edit_user.twig", "C:\\xampp\\htdocs\\proyectos\\intranietsen\\app\\templates\\administracion\\edit_user.twig");
     }
 }

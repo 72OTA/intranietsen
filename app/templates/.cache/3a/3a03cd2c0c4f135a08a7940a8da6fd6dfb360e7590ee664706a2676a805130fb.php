@@ -45,7 +45,7 @@ class __TwigTemplate_b68468c8bbd94a677a8e99dd19102a404eaa22ccd21836994a1c569ce52
       <div class=\"col-md-12\">
         <div class=\"box box-primary\">
           <form id=\"register_user_form\"  action=\"\" method=\"POST\">
-            <div class=\"box-body col-sm-4\"></div>
+            <div class=\"box-body col-sm-2\"></div>
             <div class=\"box-body col-sm-4\">
               <div class=\"form-group\">
                 <input class=\"form-control\" name=\"name\"        id=\"name\"        type=\"text\"     placeholder=\"Nombre Completo\" required/>
@@ -130,6 +130,14 @@ class __TwigTemplate_b68468c8bbd94a677a8e99dd19102a404eaa22ccd21836994a1c569ce52
                 <button type=\"reset\" id=\"limpiar\" class=\"btn btn-default\">Limpiar</button>
               </div>
             </div>
+            <div class=\"box-body col-sm-4\">
+              <div class=\"form-group\">
+                <label class=\"col-sm-4  control-label\">Rut Asocia Trabajador</label>
+                <div class=\"col-sm-5\">
+                  <input class=\"form-control\" name=\"rut_trabajador\"        id=\"rut_trabajador\"        type=\"text\"     placeholder=\"xxxxxxxx s/digito\"/>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -138,10 +146,10 @@ class __TwigTemplate_b68468c8bbd94a677a8e99dd19102a404eaa22ccd21836994a1c569ce52
 ";
     }
 
-    // line 68
+    // line 76
     public function block_appScript($context, array $blocks = array())
     {
-        // line 69
+        // line 77
         echo "    <script src=\"views/app/js/administracion/administracion.js\"></script>
 ";
     }
@@ -158,11 +166,11 @@ class __TwigTemplate_b68468c8bbd94a677a8e99dd19102a404eaa22ccd21836994a1c569ce52
 
     public function getDebugInfo()
     {
-        return array (  145 => 69,  142 => 68,  121 => 50,  114 => 49,  106 => 47,  98 => 45,  95 => 44,  90 => 43,  82 => 37,  70 => 35,  65 => 34,  32 => 3,  29 => 2,  11 => 1,);
+        return array (  153 => 77,  150 => 76,  121 => 50,  114 => 49,  106 => 47,  98 => 45,  95 => 44,  90 => 43,  82 => 37,  70 => 35,  65 => 34,  32 => 3,  29 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "administracion/usuarios.twig", "C:\\xampp\\htdocs\\proyectos\\login\\app\\templates\\administracion\\usuarios.twig");
+        return new Twig_Source("", "administracion/usuarios.twig", "C:\\xampp\\htdocs\\proyectos\\intranietsen\\app\\templates\\administracion\\usuarios.twig");
     }
 }

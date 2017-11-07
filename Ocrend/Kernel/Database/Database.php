@@ -22,7 +22,7 @@ namespace Ocrend\Kernel\Database;
 
     /**
      * Contiene la instancia de conexión a la base de datos
-     * 
+     *
      * @var Database
      */
     private static $inst;
@@ -130,7 +130,7 @@ namespace Ocrend\Kernel\Database;
       }
     } catch (\PDOException $e) {
       throw new \RuntimeException('Problema al conectar con la base de datos: ' . $e->getMessage());
-    } 
+    }
   }
 
   /**
@@ -189,7 +189,9 @@ namespace Ocrend\Kernel\Database;
   final public function delete(string $table, string $where, string $limit = 'LIMIT 1') : \PDOStatement {
     return $this->query("DELETE FROM $table WHERE $where $limit;");
   }
-
+  final public function truncate(string $table) : \PDOStatement {
+    return $this->query("TRUNCATE TABLE $table;");
+  }
   /**
     * Inserta una serie de elementos a una tabla en la base de datos
     *
@@ -214,11 +216,11 @@ namespace Ocrend\Kernel\Database;
       $query[strlen($query) - 1] = ')';
       $values[strlen($values) - 1] = ')';
       $query .= ' VALUES (' . $values . ';';
-      
-      
-      return $this->query($query); 
-      
-      
+
+
+      return $this->query($query);
+
+
   }
 
   /**
@@ -258,7 +260,7 @@ namespace Ocrend\Kernel\Database;
     *
     * @return mixed false si no encuentra ningún resultado, array asociativo/numérico si consigue al menos uno
   */
-  final public function select(string $e, string $table, string $where = '1 = 1', string $limit = "") {    
+  final public function select(string $e, string $table, string $where = '1 = 1', string $limit = "") {
     return $this->query_select("SELECT $e FROM $table WHERE $where $limit;");
   }
 

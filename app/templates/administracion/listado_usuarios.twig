@@ -6,9 +6,19 @@
   <section class="content-header">
       <h4>
         <i class="fa fa-user"></i> GESTIÓN DE USUARIOS
+
+        <a class="btn btn-danger btn-social pull-right" href="administracion/generar_pdf_users" target="_blank" title="Generar PDF" data-toggle="tooltip">
+          <i class="fa fa-arrow-down"></i> Generar PDF
+        </a>
+
+        <a class="btn btn-success btn-social pull-right" href="administracion/exporta_excel_users" title="Exportar a Excel" data-toggle="tooltip">
+          <i class="fa fa-arrow-down"></i> Exportar Excel
+        </a>
+
         <a class="btn btn-primary btn-social pull-right" href="administracion/registro_user" title="Agregar" data-toggle="tooltip">
           <i class="fa fa-plus"></i> Agregar
         </a>
+
       </h4>
   </section>
   <section class="content">
@@ -21,6 +31,7 @@
               <tr>
                 <th>No</th>
               	<th>Nombre</th>
+                <th>Rut Trabajador</th>
               	<th>E-Mail</th>
                 <th>Fono</th>
                 <th>Cargo</th>
@@ -35,6 +46,7 @@
                 <tr>
                   <td>{{ No }}</td>
                   <td>{{ d.name|raw|title }}</td>
+                  <td>{{ d.rut_personal  }}</td>
                   <td>{{ d.email }}</td>
                   <td>{{ d.fono }}</td>
                   <td>{{ d.cargo }}</td>

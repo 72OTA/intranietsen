@@ -21,18 +21,18 @@ class __TwigTemplate_80185c073148ab85140666cb507c41633538fcfda1f1c16b30a7fdcdc6a
     <!-- Logo -->
     <a href=\"portal\" class=\"logo\">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class=\"logo-mini\"><b>A</b>ON</span>
+        <span class=\"logo-mini\">I<b>N</b>S</span>
         <!-- logo for regular state and mobile devices -->
         <span class=\"logo-lg\"><b>";
         // line 8
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "site", array()), "name", array()), "html", null, true);
-        echo "</b> OCREN</span>
+        echo "</b> W<b>Y</b>S</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class=\"navbar navbar-static-top\">
         <!-- Sidebar toggle button-->
         <a href=\"#\" class=\"sidebar-toggle\" data-toggle=\"push-menu\" role=\"button\">
-            <span class=\"sr-only\">Toggle navigation</span>
+          <span class=\"sr-only\">Toggle navigation</span>
         </a>
 
         <div class=\"navbar-custom-menu\">
@@ -93,20 +93,47 @@ class __TwigTemplate_80185c073148ab85140666cb507c41633538fcfda1f1c16b30a7fdcdc6a
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class=\"dropdown user user-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                        <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"user-image\" alt=\"User Image\">
+                      ";
+        // line 75
+        if ((twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "foto", array(), "array") == 1)) {
+            // line 76
+            echo "                        <img src=\"views/app/images/avatares/";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name_foto", array(), "array"), "html", null, true);
+            echo "\" class=\"user-image\" alt=\"User Image\">
+                      ";
+        } else {
+            // line 78
+            echo "                        <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"user-image\" alt=\"User Image\">
+                      ";
+        }
+        // line 80
+        echo "
                         <span class=\"hidden-xs\">";
-        // line 76
+        // line 81
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo "</span>
                     </a>
                     <ul class=\"dropdown-menu\">
                         <!-- User image -->
                         <li class=\"user-header\">
-                            <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
 
-                            <p>
+                            ";
+        // line 87
+        if ((twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "foto", array(), "array") == 1)) {
+            // line 88
+            echo "                              <img src=\"views/app/images/avatares/";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name_foto", array(), "array"), "html", null, true);
+            echo "\" class=\"img-circle\" alt=\"User Image\">
+                            ";
+        } else {
+            // line 90
+            echo "                              <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
+                            ";
+        }
+        // line 92
+        echo "                            <p>
                                 ";
-        // line 84
+        // line 93
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "email", array(), "array"), "html", null, true);
         echo "
                                 <small></small>
@@ -160,7 +187,7 @@ class __TwigTemplate_80185c073148ab85140666cb507c41633538fcfda1f1c16b30a7fdcdc6a
 
     public function getDebugInfo()
     {
-        return array (  110 => 84,  99 => 76,  28 => 8,  19 => 1,);
+        return array (  137 => 93,  134 => 92,  130 => 90,  124 => 88,  122 => 87,  113 => 81,  110 => 80,  106 => 78,  100 => 76,  98 => 75,  28 => 8,  19 => 1,);
     }
 
     public function getSourceContext()
@@ -170,15 +197,15 @@ class __TwigTemplate_80185c073148ab85140666cb507c41633538fcfda1f1c16b30a7fdcdc6a
     <!-- Logo -->
     <a href=\"portal\" class=\"logo\">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class=\"logo-mini\"><b>A</b>ON</span>
+        <span class=\"logo-mini\">I<b>N</b>S</span>
         <!-- logo for regular state and mobile devices -->
-        <span class=\"logo-lg\"><b>{{ config.site.name }}</b> OCREN</span>
+        <span class=\"logo-lg\"><b>{{ config.site.name }}</b> W<b>Y</b>S</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class=\"navbar navbar-static-top\">
         <!-- Sidebar toggle button-->
         <a href=\"#\" class=\"sidebar-toggle\" data-toggle=\"push-menu\" role=\"button\">
-            <span class=\"sr-only\">Toggle navigation</span>
+          <span class=\"sr-only\">Toggle navigation</span>
         </a>
 
         <div class=\"navbar-custom-menu\">
@@ -239,14 +266,23 @@ class __TwigTemplate_80185c073148ab85140666cb507c41633538fcfda1f1c16b30a7fdcdc6a
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class=\"dropdown user user-menu\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
+                      {% if owner_user['foto'] == 1 %}
+                        <img src=\"views/app/images/avatares/{{ owner_user['name_foto'] }}\" class=\"user-image\" alt=\"User Image\">
+                      {% else %}
                         <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"user-image\" alt=\"User Image\">
+                      {% endif %}
+
                         <span class=\"hidden-xs\">{{ owner_user['name'] }}</span>
                     </a>
                     <ul class=\"dropdown-menu\">
                         <!-- User image -->
                         <li class=\"user-header\">
-                            <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
 
+                            {% if owner_user['foto'] == 1 %}
+                              <img src=\"views/app/images/avatares/{{ owner_user['name_foto'] }}\" class=\"img-circle\" alt=\"User Image\">
+                            {% else %}
+                              <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
+                            {% endif %}
                             <p>
                                 {{ owner_user['email'] }}
                                 <small></small>
