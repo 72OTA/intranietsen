@@ -22,12 +22,26 @@ class __TwigTemplate_1763ce0e3a7648f56f502e22dc2a4a14a382e7fd4592c070651b354bd05
       <!-- Sidebar user panel -->
       <div class=\"user-panel\">
         <div class=\"pull-left image\">
-          <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
+          ";
+        // line 7
+        if ((twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "foto", array(), "array") == 1)) {
+            // line 8
+            echo "            <img src=\"views/app/images/avatares/";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name_foto", array(), "array"), "html", null, true);
+            echo "\" class=\"img-circle\" alt=\"User Image\">
+          ";
+        } else {
+            // line 10
+            echo "            <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
+          ";
+        }
+        // line 12
+        echo "
         </div>
         <div class=\"pull-left info\">
           <p>";
-        // line 10
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
+        // line 15
+        echo twig_escape_filter($this->env, twig_title_string_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array")), "html", null, true);
         echo "</p>
           <a href=\"portal\"><i class=\"fa fa-circle text-success\"></i>Online</a>
         </div>
@@ -44,104 +58,108 @@ class __TwigTemplate_1763ce0e3a7648f56f502e22dc2a4a14a382e7fd4592c070651b354bd05
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class=\"sidebar-menu\" >
-            <li class=\"header\">MENÚ PRINCIPAL</li>
-                ";
-        // line 28
-        if ((($context["menu_op"] ?? null) == 0)) {
-            // line 29
-            echo "                    <li class=\"active treeview\">
-                ";
-        } else {
-            // line 31
-            echo "                    <li class=\"treeview\">
-                ";
-        }
+      <ul class=\"sidebar-menu\">
+      <li class=\"header\">MENÚ PRINCIPAL</li>
+        ";
         // line 33
-        echo "                    <a href=\"portal\"><i class=\"fa fa-home\"></i><span>HOME</span>
-                    </a>
-                </li>
-
-
-            ";
+        if ((($context["menu_op"] ?? null) == 0)) {
+            // line 34
+            echo "            <li class=\"active treeview\">
+        ";
+        } else {
+            // line 36
+            echo "            <li class=\"treeview\">
+        ";
+        }
         // line 38
+        echo "            <a href=\"portal\"><i class=\"fa fa-home\"></i><span>HOME</span>
+            </a>
+        </li>
+      </ul>
+      <ul class=\"sidebar-menu\" data-widget=\"tree\">
+
+
+          ";
+        // line 45
         $context["id"] = 0;
-        // line 39
-        echo "            ";
+        // line 46
+        echo "          ";
         $context["cont"] = 0;
-        // line 40
-        echo "            ";
+        // line 47
+        echo "          ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["menu_user"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["m"]) {
             if ((false != ($context["menu_user"] ?? null))) {
-                // line 41
+                // line 48
                 echo "
-                ";
-                // line 42
+              ";
+                // line 49
                 if ((($context["id"] ?? null) != twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "id_menu", array()))) {
-                    // line 43
-                    echo "                    ";
+                    // line 50
+                    echo "                  ";
                     if ((($context["cont"] ?? null) >= 1)) {
-                        // line 44
-                        echo "                    </ul>
-                </li>
-                    ";
+                        // line 51
+                        echo "                  </ul>
+              </li>
+                  ";
                     }
-                    // line 47
-                    echo "                ";
+                    // line 54
+                    echo "              ";
                     if ((($context["menu_op"] ?? null) == twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "id_menu", array()))) {
-                        // line 48
-                        echo "                <li class=\"active treeview\">
-                ";
+                        // line 55
+                        echo "              <li class=\"active treeview\">
+              ";
                     } else {
-                        // line 50
-                        echo "                <li class=\"treeview\">
-                ";
+                        // line 57
+                        echo "              <li class=\"treeview\">
+              ";
                     }
-                    // line 52
-                    echo "                    <a href=\"#\">
-                        <i class='fa ";
-                    // line 53
+                    // line 59
+                    echo "                  <a href=\"";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "url", array()), "html", null, true);
+                    echo "\">
+                      <i class='fa ";
+                    // line 60
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "glyphicon", array()), "html", null, true);
                     echo "'></i>
-                        <span>
+                      <span>
 
-                        ";
-                    // line 56
+                      ";
+                    // line 63
                     echo twig_escape_filter($this->env, twig_upper_filter($this->env, twig_convert_encoding(twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "menu", array()), "UTF-8", "ISO-8859-1")), "html", null, true);
                     echo "
 
-                        </span><i class=\"fa fa-angle-left pull-right\"></i>
-                    </a>
-                    <ul class=\"treeview-menu\">
-                ";
+                      </span><i class=\"fa fa-angle-left pull-right\"></i>
+                  </a>
+                  <ul class=\"treeview-menu\">
+              ";
                 }
-                // line 62
+                // line 69
                 echo "
-                        <li>
-                            <a href=\"";
-                // line 64
+                      <li>
+                          <a href=\"";
+                // line 71
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "url", array()), "html", null, true);
                 echo "\"><i class=\"fa fa-circle-o\"></i>";
                 echo twig_escape_filter($this->env, twig_convert_encoding(twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "submenu", array())), "UTF-8", "ISO-8859-1"), "html", null, true);
                 echo "</a>
-                        </li>
+                      </li>
 
-                ";
-                // line 67
+              ";
+                // line 74
                 $context["id"] = twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "id_menu", array());
-                // line 68
-                echo "                ";
+                // line 75
+                echo "              ";
                 $context["cont"] = (($context["cont"] ?? null) + 1);
-                // line 69
-                echo "            ";
+                // line 76
+                echo "          ";
             }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['m'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 70
+        // line 77
         echo "      </ul>
     </section>
     <!-- /.sidebar -->
@@ -161,7 +179,7 @@ class __TwigTemplate_1763ce0e3a7648f56f502e22dc2a4a14a382e7fd4592c070651b354bd05
 
     public function getDebugInfo()
     {
-        return array (  145 => 70,  138 => 69,  135 => 68,  133 => 67,  125 => 64,  121 => 62,  112 => 56,  106 => 53,  103 => 52,  99 => 50,  95 => 48,  92 => 47,  87 => 44,  84 => 43,  82 => 42,  79 => 41,  73 => 40,  70 => 39,  68 => 38,  61 => 33,  57 => 31,  53 => 29,  51 => 28,  30 => 10,  19 => 1,);
+        return array (  163 => 77,  156 => 76,  153 => 75,  151 => 74,  143 => 71,  139 => 69,  130 => 63,  124 => 60,  119 => 59,  115 => 57,  111 => 55,  108 => 54,  103 => 51,  100 => 50,  98 => 49,  95 => 48,  89 => 47,  86 => 46,  84 => 45,  75 => 38,  71 => 36,  67 => 34,  65 => 33,  44 => 15,  39 => 12,  35 => 10,  29 => 8,  27 => 7,  19 => 1,);
     }
 
     public function getSourceContext()
@@ -172,10 +190,15 @@ class __TwigTemplate_1763ce0e3a7648f56f502e22dc2a4a14a382e7fd4592c070651b354bd05
       <!-- Sidebar user panel -->
       <div class=\"user-panel\">
         <div class=\"pull-left image\">
-          <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
+          {% if owner_user['foto'] == 1 %}
+            <img src=\"views/app/images/avatares/{{ owner_user['name_foto'] }}\" class=\"img-circle\" alt=\"User Image\">
+          {% else %}
+            <img src=\"//ssl.gstatic.com/accounts/ui/avatar_2x.png\" class=\"img-circle\" alt=\"User Image\">
+          {% endif %}
+
         </div>
         <div class=\"pull-left info\">
-          <p>{{ owner_user['name'] }}</p>
+          <p>{{ owner_user['name']|title }}</p>
           <a href=\"portal\"><i class=\"fa fa-circle text-success\"></i>Online</a>
         </div>
       </div>
@@ -191,50 +214,52 @@ class __TwigTemplate_1763ce0e3a7648f56f502e22dc2a4a14a382e7fd4592c070651b354bd05
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class=\"sidebar-menu\" >
-            <li class=\"header\">MENÚ PRINCIPAL</li>
-                {% if menu_op == 0 %}
-                    <li class=\"active treeview\">
-                {% else %}
-                    <li class=\"treeview\">
-                {% endif %}
-                    <a href=\"portal\"><i class=\"fa fa-home\"></i><span>HOME</span>
-                    </a>
-                </li>
+      <ul class=\"sidebar-menu\">
+      <li class=\"header\">MENÚ PRINCIPAL</li>
+        {% if menu_op == 0 %}
+            <li class=\"active treeview\">
+        {% else %}
+            <li class=\"treeview\">
+        {% endif %}
+            <a href=\"portal\"><i class=\"fa fa-home\"></i><span>HOME</span>
+            </a>
+        </li>
+      </ul>
+      <ul class=\"sidebar-menu\" data-widget=\"tree\">
 
 
-            {% set id = 0 %}
-            {% set cont = 0 %}
-            {% for m in menu_user if false != menu_user %}
+          {% set id = 0 %}
+          {% set cont = 0 %}
+          {% for m in menu_user if false != menu_user %}
 
-                {% if id != m.id_menu %}
-                    {% if cont >= 1 %}
-                    </ul>
-                </li>
-                    {% endif %}
-                {% if menu_op == m.id_menu %}
-                <li class=\"active treeview\">
-                {% else %}
-                <li class=\"treeview\">
-                {% endif %}
-                    <a href=\"#\">
-                        <i class='fa {{ m.glyphicon }}'></i>
-                        <span>
+              {% if id != m.id_menu %}
+                  {% if cont >= 1 %}
+                  </ul>
+              </li>
+                  {% endif %}
+              {% if menu_op == m.id_menu %}
+              <li class=\"active treeview\">
+              {% else %}
+              <li class=\"treeview\">
+              {% endif %}
+                  <a href=\"{{ m.url }}\">
+                      <i class='fa {{ m.glyphicon }}'></i>
+                      <span>
 
-                        {{ m.menu|raw|convert_encoding('UTF-8', 'ISO-8859-1')|upper }}
+                      {{ m.menu|raw|convert_encoding('UTF-8', 'ISO-8859-1')|upper }}
 
-                        </span><i class=\"fa fa-angle-left pull-right\"></i>
-                    </a>
-                    <ul class=\"treeview-menu\">
-                {% endif %}
+                      </span><i class=\"fa fa-angle-left pull-right\"></i>
+                  </a>
+                  <ul class=\"treeview-menu\">
+              {% endif %}
 
-                        <li>
-                            <a href=\"{{ m.url }}\"><i class=\"fa fa-circle-o\"></i>{{ m.submenu|capitalize|raw|convert_encoding('UTF-8', 'ISO-8859-1') }}</a>
-                        </li>
+                      <li>
+                          <a href=\"{{ m.url }}\"><i class=\"fa fa-circle-o\"></i>{{ m.submenu|capitalize|raw|convert_encoding('UTF-8', 'ISO-8859-1') }}</a>
+                      </li>
 
-                {% set id=m.id_menu %}
-                {% set cont =  cont + 1 %}
-            {% endfor %}
+              {% set id=m.id_menu %}
+              {% set cont =  cont + 1 %}
+          {% endfor %}
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -145,3 +145,125 @@ $app->post('/update_empresa', function() use($app) {
 
     return $app->json($e->update_empresa());
 });
+
+//////// CONTROLER RRHH ////////////////
+/**
+    * Busca datos de usuario
+    *
+    * @return json
+*/
+$app->post('/search_user', function() use($app) {
+    $e = new Model\Users;
+
+    return $app->json($e->search_user());
+});
+/**
+    * Busca coincidencias en la bd
+    *
+    * @return json
+*/
+$app->post('/buscar_coincidencia', function() use($app) {
+    $e = new Model\Horasextra;
+
+    return $app->json($e->buscar_coincidencia());
+});
+/**
+    * Registra nuevo trabajador
+    *
+    * @return json
+*/
+$app->post('/registra_nuevo_trabajador', function() use($app) {
+    $e = new Model\Mdlpersonal;
+
+    return $app->json($e->registra_nuevo_trabajador());
+});
+/**
+    * Registra Hora Extra
+    *
+    * @return json
+*/
+$app->post('/hora_extra', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->hora_extra());
+});
+/**
+    * Registra Hora Extra temporal
+    *
+    * @return json
+*/
+$app->post('/tmp_hora_extra', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->tmp_hora_extra());
+});
+/**
+    * Revisar Horas Extra
+    *
+    * @return json
+*/
+$app->post('/revisar', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->revisar());
+});
+/**
+    * Modificar Horas Extra
+    *
+    * @return json
+*/
+$app->post('/modificar', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->modificar());
+});
+/**
+    * Modificar Horas Extra
+    *
+    * @return json
+*/
+$app->post('/aprobar', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->aprobar());
+});
+/**
+    * Rechazar Horas Extra
+    *
+    * @return json
+*/
+$app->post('/rechazar', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->rechazar());
+});
+/**
+    * Eliminar Horas Extra
+    *
+    * @return json
+*/
+$app->post('/eliminar', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->eliminar());
+});
+/**
+    * Eliminar Horas peticiones de Extra
+    *
+    * @return json
+*/
+$app->post('/eliminar_peticiones', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->eliminar_peticiones());
+});
+/**
+    * Eliminar usuarios al modificar horas extra
+    *
+    * @return json
+*/
+$app->post('/eliminar_solicitud_mod', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->eliminar_solicitud_mod());
+});

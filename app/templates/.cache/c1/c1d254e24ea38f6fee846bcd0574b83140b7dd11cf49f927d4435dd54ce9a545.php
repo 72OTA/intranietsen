@@ -21,12 +21,12 @@ class __TwigTemplate_0f55012a14c3605a148cc3988b720d969161c028cb6e45179227b5cd031
     <!-- Logo -->
     <a href=\"portal\" class=\"logo\">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class=\"logo-mini\">W<b>Y</b>S</span>
+        <span class=\"logo-mini\">I<b>N</b>A</span>
         <!-- logo for regular state and mobile devices -->
-        <span class=\"logo-lg\"><b>";
+        <span class=\"logo-lg\">";
         // line 8
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "site", array()), "name", array()), "html", null, true);
-        echo "</b> W<b>Y</b>S</span>
+        echo " <b>ADMIN</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class=\"navbar navbar-static-top\">
@@ -192,6 +192,6 @@ class __TwigTemplate_0f55012a14c3605a148cc3988b720d969161c028cb6e45179227b5cd031
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "portal/header.twig", "C:\\xampp\\htdocs\\proyectos\\login\\app\\templates\\portal\\header.twig");
+        return new Twig_Source("", "portal/header.twig", "C:\\xampp\\htdocs\\proyectos\\intranietsen\\app\\templates\\portal\\header.twig");
     }
 }

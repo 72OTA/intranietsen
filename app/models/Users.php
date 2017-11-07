@@ -20,7 +20,9 @@ use Ocrend\Kernel\Router\IRouter;
 use Ocrend\Kernel\Helpers\Strings;
 use Ocrend\Kernel\Helpers\Emails;
 use Ocrend\Kernel\Helpers\Files;
-
+use PHPExcel;
+use PHPExcel_IOFactory;
+use mPDF;
 
 /**
  * Controla todos los aspectos de un usuario dentro del sistema.
@@ -129,8 +131,9 @@ class Users extends Models implements IModels {
     private function generateSession(array $user_data) {
         global $session, $config;
 
-        $session->set('user_id', (int) $user_data['id_user']);
-        $session->set('unique_session', $config['sessions']['unique']);
+        //$session->set('user_id', (int) $user_data['id_user']);
+        //$session->set('unique_session', $config['sessions']['unique']);
+        $session->set($config['sessions']['unique'] . '_user_id',(int) $user_data['id_user']);
     }
 
     /**
@@ -283,6 +286,7 @@ class Users extends Models implements IModels {
             $email = $http->request->get('email');
             $fono = $http->request->get('fono');
             $cargo = $http->request->get('cargo');
+            $rut_trabajador=$http->request->get('rut_trabajador');
             $pass = $http->request->get('pass');
             $pass_repeat = $http->request->get('pass_repeat');
             $perfil = $http->request->get('perfil');
@@ -310,6 +314,7 @@ class Users extends Models implements IModels {
                 'name' => $name,
                 'email' => $email,
                 'fono' => $fono,
+                'rut_personal' => $rut_trabajador,
                 'cargo' => $cargo,
                 'perfil' => $perfil,
                 'pagina_inicio' => $pagina_inicio,
@@ -350,6 +355,8 @@ class Users extends Models implements IModels {
             $email = $http->request->get('email');
             $cargo = $http->request->get('cargo');
             $fono = $http->request->get('fono');
+            $rut_personal = $http->request->get('rut_personal');
+            $rut_trabajador = $http->request->get('rut_trabajador');
             $perfil = $http->request->get('perfil');
             $pagina_inicio = $http->request->get('pagina_inicio');
             $rol = $http->request->get('rol');
@@ -385,6 +392,7 @@ class Users extends Models implements IModels {
               'fono' => $fono,
               'cargo' => $cargo,
               'perfil' => $perfil,
+              'rut_personal' => $rut_trabajador,
               'pagina_inicio' => $pagina_inicio,
               'rol' => $rol
             ),"id_user='$id_user'",'LIMIT 1');
@@ -429,17 +437,16 @@ class Users extends Models implements IModels {
 
     /**
       * Actualiza estado de usuario en linea
-      * y luego redirecciona a administracion/usuarios
-      *
+      * @param $id_user = corresponde a usuario que ingresa o sale de la aplicacion
+      * @param $opcion = in|out, 'in' = para login, out = para logout
       * @return void
     */
     final public function update_online_user($id_user,$opcion) {
         global $config;
 
-        //# Actualiza Estado ON LINE
-        //dump($config['sessions']['life_time']);
+        // Actualiza Estado ON LINE
         $ahora = time();
-        $limite = $ahora-24*120;
+        $limite = $ahora-24*60;
         $this->db->query("UPDATE users SET online_fecha=0 WHERE online_fecha < ".$limite);
         if ($opcion === 'in'){
           $this->db->query("UPDATE users SET online_fecha=".$ahora." WHERE id_user = '$id_user' LIMIT 1;");
@@ -724,16 +731,148 @@ class Users extends Models implements IModels {
      * @return void
      */
     public function logout() {
-        global $session,$config;
+        global $session, $config;
 
-        if (null != $session->get('user_id')) {
+        //if (null != $session->get('user_id')) {
+        if(null != $session->get($config['sessions']['unique'] . '_user_id')) {
 
-            $this->update_online_user($session->get('user_id'),'out');
-            $session->remove('user_id');
+            $this->update_online_user($session->get($config['sessions']['unique'] . '_user_id'),'out');
+
+            $session->remove($config['sessions']['unique'] . '_user_id');
         }
 
         $this->functions->redir();
     }
+
+    /**
+     * Exportar usuarios a un archivo excel
+     *
+     * @return void
+     */
+    public function exporta_excel_users() {
+        global $config;
+
+        $objPHPExcel = new PHPExcel();
+
+        //Informacion del excel
+        $objPHPExcel->getProperties() ->setCreator("Jorge Jara H.")
+                                      ->setLastModifiedBy("JJH")
+                                      ->setTitle("Usuarios");
+        //encabezado
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1', 'id');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B1', 'Nombre');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C1', 'E-Mail');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D1', 'Fono');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E1', 'Rol');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F1', 'Estado');
+
+        $u = $this->getUsers('id_user,name,email,fono,Rol,Estado','1=1');
+        $fila = 2;
+        foreach ($u as $value => $data) {
+
+          $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$fila, $data['id_user']);
+          $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$fila, $data['name']);
+          $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$fila, $data['email']);
+          $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$fila, $data['fono']);
+          $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$fila, $data['Rol'] ? 'Admin':'Normal' );
+          $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$fila, $data['Estado'] ? 'Activo':'Bloqueado' );
+
+          $fila++;
+        }
+
+        //autisize para las columna
+        foreach(range('A','E') as $columnID)
+        {
+            $objPHPExcel->getActiveSheet()->getColumnDimension($columnID)->setAutoSize(true);
+        }
+
+        $objPHPExcel->setActiveSheetIndex(0);
+
+        $objPHPExcel->getActiveSheet()->setTitle('listado_usuarios');
+
+        // Redirect output to a client’s web browser (Excel2007)
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="listar_usuarios.xlsx"');
+        header('Cache-Control: max-age=0');
+        // If you're serving to IE 9, then the following may be needed
+        header('Cache-Control: max-age=1');
+
+        // If you're serving to IE over SSL, then the following may be needed
+        header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+        header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+        header ('Pragma: public'); // HTTP/1.0
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save('php://output');
+    }
+
+    /**
+     * Exportar usuarios a un archivo excel
+     *
+     * @return void
+     */
+    public function generar_pdf_users() {
+        global $config;
+
+        $mpdf = new mPDF('utf-8','mm');
+
+        $mpdf->SetDisplayMode('fullpage');
+        $html="<html>";
+        $html.="<head>
+              <link href='views/app/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet' />
+              </head>";
+        $html.="<body>";
+        $empresa = (new Model\Empresa)->get();
+        $html.="<img style='vertical-align: top; opacity: 0.5' src='views/app/images/logo.".$empresa['ext_logo']."' width='80' />";
+
+        $html.="<table class='table table-bordered'>";
+        $html.="<caption><h1>Listado de Usuarios</h1></caption>
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nombre</th>
+                    <th>E-Mail</th>
+                    <th>Fono</th>
+                    <th>Cargo</th>
+                    <th>Perfil</th>
+                    <th>ROL</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>";
+
+                $u = $this->getUsers('name,email,fono,perfil,rol,cargo,estado','1=1');
+                $fila = 1;
+                foreach ($u as $value => $data) {
+                  $html.="<tr>
+                          <td>".$fila."</td>
+                          <td>".strtolower($data['name'])."</td>
+                          <td>".$data['email']."</td>
+                          <td>".$data['fono']."</td>
+                          <td>".$data['cargo']."</td>
+                          <td>".$data['perfil']."</td>";
+                          $data['rol'] ? $rol ="Admin":$rol = "User";
+                  $html.="<td>".$rol."</td>";
+                          $data['estado'] ? $estado ="Activo":$estado = "Bloqueado";
+                  $html.="<td>".$estado ."</td>
+                         </tr>";
+                  $fila++;
+                }
+
+                $html.="</tbody>
+                </table>";
+          $html.="</div>";
+        $html.="</body>";
+        $html.="</html>";
+
+        $mpdf->writeHTML($html);
+
+        $mpdf->Output("test.pdf",'I');
+
+    }
+
+
 
     /**
      * Obtiene datos de un usuario según su id en la base de datos
@@ -745,6 +884,27 @@ class Users extends Models implements IModels {
      */
     public function getUserById(int $id, string $select = '*') {
         return $this->db->select($select,'users',"id_user='$id'",'LIMIT 1');
+    }
+
+    /**
+     * Obtiene datos de un usuario según su id en la base de datos
+     *
+     * @param int $id: Id del usuario a obtener
+     * @param string $select : Por defecto es *, se usa para obtener sólo los parámetros necesarios
+     *
+     * @return array json con información del usuario
+     */
+    public function search_user() {
+      global $config, $http;
+
+      $id_user = $http->request->get('id_user');
+
+      $user =  $this->db->select('*','users',"id_user='$id_user'",'LIMIT 1');
+      if (false == $user){
+        return array('success' => 0, 'message' => 'Usuario no valido');
+      }else {
+        return array('success' => 1, 'message' => $user[0] );
+      }
     }
 
     /**

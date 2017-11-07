@@ -85,31 +85,31 @@ class __TwigTemplate_6fad78c4f97df98a0c1520be26045f0bf54a4ebc17cde01457167a2caf9
             if ((false != ($context["db_all_menu"] ?? null))) {
                 // line 32
                 echo "
-              ";
+                  ";
                 // line 33
                 if ((($context["id"] ?? null) != twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "id_menu", array()))) {
                     // line 34
-                    echo "                  ";
+                    echo "                      ";
                     if ((($context["cont"] ?? null) >= 1)) {
                         // line 35
-                        echo "                  </ul>
-              </li>
-                  ";
+                        echo "                      </ul>
+                  </li>
+                      ";
                     }
                     // line 38
-                    echo "              <li>
-                  <i class='fa ";
+                    echo "                  <li>
+                      <i class='fa ";
                     // line 39
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "glyphicon", array()), "html", null, true);
                     echo "'></i>
-                      <span>
-                      ";
+                          <span>
+                          ";
                     // line 41
                     echo twig_escape_filter($this->env, twig_upper_filter($this->env, twig_convert_encoding(twig_get_attribute($this->env, $this->getSourceContext(), $context["m"], "menu", array()), "UTF-8", "ISO-8859-1")), "html", null, true);
                     echo "
-                      </span>
-                  <ul>
-              ";
+                          </span>
+                      <ul>
+                  ";
                 }
                 // line 45
                 echo "                          <li>

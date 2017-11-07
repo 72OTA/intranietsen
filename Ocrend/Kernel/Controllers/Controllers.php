@@ -95,7 +95,8 @@ abstract class Controllers {
         $this->functions = new Functions();
 
         # Verificar si está logeado el usuario
-        $this->is_logged = null != $session->get('user_id') && $session->get('unique_session') == $config['sessions']['unique'];
+        //$this->is_logged = null != $session->get('user_id') && $session->get('unique_session') == $config['sessions']['unique'];
+        $this->is_logged = null != $session->get($config['sessions']['unique'] . '_user_id');
 
         # Establecer la configuración para el controlador
         $this->setControllerConfig($configController);
@@ -123,13 +124,20 @@ abstract class Controllers {
           $this->user = (new Model\Users)->getOwnerUser();
           $this->template->addGlobal('owner_user', $this->user);
 
+          if ($this->user['rol'] == 1)  $this->user_admin=true;
 
           $this->menu_user = (new Model\Users)->getMenuOwnerUser();
           $this->template->addGlobal('menu_user', $this->menu_user );
 
-          $this->empresa_db = (new Model\Empresa)->get();
-          $this->template->addGlobal('empresa_db', $this->empresa_db );
+          $user = $this->user;
+          (new Model\Users)->update_online_user($user['id_user'],'in');
+
         }
+
+        $this->empresa_db = (new Model\Empresa)->get();
+        $this->template->addGlobal('empresa_db', $this->empresa_db );
+
+
 
         # Extensiones
         $this->template->addExtension($this->functions);
@@ -160,6 +168,8 @@ abstract class Controllers {
       $this->controllerConfig['twig_cache_reload'] = true;
       $this->controllerConfig['users_logged'] = false;
       $this->controllerConfig['users_not_logged'] = false;
+      $this->controllerConfig['only_admin'] = false;
+      $this->controllerConfig['access_menu'] = false;
 
       # Establecer las configuraciones pasadas
       if (null != $config) {
@@ -175,6 +185,16 @@ abstract class Controllers {
         if (array_key_exists('users_not_logged', $config)) {
           $this->controllerConfig['users_not_logged'] = (bool) $config['users_not_logged'];
         }
+
+        # Configura el controlador para solo ser visto por usuario admin
+        if (array_key_exists('only_admin', $config)) {
+          $this->controllerConfig['only_admin'] = (bool) $config['only_admin'];
+        }
+
+        if (array_key_exists('access_menu', $config)) {
+          $this->controllerConfig['access_menu'] = (array) $config['access_menu'];
+        }
+
       }
     }
 
@@ -184,6 +204,7 @@ abstract class Controllers {
      * @return void
      */
     private function knowVisitorPermissions() {
+      global $config;
       # Sólamente usuarios logeados
       if ($this->controllerConfig['users_logged'] && !$this->is_logged) {
         $this->functions->redir();
@@ -193,6 +214,28 @@ abstract class Controllers {
       if ($this->controllerConfig['users_not_logged'] && $this->is_logged) {
         $this->functions->redir();
       }
+
+      if ($this->is_logged){
+        if ($this->controllerConfig['only_admin'] && $this->user['rol'] != 1 ){
+          $this->functions->redir($config['site']['url'] . '&error=true');
+        }
+
+        if ($this->controllerConfig['access_menu']['access']){
+          $flat = false;
+          foreach ($this->menu_user as $key => $value) {
+            if ($value['id_menu'] == $this->controllerConfig['access_menu']['id_menu'])
+            {
+              $flat=true;
+              break;
+            }
+          }
+          if ($flat == false){
+            $this->functions->redir($config['site']['url'] . '&error=true');
+          }
+        }
+      }
+
+
     }
 
 }
