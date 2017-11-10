@@ -1,12 +1,19 @@
 {% extends 'portal/portal' %}
 {% block appStylos %}
   <link rel="stylesheet" href="views/app/template/datatables/dataTables.bootstrap.css">
+<<<<<<< HEAD
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+=======
+>>>>>>> 7296bf339004fdcd285aae74419db99463b662fa
 {% endblock %}
 {% block appBody %}
   <section class="content-header">
       <h4>
         <i class="fa fa-user"></i> GESTION DE HORAS EXTRA
+<<<<<<< HEAD
+=======
+        <a class="btn btn-primary btn-social pull-right" href="rrhh/pedir_hora_extra" title="solicitar" data-toggle="tooltip">
+>>>>>>> 7296bf339004fdcd285aae74419db99463b662fa
           <i class="fa fa-plus"></i> SOLICITAR
         </a>
       </h4>
@@ -19,6 +26,11 @@
           <table id="dataTables1" class="table table-bordered">
             <thead>
               <tr>
+<<<<<<< HEAD
+=======
+                <th>rut</th>
+                <th>Solicitante</th>
+>>>>>>> 7296bf339004fdcd285aae74419db99463b662fa
                 <th>Fecha</th>
                 <th>Hora desde</th>
                 <th>Hora hasta</th>
@@ -30,11 +42,21 @@
             <tbody>
               {% set No = 1 %}
               {% for d in horas_extras if false != horas_extras %}
+<<<<<<< HEAD
               {% if  owner_user['id_user']  ==  d.id_user %}
                 <tr>
                   <td>{{ d.fecha }}</td>
                   <td>{{ d.hora_desde|raw|title }}</td>
                   <td>{{ d.hora_hasta }}</td>
+=======
+              {% if  owner_user['rut_personal']  ==  d.rut or owner_user['rol'] == 1 %}
+                <tr>
+                  <td>{{ d.rut }}</td>
+                  <td>{{ d.solicitante }}</td>
+                  <td>{{ d.fecha }}</td>
+                  <td>{{ d.fechad|raw|title }}</td>
+                  <td>{{ d.fechah }}</td>
+>>>>>>> 7296bf339004fdcd285aae74419db99463b662fa
                   <td>{{ d.motivo }}</td>
                   <td>{{ d.estatus }}</td>
                   <td class='center' width='150'>
@@ -63,7 +85,11 @@
     <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
 
+<<<<<<< HEAD
     <script src="views/app/js/horasextra/horasextra.js" language="JavaScript" type="text/javascript"></script>
+=======
+    <script src="views/app/js/horasextra/horasextra.js"></script>
+>>>>>>> 7296bf339004fdcd285aae74419db99463b662fa
 
     <script>
      $("#dataTables1").dataTable({

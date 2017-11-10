@@ -53,11 +53,11 @@
                         </a>
                     {% endif %}
                     {% if d.estatus != "Aprobada" %}
-                      <a data-toggle='tooltip' data-placement='top' title='Eliminar' id="btn_eliminar1" onclick="eliminar_peticiones({{  d.id_conjunto  }})" class='btn btn-warning btn-sm' >
+                      <a data-toggle='tooltip' data-placement='top' title='Eliminar' id="btn_eliminar1" onclick="eliminar_solicitud({{  d.id  }})" class='btn btn-warning btn-sm' >
                           <i class='glyphicon glyphicon-trash'></i>
                       </a>
-                      <form class="" action="" name="form_id_peticion" id="form_id_peticion" method="post">
-                          <input type="hidden" id="id_peticion" name="id_peticion">
+                      <form class="" action="" name="form_id" id="form_id" method="post">
+                          <input type="hidden" id="id_solicitudhx" name="id_solicitudhx">
                       </form>
                     {% endif %}
                   </td>

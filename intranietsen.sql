@@ -328,6 +328,22 @@ INSERT INTO `users` (`id_user`, `name`, `email`, `fono`, `cargo`, `pass`, `tmp_p
 --
 -- Estructura de tabla para la tabla `tmp_horasextra`
 --
+<<<<<<< HEAD:intranietsen.sql
+=======
+
+DROP TABLE IF EXISTS `tmp_horasextra`;
+CREATE TABLE `tmp_horasextra` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `fecha` date NOT NULL,
+ `rut` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+ `hora_desde` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+ `hora_hasta` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+ `solicitante` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+ `motivo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+ `id_user` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+>>>>>>> 7296bf339004fdcd285aae74419db99463b662fa:intranietsen.sql
 
 DROP TABLE IF EXISTS `tmp_horasextra`;
 CREATE TABLE `tmp_horasextra` (
@@ -364,6 +380,40 @@ CREATE TABLE `tbl_horasextra` (
  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 
+
+--
+-- Truncar tablas antes de insertar `tbl_horasextra`
+--
+
+TRUNCATE TABLE `tbl_horasextra`;
+--
+-- Volcado de datos para la tabla `tbl_horasextra`
+--
+--
+INSERT INTO `tbl_horasextra` (`id`,`rut`, `fechad`, `fechah`, `solicitante`, `motivo`) VALUES
+('0','ejemplo1', 'ejemplofd', 'ejemplofh', 'ejemplosolicitante', 'ejemplomotivo'),
+('1','ejemplo2', 'ejemplofd', 'ejemplofh', 'ejemplosolicitante', 'ejemplomotivo'),
+('2','ejemplo3', 'ejemplofd', 'ejemplofh', 'ejemplosolicitante', 'ejemplomotivo');
+-- --------------------------------------------------------
+--
+-- Índices para tablas volcadas
+--
+--
+-- Estructura de tabla para la tabla `tbl_horasextra`
+--
+
+DROP TABLE IF EXISTS `tbl_horasextra`;
+CREATE TABLE `tbl_horasextra` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `fecha` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rut` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `hora_desde` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `hora_hasta` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `solicitante` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `motivo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+	`estatus` VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pendiente',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Truncar tablas antes de insertar `tbl_horasextra`
