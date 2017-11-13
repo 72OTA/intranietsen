@@ -18,13 +18,12 @@
                                           <button class="btn btn-danger" type="button" id="btn_rechazar"><span>Rechazar</span></button>
                                       </center>
                                       {% set var = 1 %}
-                                      {% for var in horas_extras %}
+                                      {% for d in horas_extras %}
                                       <tr>
                                         <td>{{ d.solicitante }}</td>
                                       </tr>
                                       {% set var =  var + 1 %}
                                       {% endfor %}
-                                      <label for=""></label>
                                   </form>
                                 </div>
                               </div>

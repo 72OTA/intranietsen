@@ -38,10 +38,19 @@ class Horasextra extends Models implements IModels {
       global $http;
         $id_user = $http->request->get('iduser');
 
-        $this->db->query("INSERT INTO tbl_horasextra(fecha, rut, hora_desde, hora_hasta, solicitante, motivo, id_user, id_conjunto)
-        SELECT fecha, rut, hora_desde, hora_hasta, solicitante, motivo, id_user, id_conjunto
+        // INSERT a la tabla tbl_enc_hora_extra
+        $this->db->query("INSERT INTO tbl_enc_hora_extra(id_enc_hx, fecha_creacion, fecha_solicitud, id_user, motivo_solicitud, hora_desde, hora_hasta)
+        SELECT id_enc_hx, fecha_creacion, fecha_solicitud, id_user, motivo, hora_desde, hora_hasta
+        FROM tmp_horasextra WHERE id_user='$id_user' LIMIT 1
+        ;");
+
+        // INSERT a la tabla tbl_det_hora_extra
+        $this->db->query("INSERT INTO tbl_det_hora_extra(id_enc_hx, rut)
+        SELECT id_enc_hx, rut
         FROM tmp_horasextra WHERE id_user='$id_user'
         ;");
+
+        // DELETE a la tabla tmp_horasextra
         $this->db->query("DELETE FROM tmp_horasextra WHERE id_user='$id_user';");
 
         return array('success' => 1, 'message' => 'Peticion de horas extra exitosa');
@@ -54,16 +63,16 @@ class Horasextra extends Models implements IModels {
           global $http;
 
           # Obtener los datos $_POST
-          $fecha = $http->request->get('fecha');
+          $id_enc_hx = $http->request->get('id_enc_hx');
+          $fecha_creacion = $http->request->get('fecha_creacion');
+          $fecha_solicitud = $http->request->get('fecha_solicitud');
           $rut = $http->request->get('rut');
-          $fechad = $http->request->get('fechad');
-          $fechah = $http->request->get('fechah');
-          $solicitante = $http->request->get('nombre');
+          $hora_desde = $http->request->get('hora_desde');
+          $hora_hasta = $http->request->get('hora_hasta');
           $motivo = $http->request->get('motivo');
           $iduser = $http->request->get('iduser');
-          $id_conjunto = $http->request->get('id_conjunto');
 
-          if ($this->functions->e($solicitante,$rut,$motivo, $fechad, $fechah)) {
+          if ($this->functions->e($rut,$motivo, $hora_desde, $hora_hasta)) {
               throw new ModelsException('Todos los datos son necesarios');
           }
 
@@ -72,14 +81,14 @@ class Horasextra extends Models implements IModels {
 
           #inserta la solicitud a la tbl temporal
           $this->db->insert('tmp_horasextra',array(
-            'fecha'=> $fecha,
+            'fecha_creacion'=> $fecha_creacion,
+            'fecha_solicitud'=> $fecha_solicitud,
             'rut' => $rut,
-            'hora_desde' => $fechad,
-            'hora_hasta' => $fechah,
-            'solicitante' => $solicitante,
+            'hora_desde' => $hora_desde,
+            'hora_hasta' => $hora_hasta,
             'motivo' => $motivo,
             'id_user' => $iduser,
-            'id_conjunto' => $id_conjunto
+            'id_enc_hx' => $id_enc_hx
           ));
           //
           return array('success' => 1, 'message' => 'Peticion de horas extra exitosa');
@@ -93,35 +102,36 @@ class Horasextra extends Models implements IModels {
 
 
       #Obtener los datos $_POST
-      $fecha = $http->request->get('fecha');
-      $fechad = $http->request->get('fechad');
-      $fechah = $http->request->get('fechah');
-      $motivo = $http->request->get('motivo');
-      $id_conjunto = $http->request->get('id_conjunto');
+      $fecha_solicitud = $http->request->get('fecha_solicitud');
+      $hora_desde = $http->request->get('hora_desde');
+      $hora_hasta = $http->request->get('hora_hasta');
+      $motivo = $http->request->get('motivo_solicitud');
+      $id_enc_hx = $http->request->get('id_enc_hx');
 
 
-      if ($this->functions->e($motivo, $fechad, $fechah)) {
+      if ($this->functions->e($motivo, $hora_desde, $hora_hasta)) {
           throw new ModelsException('Todos los datos son necesarios');
       }
-      $this->db->update('tbl_horasextra',array(
-        'fecha'=> $fecha,
-        'hora_desde' => $fechad,
-        'hora_hasta' => $fechah,
-        'motivo' => $motivo
-      ),"id_conjunto='$id_conjunto'");
+      $this->db->update('tbl_enc_hora_extra',array(
+        'fecha_solicitud'=> $fecha_solicitud,
+        'hora_desde' => $hora_desde,
+        'hora_hasta' => $hora_hasta,
+        'motivo_solicitud' => $motivo
+      ),"id_enc_hx='$id_enc_hx'");
       //
       return array('success' => 1, 'message' => 'Modificacion de horas extra exitosa');
     }catch (ModelsException $e) {
         return array('success' => 0, 'message' => $e->getMessage());
     }
   }
+
   public function aprobar(): array {
   try {
     global $http;
 
 
     #Obtener los datos $_POST
-    $aprobar = "Aprobada";
+    $respuesta = "Aprobada";
     $motivo = $http->request->get('motivo_respuesta');
     $id = $http->request->get('id_respuesta');
 
@@ -129,23 +139,44 @@ class Horasextra extends Models implements IModels {
     if ($this->functions->e($motivo)) {
         throw new ModelsException('Ingrese un motivo');
     }
-    $this->db->update('tbl_horasextra',array(
-      'estatus' => $aprobar,
-      'motivo' => $motivo
-    ),"id='$id'",'LIMIT 1');
+    $this->db->update('tbl_enc_hora_extra',array(
+      'estado' => $respuesta,
+      'motivo_respuesta' => $motivo
+    ),"id_enc_hx='$id'",'LIMIT 1');
     //
     return array('success' => 1, 'message' => 'Modificacion de horas extra exitosa');
   }catch (ModelsException $e) {
       return array('success' => 0, 'message' => $e->getMessage());
+    }
   }
+
+  public function agregar_usuario(): array{
+    try{
+      global $http;
+
+      $rut = $http->request->get('rut');
+      $id_enc_hx = $http->request->get('id_enc_hx');
+
+    if ($this->functions->e($rut)) {
+        throw new ModelsException('Todos los datos son necesarios');
+    }
+    $this->db->insert('tbl_det_hora_extra', array(
+      'rut' => $rut,
+      'id_enc_hx' => $id_enc_hx
+    ));
+    return array('success' => 1, 'message' => 'Usuario agregado de manera exitosa');
+  }catch (ModelsException $e) {
+      return array('success' => 0, 'message' => $e->getMessage());
+    }
   }
+
   public function rechazar(): array {
   try {
     global $http;
 
 
     #Obtener los datos $_POST
-    $aprobar = "Rechazada";
+    $respuesta = "Rechazada";
     $motivo = $http->request->get('motivo_respuesta');
     $id = $http->request->get('id_respuesta');
 
@@ -153,15 +184,15 @@ class Horasextra extends Models implements IModels {
     if ($this->functions->e($motivo)) {
         throw new ModelsException('Ingrese un motivo');
     }
-    $this->db->update('tbl_horasextra',array(
-      'estatus' => $aprobar,
-      'motivo' => $motivo
-    ),"id='$id'",'LIMIT 1');
+    $this->db->update('tbl_enc_hora_extra',array(
+      'estado' => $respuesta,
+      'motivo_respuesta' => $motivo
+    ),"id_enc_hx='$id'",'LIMIT 1');
     //
     return array('success' => 1, 'message' => 'Modificacion de horas extra exitosa');
   }catch (ModelsException $e) {
       return array('success' => 0, 'message' => $e->getMessage());
-  }
+    }
   }
   public function eliminar() : array {
       try {
@@ -188,7 +219,8 @@ class Horasextra extends Models implements IModels {
           $id = $http->request->get('id_peticion');
 
           # Elimina perfil
-          $this->db->query(" DELETE FROM tbl_horasextra WHERE id_conjunto='$id'");
+          $this->db->query(" DELETE FROM tbl_enc_hora_extra WHERE id_enc_hx='$id'");
+          $this->db->query(" DELETE FROM tbl_det_hora_extra WHERE id_enc_hx='$id'");
 
           //return array('success' => 1, 'message' => 'Eliminación éxitosa.');
           return array('success' => 1, 'message' => 'Eliminación éxitosa.');
@@ -205,7 +237,7 @@ class Horasextra extends Models implements IModels {
           $id = $http->request->get('id_hx_mod');
 
           # Elimina perfil
-          $this->db->query(" DELETE FROM tbl_horasextra WHERE id='$id'");
+          $this->db->query(" DELETE FROM tbl_det_hora_extra WHERE id_det='$id'");
 
           //return array('success' => 1, 'message' => 'Eliminación éxitosa.');
           return array('success' => 1, 'message' => 'Eliminación éxitosa.');
@@ -231,19 +263,22 @@ class Horasextra extends Models implements IModels {
     public function gethx(string $select = '*',string $condicion = '1=1'){
       if ($select === '*')
       {
-        return $this->db->select($select,'tbl_horasextra',$condicion,'ORDER BY id DESC');
+        return $this->db->select($select,'tbl_enc_hora_extra',$condicion,'ORDER BY id_enc_hx DESC');
       }else{
-        return $this->db->select($select,'tbl_horasextra',$condicion,'LIMIT 1');
+        return $this->db->select($select,'tbl_enc_hora_extra',$condicion,'LIMIT 1');
       }
     }
     public function gethxtmp(string $id_user){
         return $this->db->select('*','tmp_horasextra','id_user='.$id_user,'ORDER BY id DESC');
     }
+    public function get_hx_users(){
+        return $this->db->select('*','tbl_det_hora_extra');
+    }
     public function get_lastid(){
-        return $this->db->select('id','tbl_horasextra',"id != ''",'ORDER BY id DESC');
+        return $this->db->select('id_enc_hx','tbl_enc_hora_extra',"id_enc_hx != ''",'ORDER BY id_enc_hx DESC');
     }
     public function gethxid(int $id,string $select = '*'){
-      return $this->db->select($select,'tbl_horasextra',"id='$id'",'LIMIT 1');
+      return $this->db->select($select,'tbl_enc_hora_extra',"id_enc_hx='$id'",'LIMIT 1');
     }
     public function buscar_coincidencia(){
   global $http;
@@ -262,7 +297,7 @@ class Horasextra extends Models implements IModels {
   }
   public function rev_hx() {
       global $http;
-      return $this->db->query("SELECT * FROM tbl_horasextra GROUP BY id_conjunto");
+      return $this->db->query("SELECT * FROM tbl_enc_hora_extra GROUP BY id_enc_hx");
   }
   /**
    * Verifica el rut introducido existe en la db

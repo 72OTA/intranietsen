@@ -46,39 +46,38 @@ class __TwigTemplate_2bc28d4f5231d8cd70cd7f053a51bb7105d7ac980881404e89bcf671075
         echo "                                      ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["horas_extras"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["var"]) {
+        foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             // line 22
             echo "                                      <tr>
                                         <td>";
             // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["d"] ?? null), "solicitante", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "solicitante", array()), "html", null, true);
             echo "</td>
                                       </tr>
                                       ";
             // line 25
-            $context["var"] = ($context["var"] + 1);
+            $context["var"] = (($context["var"] ?? null) + 1);
             // line 26
             echo "                                      ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['var'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 27
-        echo "                                      <label for=\"\"></label>
-                                  </form>
+        echo "                                  </form>
                                 </div>
                               </div>
                             </div>
                           </div>
 
 ";
-        // line 34
+        // line 33
         $this->displayBlock('appScript', $context, $blocks);
     }
 
     public function block_appScript($context, array $blocks = array())
     {
-        // line 35
+        // line 34
         echo "    <script src=\"views/app/js/horasextra/horasextra.js\"></script>
 ";
     }
@@ -95,7 +94,7 @@ class __TwigTemplate_2bc28d4f5231d8cd70cd7f053a51bb7105d7ac980881404e89bcf671075
 
     public function getDebugInfo()
     {
-        return array (  82 => 35,  76 => 34,  67 => 27,  61 => 26,  59 => 25,  54 => 23,  51 => 22,  46 => 21,  44 => 20,  36 => 15,  20 => 1,);
+        return array (  81 => 34,  75 => 33,  67 => 27,  61 => 26,  59 => 25,  54 => 23,  51 => 22,  46 => 21,  44 => 20,  36 => 15,  20 => 1,);
     }
 
     public function getSourceContext()

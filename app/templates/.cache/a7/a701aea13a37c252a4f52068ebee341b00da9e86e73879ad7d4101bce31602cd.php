@@ -53,69 +53,78 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
                     <form name=\"form_horax\" id=\"form_horax\" action=\"\" method=\"POST\">
                               <div class=\"form-group margin\">
                             <input type=\"hidden\" class=\"form-control\" name=\"rut\" id=\"rut\" >
-                            <input type=\"hidden\" class=\"form-control\" name=\"nombre\" id=\"nombre\" >
-                            <input type=\"hidden\" class=\"form-control\" name=\"id_conjunto\" id=\"id_conjunto\" value=\"";
-        // line 22
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["ultimo_id"] ?? null), 0, array(), "array"), "id", array(), "array"), "html", null, true);
-        echo "\">
-                          </div>
+                            ";
+        // line 21
+        if ((twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["ultimo_id"] ?? null), 0, array(), "array"), "id_enc_hx", array(), "array") > "0")) {
+            // line 22
+            echo "                            <input type=\"text\" class=\"form-control\" name=\"id_enc_hx\" id=\"id_enc_hx\" value=\"";
+            echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["ultimo_id"] ?? null), 0, array(), "array"), "id_enc_hx", array(), "array") + 1), "html", null, true);
+            echo "\">
+                            ";
+        } else {
+            // line 24
+            echo "                            <input type=\"text\" class=\"form-control\" name=\"id_enc_hx\" id=\"id_enc_hx\" value=\"1\">
+                            ";
+        }
+        // line 26
+        echo "                          </div>
                                 ";
-        // line 24
+        // line 27
         if ((($context["horas_extras"] ?? null) == true)) {
-            // line 25
+            // line 28
             echo "                                <div class=\"form-group margin\">
-                                    <label for=\"fecha\">Fecha:</label>
-                                <input type=\"date\" class=\"form-control\" name=\"fecha\" id=\"fecha\" value=\"";
-            // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["horas_extras"] ?? null), 0, array(), "array"), "fecha", array(), "array"), "html", null, true);
+                                    <label for=\"fecha_solicitud\">Fecha:</label>
+                                <input type=\"date\" class=\"form-control\" name=\"fecha_solicitud\" id=\"fecha_solicitud\" value=\"";
+            // line 30
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["horas_extras"] ?? null), 0, array(), "array"), "fecha_solicitud", array(), "array"), "html", null, true);
             echo "\" min=\"";
             echo twig_escape_filter($this->env, ($context["fecha"] ?? null), "html", null, true);
             echo "\" required>
                               </div>
                               <div class=\"form-group margin\">
-                                  <label for=\"fechad\">Desde:</label>
-                                  <input type=\"time\" class=\"form-control\" name=\"fechad\" id=\"fechad\" value=\"";
-            // line 31
+                                  <label for=\"hora_desde\">Desde:</label>
+                                  <input type=\"time\" class=\"form-control\" name=\"hora_desde\" id=\"hora_desde\" value=\"";
+            // line 34
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["horas_extras"] ?? null), 0, array(), "array"), "hora_desde", array(), "array"), "html", null, true);
             echo "\" required>
                               </div>
                               <div class=\"form-group margin\">
-                                  <label for=\"fechah\">Hasta:</label>
-                                  <input type=\"time\" class=\"form-control\" name=\"fechah\" id=\"fechah\" value=\"";
-            // line 35
+                                  <label for=\"hora_hasta\">Hasta:</label>
+                                  <input type=\"time\" class=\"form-control\" name=\"hora_hasta\" id=\"hora_hasta\" value=\"";
+            // line 38
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["horas_extras"] ?? null), 0, array(), "array"), "hora_hasta", array(), "array"), "html", null, true);
             echo "\" required >
                               </div>
                               <div class=\"form-group margin\">
                                   <label for=\"motivo\">Motivo:</label>
                                   <input type=\"text\" class=\"form-control\" name=\"motivo\" id=\"motivo\" placeholder=\"Agregar un motivo para solicitud de horas extra.\" value=\"";
-            // line 39
+            // line 42
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["horas_extras"] ?? null), 0, array(), "array"), "motivo", array(), "array"), "html", null, true);
             echo "\" required>
                               </div>
                                 ";
         } else {
-            // line 42
+            // line 45
             echo "                                <div class=\"form-group margin\">
                                     <label for=\"fecha\">Fecha:</label>
-                                <input type=\"date\" class=\"form-control\" name=\"fecha\" id=\"fecha\" value=\"";
-            // line 44
+                                <input type=\"date\" class=\"form-control\" name=\"fecha_solicitud\" id=\"fecha_solicitud\" value=\"";
+            // line 47
             echo twig_escape_filter($this->env, ($context["fecha"] ?? null), "html", null, true);
             echo "\" min=\"";
             echo twig_escape_filter($this->env, ($context["fecha"] ?? null), "html", null, true);
             echo "\" required>
                               </div>
                               <div class=\"form-group margin\">
-                                  <label for=\"fechad\">Desde:</label>
-                                  <input type=\"time\" class=\"form-control\" name=\"fechad\" id=\"fechad\" value=\"";
-            // line 48
+                                  <label for=\"hora_desde\">Desde:</label>
+                                  <input type=\"time\" class=\"form-control\" name=\"hora_desde\" id=\"hora_desde\" value=\"";
+            // line 51
             echo twig_escape_filter($this->env, ($context["tiempo"] ?? null), "html", null, true);
             echo "\" required>
                               </div>
                               <div class=\"form-group margin\">
-                                  <label for=\"fechah\">Hasta:</label>
-                                  <input type=\"time\" class=\"form-control\" name=\"fechah\" id=\"fechah\" value=\"";
-            // line 52
+                                  <label for=\"hora_hasta\">Hasta:</label>
+                                  <input type=\"time\" class=\"form-control\" name=\"hora_hasta\" id=\"hora_hasta\" value=\"";
+            // line 55
             echo twig_escape_filter($this->env, ($context["tiempo"] ?? null), "html", null, true);
             echo "\" required >
                               </div>
@@ -125,10 +134,18 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
                               </div>
                                 ";
         }
-        // line 59
-        echo "                        <div class=\"form-group margin\">
+        // line 62
+        echo "                                <div class=\"form-group margin\">
+                                <input type=\"hidden\" class=\"form-control\" name=\"fecha_creacion\" id=\"fecha_creacion\" value=\"";
+        // line 63
+        echo twig_escape_filter($this->env, ($context["fecha"] ?? null), "html", null, true);
+        echo "\" min=\"";
+        echo twig_escape_filter($this->env, ($context["fecha"] ?? null), "html", null, true);
+        echo "\" required>
+                              </div>
+                        <div class=\"form-group margin\">
                             <input type=\"hidden\" name=\"iduser\" id=\"iduser\" value=\"";
-        // line 60
+        // line 66
         echo twig_escape_filter($this->env, twig_title_string_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "id_user", array(), "array")), "html", null, true);
         echo "\">
                           </div>
@@ -151,7 +168,7 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
         <form id=\"form_buscar\" name=\"form_buscar\">
           <div class=\"form-group margin\">
             <button class=\"btn btn-primary\" style=\"position:absolute;display:inline-block;\" type=\"button\" id=\"btn_tmp_horaextra\" onmouseover=\"buscar_coincidencia()\"><span>Agregar</span></button>
-              <input type=\"text\" class=\"form-control\" style=\"padding-left:20%;\" placeholder=\"Buscar usuario por nombre o RUT\" name=\"busca\" id=\"busca\"  onmouseover=\"buscar_coincidencia()\">
+              <input type=\"text\" class=\"form-control\" style=\"padding-left:20%;\" placeholder=\"Buscar usuario por nombre o RUT\" name=\"busca\" id=\"busca\">
             </div>
           </form>
         <div class=\"box box-primary\">
@@ -160,35 +177,30 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
             <thead>
               <tr>
                 <th>RUT</th>
-                <th>Nombre</th>
                 <th>OPCIONES</th>
               </tr>
             </thead>
             <tbody>
               ";
-        // line 95
+        // line 100
         $context["No"] = 1;
-        // line 96
+        // line 101
         echo "              ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["horas_extras"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             if ((false != ($context["horas_extras"] ?? null))) {
-                // line 97
+                // line 102
                 echo "                <tr>
                   <td>";
-                // line 98
+                // line 103
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "rut", array()), "html", null, true);
                 echo "</td>
-                  <td>";
-                // line 99
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "solicitante", array()), "html", null, true);
-                echo "</td>
-                  <td class='center' width='150'>
+                  <td class='center'>
                     ";
-                // line 101
+                // line 105
                 if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "estatus", array()) != "Aprobada")) {
-                    // line 102
+                    // line 106
                     echo "                      <a data-toggle='tooltip' data-placement='top' title='Eliminar' id=\"btn_eliminar1\" onclick=\"eliminar_solicitud(";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id", array()), "html", null, true);
                     echo ")\" class='btn btn-warning btn-sm' >
@@ -199,33 +211,33 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
                       </form>
                     ";
                 }
-                // line 109
+                // line 113
                 echo "                  </td>
                 </tr>
                 ";
-                // line 111
+                // line 115
                 $context["No"] = (($context["No"] ?? null) + 1);
-                // line 112
+                // line 116
                 echo "              ";
             }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 113
+        // line 117
         echo "              </tr>
             </tbody>
           </table>
           ";
-        // line 116
+        // line 120
         if ((($context["No"] ?? null) > 1)) {
-            // line 117
+            // line 121
             echo "              <center>
                   <button class=\"btn btn-success\" type=\"button\" id=\"btn_horaextra\"><span>Solicitar Horas Extra</span></button>
               </center>
         ";
         }
-        // line 121
+        // line 125
         echo "          </div>
         </div>
       </div>
@@ -236,10 +248,10 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
 ";
     }
 
-    // line 129
+    // line 133
     public function block_appScript($context, array $blocks = array())
     {
-        // line 130
+        // line 134
         echo "    <!-- DATA TABES SCRIPT -->
     <script src=\"https://code.jquery.com/ui/1.12.1/jquery-ui.js\"></script>
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
@@ -249,17 +261,17 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
          \$(function(){
            var dbdatos = [
              ";
-        // line 138
+        // line 142
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["db_users"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             if ((false != ($context["db_users"] ?? null))) {
-                // line 139
+                // line 143
                 echo "             '";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "nombres", array()), "html", null, true);
                 echo "',
              '";
-                // line 140
+                // line 144
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "rut", array()), "html", null, true);
                 echo "',
              ";
@@ -268,33 +280,14 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 142
+        // line 146
         echo "           ];
            \$('#busca').autocomplete({
              source: dbdatos
            });
          });
          </script>
-    <!-- <script>
-     \$(\"#dataTables1\").dataTable({
-                \"language\": {
-                    \"search\": \"Buscar:\",
-                    \"zeroRecords\": \"No hay datos para mostrar\",
-                    \"info\":\"Mostrando _END_ Registros, de un total de _TOTAL_ \",
-                    \"loadingRecords\": \"Cargando...\",
-                    \"processing\":\"Procesando...\",
-                    \"infoEmpty\":\"No hay entradas para mostrar\",
-                    \"lengthMenu\": \"Mostrar _MENU_ Filas\",
-                    \"paginate\":{
-                      \"first\":\"Primera\",
-                      \"last\":\"Ultima\",
-                      \"next\":\"Siguiente\",
-                      \"previous\":\"Anterior\",
-                    }
-                              },
-                \"autoWidth\": true
-            });
-    </script> -->
+
 
 ";
     }
@@ -311,7 +304,7 @@ class __TwigTemplate_6446d8543e6c293b904d2b6b7d1bd1f17944e1f99fe0a4dadd9ee56bfc5
 
     public function getDebugInfo()
     {
-        return array (  272 => 142,  263 => 140,  258 => 139,  253 => 138,  243 => 130,  240 => 129,  229 => 121,  223 => 117,  221 => 116,  216 => 113,  209 => 112,  207 => 111,  203 => 109,  192 => 102,  190 => 101,  185 => 99,  181 => 98,  178 => 97,  172 => 96,  170 => 95,  132 => 60,  129 => 59,  119 => 52,  112 => 48,  103 => 44,  99 => 42,  93 => 39,  86 => 35,  79 => 31,  70 => 27,  66 => 25,  64 => 24,  59 => 22,  42 => 7,  39 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  284 => 146,  275 => 144,  270 => 143,  265 => 142,  255 => 134,  252 => 133,  241 => 125,  235 => 121,  233 => 120,  228 => 117,  221 => 116,  219 => 115,  215 => 113,  204 => 106,  202 => 105,  197 => 103,  194 => 102,  188 => 101,  186 => 100,  149 => 66,  141 => 63,  138 => 62,  128 => 55,  121 => 51,  112 => 47,  108 => 45,  102 => 42,  95 => 38,  88 => 34,  79 => 30,  75 => 28,  73 => 27,  70 => 26,  66 => 24,  60 => 22,  58 => 21,  42 => 7,  39 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()

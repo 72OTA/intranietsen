@@ -97,13 +97,14 @@ class rrhhController extends Controllers implements IControllers {
           case 'revisar_horas_extras_pendientes':
             echo $this->template->render('rrhh/horasextra/revisar_horas_extras_pendientes', array(
              'opcion' => 'RRHH',
-             'horas_extras' => ($r)->rev_hx(),
+             'horas_extras' => ($r)->gethx('*',"estado='Pendiente'"),
            ));
               break;
           case 'modificar':
             if($this->isset_id and false != ($dato=$r->gethxid($router->getId()))){
             echo $this->template->render('rrhh/horasextra/modificar_solicitud_hora_extra', array(
-            'horas_extras' => ($r)->gethx(),
+              'horas_extras' => ($r)->get_hx_users(),
+              'db_users'=>($r)->getdatos('*','estado=1'),
              'modifica_hx' => $dato[0]));
                 }
               break;
