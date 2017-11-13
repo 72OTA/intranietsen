@@ -17,14 +17,29 @@
                                           <button class="btn btn-success" type="button" id="btn_aprobar"><span>Aprobar</span></button>
                                           <button class="btn btn-danger" type="button" id="btn_rechazar"><span>Rechazar</span></button>
                                       </center>
-                                      {% set var = 1 %}
-                                      {% for var in horas_extras %}
-                                      <tr>
-                                        <td>{{ d.solicitante }}</td>
-                                      </tr>
-                                      {% set var =  var + 1 %}
-                                      {% endfor %}
-                                      <label for=""></label>
+                                      <br>
+                                      <!-- <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>RUT</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          {% set No = 1 %}
+                                          {% for d in horas_extras %}
+                                            <tr>
+                                              <td>{{ d.rut }}</td>
+                                              <td class='center'>
+                                                  <form class="" action="" name="form_id_mod" id="form_id_mod" method="post">
+                                                      <input type="hidden" id="id_hx_mod" name="id_hx_mod">
+                                                  </form>
+                                              </td>
+                                            </tr>
+                                          {% set No =  No + 1 %}
+                                          {% endfor %}
+                                          </tr>
+                                        </tbody>
+                                      </table> -->
                                   </form>
                                 </div>
                               </div>

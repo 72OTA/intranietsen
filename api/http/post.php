@@ -267,3 +267,13 @@ $app->post('/eliminar_solicitud_mod', function() use($app) {
 
     return $app->json($u->eliminar_solicitud_mod());
 });
+/**
+    * Agregar usuarios de manera directa modificando
+    *
+    * @return json
+*/
+$app->post('/agregar_usuario', function() use($app) {
+    $u = new Model\Horasextra;
+
+    return $app->json($u->agregar_usuario());
+});

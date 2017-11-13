@@ -328,8 +328,6 @@ INSERT INTO `users` (`id_user`, `name`, `email`, `fono`, `cargo`, `pass`, `tmp_p
 --
 -- Estructura de tabla para la tabla `tmp_horasextra`
 --
-<<<<<<< HEAD:intranietsen.sql
-=======
 
 DROP TABLE IF EXISTS `tmp_horasextra`;
 CREATE TABLE `tmp_horasextra` (
@@ -343,7 +341,6 @@ CREATE TABLE `tmp_horasextra` (
  `id_user` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
->>>>>>> 7296bf339004fdcd285aae74419db99463b662fa:intranietsen.sql
 
 DROP TABLE IF EXISTS `tmp_horasextra`;
 CREATE TABLE `tmp_horasextra` (

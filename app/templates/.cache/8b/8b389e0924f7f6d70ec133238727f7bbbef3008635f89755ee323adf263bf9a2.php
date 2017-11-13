@@ -39,32 +39,47 @@ class __TwigTemplate_2bc28d4f5231d8cd70cd7f053a51bb7105d7ac980881404e89bcf671075
                                           <button class=\"btn btn-success\" type=\"button\" id=\"btn_aprobar\"><span>Aprobar</span></button>
                                           <button class=\"btn btn-danger\" type=\"button\" id=\"btn_rechazar\"><span>Rechazar</span></button>
                                       </center>
-                                      ";
-        // line 20
-        $context["var"] = 1;
-        // line 21
-        echo "                                      ";
+                                      <br>
+                                      <!-- <table class=\"table table-bordered\">
+                                        <thead>
+                                          <tr>
+                                            <th>RUT</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          ";
+        // line 28
+        $context["No"] = 1;
+        // line 29
+        echo "                                          ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["horas_extras"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["var"]) {
-            // line 22
-            echo "                                      <tr>
-                                        <td>";
-            // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["d"] ?? null), "solicitante", array()), "html", null, true);
+        foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
+            // line 30
+            echo "                                            <tr>
+                                              <td>";
+            // line 31
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "rut", array()), "html", null, true);
             echo "</td>
-                                      </tr>
-                                      ";
-            // line 25
-            $context["var"] = ($context["var"] + 1);
-            // line 26
-            echo "                                      ";
+                                              <td class='center'>
+                                                  <form class=\"\" action=\"\" name=\"form_id_mod\" id=\"form_id_mod\" method=\"post\">
+                                                      <input type=\"hidden\" id=\"id_hx_mod\" name=\"id_hx_mod\">
+                                                  </form>
+                                              </td>
+                                            </tr>
+                                          ";
+            // line 38
+            $context["No"] = (($context["No"] ?? null) + 1);
+            // line 39
+            echo "                                          ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['var'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
-        echo "                                      <label for=\"\"></label>
+        // line 40
+        echo "                                          </tr>
+                                        </tbody>
+                                      </table> -->
                                   </form>
                                 </div>
                               </div>
@@ -72,13 +87,13 @@ class __TwigTemplate_2bc28d4f5231d8cd70cd7f053a51bb7105d7ac980881404e89bcf671075
                           </div>
 
 ";
-        // line 34
+        // line 49
         $this->displayBlock('appScript', $context, $blocks);
     }
 
     public function block_appScript($context, array $blocks = array())
     {
-        // line 35
+        // line 50
         echo "    <script src=\"views/app/js/horasextra/horasextra.js\"></script>
 ";
     }
@@ -95,7 +110,7 @@ class __TwigTemplate_2bc28d4f5231d8cd70cd7f053a51bb7105d7ac980881404e89bcf671075
 
     public function getDebugInfo()
     {
-        return array (  82 => 35,  76 => 34,  67 => 27,  61 => 26,  59 => 25,  54 => 23,  51 => 22,  46 => 21,  44 => 20,  36 => 15,  20 => 1,);
+        return array (  97 => 50,  91 => 49,  80 => 40,  74 => 39,  72 => 38,  62 => 31,  59 => 30,  54 => 29,  52 => 28,  36 => 15,  20 => 1,);
     }
 
     public function getSourceContext()

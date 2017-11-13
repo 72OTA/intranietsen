@@ -7,31 +7,34 @@ function execute_accion_solicitudes_horas_extra(method,api_rest,formulario,accio
       title='Hora Extra';
       break;
     case "revisar":
-      title='Revisar Solicitud'
+      title='Revisar Solicitud';
       break;
     case "modificar":
-      title='Modificar Solicitud'
+      title='Modificar Solicitud';
       break;
     case "aprobar":
-      title='Aprobar Solicitud'
+      title='Aprobar Solicitud';
       break;
     case "rechazar":
-      title='Rechazar Solicitud'
+      title='Rechazar Solicitud';
       break;
     case "eliminar":
-      title='Eliminar Solicitud'
+      title='Eliminar Solicitud';
       break;
     case "buscar_coincidencia":
-      title='buscar_coincidencia'
+      title='buscar_coincidencia';
       break;
     case "tmp_hora_extra":
-      title='Peticion horas extra temporal'
+      title='Peticion horas extra temporal';
       break;
     case "eliminar_peticiones":
-      title='Eliminar Peticiones de horas extra'
+      title='Eliminar Peticiones de horas extra';
       break;
     case "eliminar_solicitud_mod":
-      title='Eliminar Usuario'
+      title='Eliminar Usuario';
+      break;
+    case "agregar_usuario":
+      title='Agregar Usuario';
       break;
   }
   $.ajax({
@@ -48,11 +51,15 @@ function execute_accion_solicitudes_horas_extra(method,api_rest,formulario,accio
 }
 $('#btn_horaextra').click(function(e){
   e.defaultPrevented;
-  execute_accion_solicitudes_horas_extra("POST","hora_extra",'form_horax','redirect','rrhh/horasextra')
+  execute_accion_solicitudes_horas_extra("POST","hora_extra",'form_horax','redirect','rrhh/revisar_horas_extra')
 });
 $('#btn_tmp_horaextra').click(function(e){
   e.defaultPrevented;
   execute_accion_solicitudes_horas_extra("POST","tmp_hora_extra",'form_horax','redirect','rrhh/horasextra')
+});
+$('#btn_agregar_usuario').click(function(e){
+  e.defaultPrevented;
+  execute_accion_solicitudes_horas_extra("POST","agregar_usuario",'form_modificar','reload')
 });
 $('#btn_modificar').click(function(e){
   e.defaultPrevented;
@@ -103,11 +110,9 @@ if (busca.value != '') {
     success : function(json) {
       if (json.success==1){
         $('#rut').attr("placeholder",json.message);
-        $('#nombre').attr("placeholder",json.message);
       }
      else{
        $('#rut').val(json.rut);
-       $('#nombre').val(json.nombre);
      }
     },
     error : function(/*xhr, status*/) {

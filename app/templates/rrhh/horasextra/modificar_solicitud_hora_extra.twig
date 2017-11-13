@@ -1,4 +1,7 @@
 {% extends 'portal/portal' %}
+{% block appStylos %}
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
 {% block appBody %}
 <section class="content-header">
     <h4>
@@ -21,21 +24,22 @@
                         <br>
                           <form name="form_modificar" id="form_modificar" action="" method="POST">
                                   <div class="form-group">
-                                      <label for="tiempo">Fecha:</label>
-                                      <input type="date" class="form-control" name="fecha" id="fecha" value="{{  modifica_hx.fecha  }}" required>
+                                    <input type="hidden" class="form-control" name="rut" id="rut" >
+                                      <label for="fecha_solicitud">Fecha:</label>
+                                      <input type="date" class="form-control" name="fecha_solicitud" id="fecha_solicitud" value="{{  modifica_hx.fecha_solicitud  }}" required>
                                   </div>
                               <div class="form-group">
-                                  <label for="dcorta">Desde:</label>
-                                  <input type="time" class="form-control" name="fechad" id="fechad" value="{{ modifica_hx.hora_desde }}" required>
+                                  <label for="hora_desde">Desde:</label>
+                                  <input type="time" class="form-control" name="hora_desde" id="hora_desde" value="{{ modifica_hx.hora_desde }}" required>
                               </div>
                               <div class="form-group">
-                                  <label for="dcorta">Hasta:</label>
-                                  <input type="time" class="form-control" name="fechah" id="fechah" value="{{ modifica_hx.hora_hasta }}" required>
+                                  <label for="hora_hasta">Hasta:</label>
+                                  <input type="time" class="form-control" name="hora_hasta" id="hora_hasta" value="{{ modifica_hx.hora_hasta }}" required>
                               </div>
                               <div class="form-group">
-                                  <label for="motivo">Motivo:</label>
-                                  <input type="text" class="form-control" name="motivo" id="motivo"  value="{{ modifica_hx.motivo }}" >
-                                  <input type="hidden" class="form-control" name="id_conjunto" id="id_conjunto"  value="{{ modifica_hx.id_conjunto }}" >
+                                  <label for="motivo_solicitud">Motivo:</label>
+                                  <input type="text" class="form-control" name="motivo_solicitud" id="motivo_solicitud"  value="{{ modifica_hx.motivo_solicitud }}" >
+                                  <input type="hidden" class="form-control" name="id_enc_hx" id="id_enc_hx"  value="{{ modifica_hx.id_enc_hx }}" >
                               </div>
                               <center>
                                   <button class="btn btn-success" type="button" id="btn_modificar"><span>Modificar</span></button>
@@ -46,7 +50,7 @@
                         <h5><strong>Usuarios</strong></h5>
                         <form id="form_buscar" name="form_buscar">
                           <div class="form-group margin">
-                            <button class="btn btn-primary" style="position:absolute;display:inline-block;" type="button" id="btn_tmp_horaextra" onmouseover="buscar_coincidencia()"><span>Agregar</span></button>
+                            <button class="btn btn-primary" style="position:absolute;display:inline-block;" type="button" id="btn_agregar_usuario" onmouseover="buscar_coincidencia()"><span>Agregar</span></button>
                               <input type="text" class="form-control" style="padding-left:20%;" placeholder="Buscar usuario por nombre o RUT" name="busca" id="busca"  onmouseover="buscar_coincidencia()">
                             </div>
                           </form>
@@ -54,19 +58,17 @@
                         <thead>
                           <tr>
                             <th>RUT</th>
-                            <th>Nombre</th>
                             <th>OPCIONES</th>
                           </tr>
                         </thead>
                         <tbody>
                           {% set No = 1 %}
-                          {% for d in horas_extras if false != horas_extras %}
-                          {% if  owner_user['id_user']  ==  d.id_user %}
+                          {% for d in horas_extras %}
+                          {% if  d.id_enc_hx  ==  modifica_hx.id_enc_hx %}
                             <tr>
                               <td>{{ d.rut }}</td>
-                              <td>{{ d.solicitante }}</td>
-                              <td class='center' width='150'>
-                                  <a data-toggle='tooltip' data-placement='top' title='Eliminar' id="btn_eliminar_mod" onclick="eliminar_solicitud_mod({{  d.id  }})" class='btn btn-warning btn-sm' >
+                              <td class='center'>
+                                  <a data-toggle='tooltip' data-placement='top' title='Eliminar' id="btn_eliminar_mod" onclick="eliminar_solicitud_mod({{  d.id_det  }})" class='btn btn-warning btn-sm' >
                                       <i class='glyphicon glyphicon-trash'></i>
                                   </a>
                                   <form class="" action="" name="form_id_mod" id="form_id_mod" method="post">
@@ -75,7 +77,7 @@
                               </td>
                             </tr>
                             {% endif %}
-                            {% set No =  No + 1 %}
+                          {% set No =  No + 1 %}
                           {% endfor %}
                           </tr>
                         </tbody>
@@ -100,5 +102,5 @@
 
 {% endblock %}
 {% block appScript %}
-    <script src="views/app/js/horasextra/horasextra.js"></script>
+{% include 'rrhh/horasextra/datatables_opciones' %}
 {% endblock %}
