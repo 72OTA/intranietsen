@@ -49,30 +49,44 @@ function execute_accion_solicitudes_horas_extra(method,api_rest,formulario,accio
     }
   });
 }
+
+//Este botón es para hacer la solicitud de horas extra correspondiente.
 $('#btn_horaextra').click(function(e){
   e.defaultPrevented;
   execute_accion_solicitudes_horas_extra("POST","hora_extra",'form_horax','redirect','rrhh/revisar_horas_extra')
 });
+
+//Acción para agregar los datos desde la tabla temporal a las tablas tbl_enc_horas_extr y tbl_det_horas_extra
 $('#btn_tmp_horaextra').click(function(e){
   e.defaultPrevented;
   execute_accion_solicitudes_horas_extra("POST","tmp_hora_extra",'form_horax','redirect','rrhh/horasextra')
 });
+
+//Acción para agregar usuarios en la tabla: tbl_det_hora_extra
 $('#btn_agregar_usuario').click(function(e){
   e.defaultPrevented;
   execute_accion_solicitudes_horas_extra("POST","agregar_usuario",'form_modificar','reload')
 });
+
+//Acción para modificar las solicitudes creadas en la tabla: tbl_enc_horas_extra y tambien agregar o eliminar usuarios en la tabla tbl_det_horas_extra
 $('#btn_modificar').click(function(e){
   e.defaultPrevented;
   execute_accion_solicitudes_horas_extra("POST","modificar",'form_modificar','redirect','rrhh/revisar_horas_extra')
 });
+
+//Acción para aprobar de manera automática las solicitudes en la base de datos.
 $('#btn_aprobar').click(function(e){
   e.defaultPrevented;
   execute_accion_solicitudes_horas_extra("POST","aprobar",'form_respuesta','redirect','rrhh/revisar_horas_extras_pendientes')
 });
+
+//Acción para rechazar de manera automática las solicitudes en la base de datos.
 $('#btn_rechazar').click(function(e){
   e.defaultPrevented;
   execute_accion_solicitudes_horas_extra("POST","rechazar",'form_respuesta','redirect','rrhh/revisar_horas_extras_pendientes')
 });
+
+//Esta función elimina a los usuarios que se estan agregando para hacer la solicitud de horas extra en la tabla tmp_horasextra
 function eliminar_solicitud(id){
 if(window.confirm("¿Esta seguro que desea eliminar la solicitud?")){
   document.getElementById("id_solicitudhx").value = id;
@@ -81,6 +95,8 @@ if(window.confirm("¿Esta seguro que desea eliminar la solicitud?")){
   alert("No eliminado");
   }
 }
+
+//Esta función elimina la peticion completa desde las tablas : tbl_det_hora_extra y tbl_enc_hora_extra
 function eliminar_peticiones(id){
 if(window.confirm("¿Esta seguro que desea eliminar la solicitud?")){
   document.getElementById("id_peticion").value = id;
@@ -89,6 +105,8 @@ if(window.confirm("¿Esta seguro que desea eliminar la solicitud?")){
   alert("No eliminado");
   }
 }
+
+//Esta función elimina a las personas que ya estan ingresadas en la tabla: tbl_det_hora_extra
 function eliminar_solicitud_mod(id){
 if(window.confirm("¿Esta seguro que desea eliminar esta persona?")){
   document.getElementById("id_hx_mod").value = id;
@@ -97,10 +115,14 @@ if(window.confirm("¿Esta seguro que desea eliminar esta persona?")){
   alert("No eliminado");
   }
 }
+
+//Función para hacer aparecer modal donde se respondera la solicitud de horas extra por el jefe.
 function modal_responder_solicitud(id){
   $('#modal_responder_solicitud').modal('show');
   document.getElementById('id_respuesta').value=id
 }
+
+//Función para buscar coincidencias en la db y autocompletar campo input.
 function buscar_coincidencia(){
 if (busca.value != '') {
   $.ajax({
