@@ -35,11 +35,34 @@ class Asignaejecutivo extends Models implements IModels {
     */
 
     public function getcargos(){
-        return $this->db->select('descripcion','tblcargos');
+        return $this->db->select('*','tblcargos');
     }
 
+    public function select_perfil(): array {
+
+        global $http;
+          $cargo = $http->request->get('select_perfil');
+
+          $query=$this->db->query_select("SELECT id_cargo FROM tblcargos WHERE descripcion='$cargo'");
+
+          $valor = $query[0][0];
+          $nombres = $this->db->query_select("SELECT nombres FROM tblpersonal WHERE id_cargo='$valor'");
+
+          if ($nombres == true){
+              return array('success' => 1, 'message' => $nombres);
+              # code...
+          }else{
+            return array('success' => 0, 'message' => 'Datos no encontrados');
+            }
+      }
+
+      public function traer_usuarios(): array {
+
+        global $http;
+        $nombre = $http->request->get('usuario');
 
 
+      }
 
     public function __construct(IRouter $router = null) {
         parent::__construct($router);

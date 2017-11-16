@@ -277,3 +277,23 @@ $app->post('/agregar_usuario', function() use($app) {
 
     return $app->json($u->agregar_usuario());
 });
+/**
+    * Selección de cargo
+    *
+    * @return json
+*/
+$app->post('/select_perfil', function() use($app) {
+    $au = new Model\Asignaejecutivo;
+
+    return $app->json($au->select_perfil());
+});
+/**
+    * Traer usuarios
+    *
+    * @return json
+*/
+$app->post('/traer_usuarios', function() use($app) {
+    $au = new Model\Asignaejecutivo;
+
+    return $app->json($au->traer_usuarios());
+});

@@ -5,16 +5,17 @@
 {% endblock %}
 {% block appBody %}
   <section class="content-header">
-      <h4>
-        <i class="fa fa-user"></i> GESTION DE HORAS EXTRA
-        </a>
-      </h4>
-  </section>
-  <section class="content">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box box-primary">
-          <div class="box-body">
+    <h4>
+      <i class="fa fa-user"></i>
+      GESTION DE HORAS EXTRA
+    </a>
+  </h4>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-body">
           <table id="dataTables1" class="table table-bordered">
             <thead>
               <tr>
@@ -30,33 +31,35 @@
             <tbody>
               {% set No = 1 %}
               {% for d in horas_extras if false != horas_extras %}
-              {% if  owner_user['id_user']  ==  d.id_user %}
-                <tr>
-                  <td>{{ d.fecha_creacion }}</td>
-                  <td>{{ d.fecha_solicitud }}</td>
-                  <td>{{ d.hora_desde }}</td>
-                  <td>{{ d.hora_hasta }}</td>
-                  <td>{{ d.motivo_solicitud }}</td>
-                  <td>{{ d.estado }}</td>
-                  <td class='center' width='150'>
-                    {% if d.estado == "Pendiente" %}
-                        <button type="button" id="btn_revisar" title='Revisar' class="btn btn-success btn-sm" data-toggle="modal" onclick="modal_responder_solicitud('{{ d.id_enc_hx }}')"><i class='glyphicon glyphicon-eye-open'></i></button>
-                        </a>
+                {% if owner_user['id_user'] == d.id_user %}
+                  <tr>
+                    <td>{{ d.fecha_creacion }}</td>
+                    <td>{{ d.fecha_solicitud }}</td>
+                    <td>{{ d.hora_desde }}</td>
+                    <td>{{ d.hora_hasta }}</td>
+                    <td>{{ d.motivo_solicitud }}</td>
+                    <td>{{ d.estado }}</td>
+                    <td class='center' width='150'>
+                      {% if d.estado == "Pendiente" %}
+                        <button type="button" id="btn_revisar" title='Revisar' class="btn btn-success btn-sm" data-toggle="modal" onclick="modal_responder_solicitud('{{ d.id_enc_hx }}')">
+                          <i class='glyphicon glyphicon-eye-open'></i>
+                        </button>
+                      </a>
                     {% endif %}
                   </td>
                 </tr>
-                {% endif %}
-                {% set No =  No + 1 %}
-              {% endfor %}
-              </tr>
-            </tbody>
+              {% endif %}
+              {% set No = No + 1 %}
+            {% endfor %}
+          </tr>
+        </tbody>
 
-          </table>
-          </div>
-        </div>
-      </div>
+      </table>
     </div>
-  </section>
+  </div>
+</div>
+</div>
+</section>
 {% include 'rrhh/horasextra/mostrar_hora_extra' %}
 {% endblock %}
 {% block appScript %}
