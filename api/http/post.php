@@ -297,3 +297,23 @@ $app->post('/traer_usuarios', function() use($app) {
 
     return $app->json($au->traer_usuarios());
 });
+/**
+    * Re asignar usuario como pendiente
+    *
+    * @return json
+*/
+$app->post('/quitar_supervision', function() use($app) {
+    $au = new Model\Asignaejecutivo;
+
+    return $app->json($au->quitar_supervision());
+});
+/**
+    * Asignar usuario como pendiente
+    *
+    * @return json
+*/
+$app->post('/asignar_supervision', function() use($app) {
+    $au = new Model\Asignaejecutivo;
+
+    return $app->json($au->asignar_supervision());
+});

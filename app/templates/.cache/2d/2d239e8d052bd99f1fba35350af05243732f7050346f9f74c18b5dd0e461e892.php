@@ -17,16 +17,16 @@ class __TwigTemplate_80185c073148ab85140666cb507c41633538fcfda1f1c16b30a7fdcdc6a
     {
         // line 1
         echo "
-<header class=\"main-header\">
+<header class=\"main-header animated fadeInDown\">
     <!-- Logo -->
     <a href=\"portal\" class=\"logo\">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class=\"logo-mini\">I<b>N</b>S</span>
+        <span class=\"logo-mini\">I<b>N</b>A</span>
         <!-- logo for regular state and mobile devices -->
-        <span class=\"logo-lg\"><b>";
+        <span class=\"logo-lg\">";
         // line 8
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "site", array()), "name", array()), "html", null, true);
-        echo "</b> W<b>Y</b>S</span>
+        echo " <b>ADMIN</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class=\"navbar navbar-static-top\">
@@ -193,13 +193,13 @@ class __TwigTemplate_80185c073148ab85140666cb507c41633538fcfda1f1c16b30a7fdcdc6a
     public function getSourceContext()
     {
         return new Twig_Source("
-<header class=\"main-header\">
+<header class=\"main-header animated fadeInDown\">
     <!-- Logo -->
     <a href=\"portal\" class=\"logo\">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class=\"logo-mini\">I<b>N</b>S</span>
+        <span class=\"logo-mini\">I<b>N</b>A</span>
         <!-- logo for regular state and mobile devices -->
-        <span class=\"logo-lg\"><b>{{ config.site.name }}</b> W<b>Y</b>S</span>
+        <span class=\"logo-lg\">{{ config.site.name }} <b>ADMIN</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class=\"navbar navbar-static-top\">
@@ -321,6 +321,6 @@ class __TwigTemplate_80185c073148ab85140666cb507c41633538fcfda1f1c16b30a7fdcdc6a
         </div>
     </nav>
 </header>
-", "portal/header.twig", "C:\\xampp\\htdocs\\proyectos\\login\\app\\templates\\portal\\header.twig");
+", "portal/header.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\portal\\header.twig");
     }
 }

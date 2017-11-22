@@ -43,10 +43,10 @@ class Asignaejecutivo extends Models implements IModels {
         global $http;
           $cargo = $http->request->get('select_perfil');
 
-          $query=$this->db->query_select("SELECT id_cargo FROM tblcargos WHERE descripcion='$cargo'");
+          $query=$this->db->select('id_cargo','tblcargos',"descripcion='$cargo'");
 
           $valor = $query[0][0];
-          $nombres = $this->db->query_select("SELECT nombres FROM tblpersonal WHERE id_cargo='$valor'");
+          $nombres = $this->db->select('id_personal,nombres','tblpersonal',"id_cargo='$valor'");
 
           if ($nombres == true){
               return array('success' => 1, 'message' => $nombres);
@@ -57,13 +57,65 @@ class Asignaejecutivo extends Models implements IModels {
       }
 
       public function traer_usuarios(): array {
+        try {
 
         global $http;
-        $nombre = $http->request->get('usuario');
+        $id_personal = $http->request->get('usuario');
 
 
+        $selectAsignados = $this->db->select('*','tblpersonal',"id_super='$id_personal'");
+        $selectNoAsignados = $this->db->select('*','tblpersonal',"id_super='0' and id_personal<>'$id_personal'");
+        // $personalNombre = $this->db->select('nombres','tblpersonal',"id_personal='$selectAsignados'");   REVISAR SI ES POSIBLE UTILIZARLA COMO FUNCION
+
+        if ($selectAsignados != true) {
+          return array('success' => 1,'usuariosNoAsignados' => $selectNoAsignados);
+          # code... 'usuariosAsignados' => $selectAsignados,
+      }else {
+          return array('success' => 1, 'usuariosAsignados' => $selectAsignados, 'usuariosNoAsignados' => $selectNoAsignados);
       }
 
+    } catch (Exception $e) {
+        return array('success' => 0, 'message' => 'Datos no encontrados');
+    }
+}
+
+public function quitar_supervision(): array {
+try {
+  global $http;
+
+  #Obtener los datos $_POST
+  $pendiente = "0";
+  $id_personal = $http->request->get('mandoId');
+
+
+  $this->db->update('tblpersonal',array(
+    'id_super' => $pendiente
+  ),"id_personal='$id_personal'",'LIMIT 1');
+  //
+  return array('success' => 1, 'men' => $id_personal);
+}catch (ModelsException $e) {
+    return array('success' => 0, 'message' => $e->getMessage());
+  }
+}
+
+public function asignar_supervision(): array {
+try {
+  global $http;
+
+  #Obtener los datos $_POST
+  $id_personal = $http->request->get('mandoId');
+  $super = $http->request->get('mandoIdSuper');
+
+
+  $this->db->update('tblpersonal',array(
+    'id_super' => $super
+  ),"id_personal='$id_personal'",'LIMIT 1');
+  //
+  return array('success' => 1, 'men' => $id_personal);
+}catch (ModelsException $e) {
+    return array('success' => 0, 'message' => $e->getMessage());
+  }
+}
     public function __construct(IRouter $router = null) {
         parent::__construct($router);
         $this->startDBConexion();

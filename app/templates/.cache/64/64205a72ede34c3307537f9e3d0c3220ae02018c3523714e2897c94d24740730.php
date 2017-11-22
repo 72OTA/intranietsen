@@ -16,7 +16,7 @@ class __TwigTemplate_1763ce0e3a7648f56f502e22dc2a4a14a382e7fd4592c070651b354bd05
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<aside class=\"main-sidebar\">
+        echo "<aside class=\"main-sidebar animated fadeInLeft\">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class=\"sidebar\">
       <!-- Sidebar user panel -->
@@ -184,7 +184,7 @@ class __TwigTemplate_1763ce0e3a7648f56f502e22dc2a4a14a382e7fd4592c070651b354bd05
 
     public function getSourceContext()
     {
-        return new Twig_Source("<aside class=\"main-sidebar\">
+        return new Twig_Source("<aside class=\"main-sidebar animated fadeInLeft\">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class=\"sidebar\">
       <!-- Sidebar user panel -->
@@ -264,6 +264,6 @@ class __TwigTemplate_1763ce0e3a7648f56f502e22dc2a4a14a382e7fd4592c070651b354bd05
     </section>
     <!-- /.sidebar -->
   </aside>
-", "portal/menu.twig", "C:\\xampp\\htdocs\\proyectos\\login\\app\\templates\\portal\\menu.twig");
+", "portal/menu.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\portal\\menu.twig");
     }
 }

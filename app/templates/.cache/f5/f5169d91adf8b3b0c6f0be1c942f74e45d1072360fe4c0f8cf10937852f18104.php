@@ -51,6 +51,8 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
     <!-- Alertas -->
     <link rel=\"stylesheet\" href=\"views/app/template/jquery-confirm/jquery-confirm.min.css\">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- ANIMATE CSS  -->
+    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css\">
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src=\"https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js\"></script>
@@ -61,75 +63,75 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
     <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic\">
 
     ";
-        // line 35
+        // line 37
         $this->displayBlock('appStylos', $context, $blocks);
-        // line 38
+        // line 40
         echo "
     <link href=\"views/app/images/favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\" />
     ";
-        // line 41
+        // line 43
         echo "    <title>";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "site", array()), "name", array()), "html", null, true);
         echo "</title>
 
     ";
-        // line 44
+        // line 46
         echo "    ";
         $this->displayBlock('appHeader', $context, $blocks);
-        // line 47
+        // line 49
         echo "
   </head>
   <body class=\"hold-transition skin-blue sidebar-mini sidebar-collapse\"> <!--<body class=\"hold-transition skin-blue sidebar-mini\">-->
     <div class=\"wrapper\">
 
         ";
-        // line 52
+        // line 54
         $this->displayBlock('appHead', $context, $blocks);
-        // line 55
+        // line 57
         echo "
         ";
-        // line 56
+        // line 58
         $this->displayBlock('appside', $context, $blocks);
-        // line 59
-        echo "        
-        ";
         // line 61
+        echo "
+        ";
+        // line 63
         echo "         <div class=\"content-wrapper\">
             ";
-        // line 62
+        // line 64
         $this->displayBlock('appBody', $context, $blocks);
-        // line 86
+        // line 88
         echo "        </div>
 
 
       ";
-        // line 90
+        // line 92
         echo "      ";
         $this->displayBlock('appFooter', $context, $blocks);
-        // line 93
+        // line 95
         echo "
       ";
-        // line 94
-        $this->loadTemplate("portal/resetpass", "portal/portal.twig", 94)->display($context);
-        // line 95
+        // line 96
+        $this->loadTemplate("portal/resetpass", "portal/portal.twig", 96)->display($context);
+        // line 97
         echo "    </div>
     ";
-        // line 97
+        // line 99
         echo "    ";
         if (twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), ($context["config"] ?? null), "framework", array()), "debug", array())) {
-            // line 98
+            // line 100
             echo "      ";
-            // line 99
+            // line 101
             echo "      <script src=\"views/app/js/jdev.min.js\"></script>
     ";
         } else {
-            // line 101
+            // line 103
             echo "      ";
-            // line 102
+            // line 104
             echo "      <script src=\"views/app/template/jquery/dist/jquery.min.js\"></script>
     ";
         }
-        // line 104
+        // line 106
         echo "
     <!-- jQuery UI 1.11.4 -->
     <script src=\"views/app/template/jquery-ui/jquery-ui.min.js\"></script>
@@ -153,56 +155,56 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
     <script src=\"views/app/js/portal/portal.js\"></script>
 
     ";
-        // line 127
+        // line 129
         echo "    ";
         $this->displayBlock('appScript', $context, $blocks);
-        // line 130
+        // line 132
         echo "
   </body>
 </html>
 ";
     }
 
-    // line 35
+    // line 37
     public function block_appStylos($context, array $blocks = array())
     {
-        // line 36
+        // line 38
         echo "
     ";
     }
 
-    // line 44
+    // line 46
     public function block_appHeader($context, array $blocks = array())
     {
-        // line 45
+        // line 47
         echo "      <!-- :) -->
     ";
     }
 
-    // line 52
+    // line 54
     public function block_appHead($context, array $blocks = array())
     {
-        // line 53
+        // line 55
         echo "            ";
-        $this->loadTemplate("portal/header", "portal/portal.twig", 53)->display($context);
-        // line 54
+        $this->loadTemplate("portal/header", "portal/portal.twig", 55)->display($context);
+        // line 56
         echo "        ";
     }
 
-    // line 56
+    // line 58
     public function block_appside($context, array $blocks = array())
     {
-        // line 57
+        // line 59
         echo "            ";
-        $this->loadTemplate("portal/menu", "portal/portal.twig", 57)->display($context);
-        // line 58
+        $this->loadTemplate("portal/menu", "portal/portal.twig", 59)->display($context);
+        // line 60
         echo "        ";
     }
 
-    // line 62
+    // line 64
     public function block_appBody($context, array $blocks = array())
     {
-        // line 63
+        // line 65
         echo "              <section class=\"content-header\">
               <h1>
                   ESCRITORIO
@@ -220,7 +222,7 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
                     <div class=\"panel panel-info\">
                       <div class=\"panel-heading\">
                         <h3 class=\"panel-title\">  <i class=\"icon fa fa-user\"></i> Bienvenido <strong>";
-        // line 79
+        // line 81
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), "name", array(), "array"), "html", null, true);
         echo "</strong>.</h3>
                       </div>
@@ -231,20 +233,20 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
             ";
     }
 
-    // line 90
+    // line 92
     public function block_appFooter($context, array $blocks = array())
     {
-        // line 91
+        // line 93
         echo "        ";
-        $this->loadTemplate("portal/footer", "portal/portal.twig", 91)->display($context);
-        // line 92
+        $this->loadTemplate("portal/footer", "portal/portal.twig", 93)->display($context);
+        // line 94
         echo "      ";
     }
 
-    // line 127
+    // line 129
     public function block_appScript($context, array $blocks = array())
     {
-        // line 128
+        // line 130
         echo "
     ";
     }
@@ -261,7 +263,7 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
 
     public function getDebugInfo()
     {
-        return array (  248 => 128,  245 => 127,  241 => 92,  238 => 91,  235 => 90,  224 => 79,  206 => 63,  203 => 62,  199 => 58,  196 => 57,  193 => 56,  189 => 54,  186 => 53,  183 => 52,  178 => 45,  175 => 44,  170 => 36,  167 => 35,  160 => 130,  157 => 127,  133 => 104,  129 => 102,  127 => 101,  123 => 99,  121 => 98,  118 => 97,  115 => 95,  113 => 94,  110 => 93,  107 => 90,  102 => 86,  100 => 62,  97 => 61,  94 => 59,  92 => 56,  89 => 55,  87 => 52,  80 => 47,  77 => 44,  71 => 41,  67 => 38,  65 => 35,  32 => 6,  26 => 1,);
+        return array (  250 => 130,  247 => 129,  243 => 94,  240 => 93,  237 => 92,  226 => 81,  208 => 65,  205 => 64,  201 => 60,  198 => 59,  195 => 58,  191 => 56,  188 => 55,  185 => 54,  180 => 47,  177 => 46,  172 => 38,  169 => 37,  162 => 132,  159 => 129,  135 => 106,  131 => 104,  129 => 103,  125 => 101,  123 => 100,  120 => 99,  117 => 97,  115 => 96,  112 => 95,  109 => 92,  104 => 88,  102 => 64,  99 => 63,  96 => 61,  94 => 58,  91 => 57,  89 => 54,  82 => 49,  79 => 46,  73 => 43,  69 => 40,  67 => 37,  32 => 6,  26 => 1,);
     }
 
     public function getSourceContext()
@@ -291,6 +293,8 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
     <!-- Alertas -->
     <link rel=\"stylesheet\" href=\"views/app/template/jquery-confirm/jquery-confirm.min.css\">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- ANIMATE CSS  -->
+    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css\">
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src=\"https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js\"></script>
@@ -324,7 +328,7 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
         {% block appside %}
             {% include 'portal/menu' %}
         {% endblock %}
-        
+
         {# Contenido real #}
          <div class=\"content-wrapper\">
             {% block appBody %}
@@ -398,6 +402,6 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
 
   </body>
 </html>
-", "portal/portal.twig", "C:\\xampp\\htdocs\\proyectos\\login\\app\\templates\\portal\\portal.twig");
+", "portal/portal.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\portal\\portal.twig");
     }
 }

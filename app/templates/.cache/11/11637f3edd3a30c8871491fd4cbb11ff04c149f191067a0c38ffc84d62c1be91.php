@@ -1,7 +1,7 @@
 <?php
 
 /* rrhh/asignar_ejecutivo/asignar_ejecutivo.twig */
-class __TwigTemplate_7afa5ddaaab8768b4f040fbbae5211d9b7cf8afae6e8a6db4df0abeabcda50af extends Twig_Template
+class __TwigTemplate_66bbcf4a7b73b9237c06f86ed1547ff718807922fa16dd5f9fbf0aaa04bccc4c extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -99,22 +99,8 @@ class __TwigTemplate_7afa5ddaaab8768b4f040fbbae5211d9b7cf8afae6e8a6db4df0abeabcd
                 <div>
                   <form class=\"\" id=\"form_opciones\" name=\"form_opciones\" action=\"\" method=\"POST\">
                     <label id=\"resultado\" name=\"resultado\">
-                      <!-- Resultado del Jquery donde se muestra las opciones que contienen usuarios. -->
                     </label>
-                    <!-- <input type=\"button\" id=\"btn_revisar\" title='Revisar' class=\"btn-success btn-md\" data-toggle=\"modal\" value=\"Asignar Usuarios\" onclick=\"modal_asignar_usuarios('')\"> -->
                   </form>
-                </div>
-
-                <div id=\"modal_asignar_usuarios\" class=\"modal fade\" role=\"dialog\">
-                  <div class=\"modal-dialog\">
-                    <div class=\"modal-content\">
-                      <div class=\"modal-header\">
-                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
-                        <h4 class=\"modal-title\">Usuarios</h4>
-                      </div>
-                      <div class=\"modal-body\"></div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <!-- /.tab-pane -->
@@ -132,10 +118,10 @@ class __TwigTemplate_7afa5ddaaab8768b4f040fbbae5211d9b7cf8afae6e8a6db4df0abeabcd
   ";
     }
 
-    // line 87
+    // line 73
     public function block_appScript($context, array $blocks = array())
     {
-        // line 88
+        // line 74
         echo "    <!-- SCRIPTS -->
     <script src=\"views/app/js/asignarusuarios/asignar_user.js\"></script>
 
@@ -154,11 +140,88 @@ class __TwigTemplate_7afa5ddaaab8768b4f040fbbae5211d9b7cf8afae6e8a6db4df0abeabcd
 
     public function getDebugInfo()
     {
-        return array (  139 => 88,  136 => 87,  93 => 47,  87 => 46,  85 => 45,  80 => 44,  75 => 43,  73 => 42,  32 => 3,  29 => 2,  11 => 1,);
+        return array (  125 => 74,  122 => 73,  93 => 47,  87 => 46,  85 => 45,  80 => 44,  75 => 43,  73 => 42,  32 => 3,  29 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "rrhh/asignar_ejecutivo/asignar_ejecutivo.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\rrhh\\asignar_ejecutivo\\asignar_ejecutivo.twig");
+        return new Twig_Source("{% extends 'portal/portal' %}
+{% block appBody %}
+  <section class=\"content-header\">
+    <h4>
+      <i class=\"fa fa-th\"></i>
+      ASIGNAR EJECUTIVOS
+    </h4>
+  </section>
+<div class=\"container\" id=\"controlTotal\">
+
+  <section class=\"content\">
+
+    <!-- Default box -->
+    <div class=\"box\" id=\"caja_principal\">
+      <div class=\"box-header with-border\">
+
+        <div class=\"box-tools pull-right\">
+          <button class=\"btn btn-box-tool\" data-widget=\"collapse\" data-toggle=\"tooltip\" title=\"Collapse\">
+            <i class=\"fa fa-minus\"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class=\"box-body\">
+
+        <!-- Custom Tabs (Pulled to the right) -->
+        <div class=\"nav-tabs-custom\">
+          <ul class=\"nav nav-tabs pull-rigth\">
+            <li class=\"active\">
+              <a href=\"#tab_2-2\" data-toggle=\"tab\">Seleccione perfil para filtrar</a>
+            </li>
+
+            <li class=\"pull-left header\"></li>
+          </ul>
+          <div class=\"tab-content\">
+            <div class=\"tab-pane active\" id=\"tab_1-1\">
+
+              <form name=\"filtra_usuario_perfil\" id=\"filtra_usuario_perfil\" action=\"\" method=\"POST\">
+                <label>
+                  <select name='select_perfil' id='select_perfil'>
+                    <option selected='selected'>--</option>
+                    {% set No = 1 %}
+                    {% for d in cargos %}
+                      <option>{{ d.descripcion }}</option>
+                      {% set No = No + 1 %}
+                    {% endfor %}
+                  </label>
+                  <input type='hidden' name='Submit' value='Consultar' id='submit'>
+                </form>
+                <br>
+                <br>
+
+                <div>
+                  <form class=\"\" id=\"form_opciones\" name=\"form_opciones\" action=\"\" method=\"POST\">
+                    <label id=\"resultado\" name=\"resultado\">
+                    </label>
+                  </form>
+                </div>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+<section class=\"content\" id=\"mostrarDatos\">
+
+</section>
+  {% endblock %}
+  {% block appScript %}
+    <!-- SCRIPTS -->
+    <script src=\"views/app/js/asignarusuarios/asignar_user.js\"></script>
+
+  {% endblock %}
+", "rrhh/asignar_ejecutivo/asignar_ejecutivo.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\rrhh\\asignar_ejecutivo\\asignar_ejecutivo.twig");
     }
 }
