@@ -317,3 +317,117 @@ $app->post('/asignar_supervision', function() use($app) {
 
     return $app->json($au->asignar_supervision());
 });
+/**
+    * Registra nuevo tecnico
+    *
+    * @return json
+*/
+$app->post('/registra_nuevo_tecnico', function() use($app) {
+    $e = new Model\Mdltecnicos;
+
+    return $app->json($e->registra_nuevo_tecnico());
+});
+/**
+    * Modificar tecnico
+    *
+    * @return json
+*/
+$app->post('/editar_tecnico', function() use($app) {
+    $e = new Model\Mdltecnicos;
+
+    return $app->json($e->editar_tecnico());
+});
+// -----------------------------------------------------------------------------
+// Modulo Confirmación
+/**
+    * Registra nueva actividad
+    *
+    * @return json
+*/
+$app->post('/registra_nueva_actividad', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->registra_nueva_actividad());
+});
+/**
+    * Modificar actividad
+    *
+    * @return json
+*/
+$app->post('/editar_actividad', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->editar_actividad());
+});
+/**
+    * Registra nuevo bloque
+    *
+    * @return json
+*/
+$app->post('/registra_nuevo_bloque', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->registra_nuevo_bloque());
+});
+/**
+    * Modificar bloque
+    *
+    * @return json
+*/
+$app->post('/editar_bloque', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->editar_bloque());
+});
+/**
+    * Registra nueva comuna
+    *
+    * @return json
+*/
+$app->post('/registra_nueva_comuna', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->registra_nueva_comuna());
+});
+/**
+    * Modificar comuna
+    *
+    * @return json
+*/
+$app->post('/editar_comuna', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->editar_comuna());
+});
+/**
+    * Registra nuevo motivo de llamado
+    *
+    * @return json
+*/
+$app->post('/registra_nuevo_motivocall', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->registra_nuevo_motivocall());
+});
+/**
+    * Modificar motivo de llamado
+    *
+    * @return json
+*/
+$app->post('/editar_motivocall', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->editar_motivocall());
+});
+// -----------------------------------------------------------------------------
+/**
+    * Importar tecnico
+    *
+    * @return json
+*/
+$app->post('/cargar_excel', function() use($app) {
+
+$u = new Model\Mdltecnicos;
+
+return $app->json($u->cargar_excel());
+});

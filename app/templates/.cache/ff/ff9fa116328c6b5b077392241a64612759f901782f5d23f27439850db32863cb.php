@@ -99,22 +99,8 @@ class __TwigTemplate_7afa5ddaaab8768b4f040fbbae5211d9b7cf8afae6e8a6db4df0abeabcd
                 <div>
                   <form class=\"\" id=\"form_opciones\" name=\"form_opciones\" action=\"\" method=\"POST\">
                     <label id=\"resultado\" name=\"resultado\">
-                      <!-- Resultado del Jquery donde se muestra las opciones que contienen usuarios. -->
                     </label>
-                    <!-- <input type=\"button\" id=\"btn_revisar\" title='Revisar' class=\"btn-success btn-md\" data-toggle=\"modal\" value=\"Asignar Usuarios\" onclick=\"modal_asignar_usuarios('')\"> -->
                   </form>
-                </div>
-
-                <div id=\"modal_asignar_usuarios\" class=\"modal fade\" role=\"dialog\">
-                  <div class=\"modal-dialog\">
-                    <div class=\"modal-content\">
-                      <div class=\"modal-header\">
-                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
-                        <h4 class=\"modal-title\">Usuarios</h4>
-                      </div>
-                      <div class=\"modal-body\"></div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <!-- /.tab-pane -->
@@ -132,10 +118,10 @@ class __TwigTemplate_7afa5ddaaab8768b4f040fbbae5211d9b7cf8afae6e8a6db4df0abeabcd
   ";
     }
 
-    // line 87
+    // line 73
     public function block_appScript($context, array $blocks = array())
     {
-        // line 88
+        // line 74
         echo "    <!-- SCRIPTS -->
     <script src=\"views/app/js/asignarusuarios/asignar_user.js\"></script>
 
@@ -154,7 +140,7 @@ class __TwigTemplate_7afa5ddaaab8768b4f040fbbae5211d9b7cf8afae6e8a6db4df0abeabcd
 
     public function getDebugInfo()
     {
-        return array (  139 => 88,  136 => 87,  93 => 47,  87 => 46,  85 => 45,  80 => 44,  75 => 43,  73 => 42,  32 => 3,  29 => 2,  11 => 1,);
+        return array (  125 => 74,  122 => 73,  93 => 47,  87 => 46,  85 => 45,  80 => 44,  75 => 43,  73 => 42,  32 => 3,  29 => 2,  11 => 1,);
     }
 
     public function getSourceContext()

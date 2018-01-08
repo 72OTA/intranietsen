@@ -17,7 +17,7 @@ class __TwigTemplate_0f55012a14c3605a148cc3988b720d969161c028cb6e45179227b5cd031
     {
         // line 1
         echo "
-<header class=\"main-header\">
+<header class=\"main-header animated fadeInDown\">
     <!-- Logo -->
     <a href=\"portal\" class=\"logo\">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -192,6 +192,6 @@ class __TwigTemplate_0f55012a14c3605a148cc3988b720d969161c028cb6e45179227b5cd031
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "portal/header.twig", "C:\\xampp\\htdocs\\proyectos\\intranietsen\\app\\templates\\portal\\header.twig");
+        return new Twig_Source("", "portal/header.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\portal\\header.twig");
     }
 }

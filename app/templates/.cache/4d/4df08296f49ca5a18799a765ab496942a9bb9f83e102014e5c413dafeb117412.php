@@ -99,6 +99,35 @@ class __TwigTemplate_d3060f710ec80767c24428e1615860d90a30694b59e6cfd54d5b8d2545e
             </fieldset>
           </form>
         </div><!-- ./col -->
+        <!-- -------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <div class=\"col-lg-3\">
+          <form>
+            <fieldset>
+            <legend>Tecnicos</legend>
+              <div style=\"background-color:#8ee28d;color:#fff\" class=\"small-box\">
+                <div class=\"inner\">
+                  <h3>Listar</h3>
+                  <p>Todos</p>
+                </div>
+                <div class=\"icon\">
+                  <i class=\"fa fa-user-plus\"></i>
+                </div>
+                  <a href=\"rrhh/listar_tecnicos\" class=\"small-box-footer\" title=\"Ver Tecnicos\" data-toggle=\"tooltip\"><i class=\"fa fa-eye\"></i></a>
+              </div>
+              <div style=\"background-color:#8ee28d;color:#fff\" class=\"small-box\">
+                <div class=\"inner\">
+                  <h3>Agregar</h3>
+                  <p>Nuevo</p>
+                </div>
+                <div class=\"icon\">
+                  <i class=\"fa fa-user-plus\"></i>
+                </div>
+                  <a href=\"rrhh/nuevo_tecnico\" class=\"small-box-footer\" title=\"Agregar Nuevo Tecnico\" data-toggle=\"tooltip\"><i class=\"fa fa-plus\"></i></a>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <!-- --------------------------------------------------------------------------------------------------------------------------------------------------- -->
       </div>
     </section>
     <!-- /.content -->
@@ -196,6 +225,35 @@ class __TwigTemplate_d3060f710ec80767c24428e1615860d90a30694b59e6cfd54d5b8d2545e
             </fieldset>
           </form>
         </div><!-- ./col -->
+        <!-- -------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <div class=\"col-lg-3\">
+          <form>
+            <fieldset>
+            <legend>Tecnicos</legend>
+              <div style=\"background-color:#8ee28d;color:#fff\" class=\"small-box\">
+                <div class=\"inner\">
+                  <h3>Listar</h3>
+                  <p>Todos</p>
+                </div>
+                <div class=\"icon\">
+                  <i class=\"fa fa-user-plus\"></i>
+                </div>
+                  <a href=\"rrhh/listar_tecnicos\" class=\"small-box-footer\" title=\"Ver Tecnicos\" data-toggle=\"tooltip\"><i class=\"fa fa-eye\"></i></a>
+              </div>
+              <div style=\"background-color:#8ee28d;color:#fff\" class=\"small-box\">
+                <div class=\"inner\">
+                  <h3>Agregar</h3>
+                  <p>Nuevo</p>
+                </div>
+                <div class=\"icon\">
+                  <i class=\"fa fa-user-plus\"></i>
+                </div>
+                  <a href=\"rrhh/nuevo_tecnico\" class=\"small-box-footer\" title=\"Agregar Nuevo Tecnico\" data-toggle=\"tooltip\"><i class=\"fa fa-plus\"></i></a>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <!-- --------------------------------------------------------------------------------------------------------------------------------------------------- -->
       </div>
     </section>
     <!-- /.content -->

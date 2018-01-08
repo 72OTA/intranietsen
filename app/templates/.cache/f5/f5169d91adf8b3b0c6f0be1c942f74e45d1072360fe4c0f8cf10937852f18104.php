@@ -81,7 +81,7 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
         // line 49
         echo "
   </head>
-  <body class=\"hold-transition skin-blue sidebar-mini sidebar-collapse\"> <!--<body class=\"hold-transition skin-blue sidebar-mini\">-->
+  <body class=\"hold-transition skin-blue sidebar-mini\"> <!--<body class=\"hold-transition skin-blue sidebar-mini\">-->
     <div class=\"wrapper\">
 
         ";
@@ -147,18 +147,32 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
     <script src=\"views/app/template/fastclick/lib/fastclick.js\"></script>
     <!-- AdminLTE App -->
     <script src=\"views/app/template/adminlte.min.js\"></script>
+    <script>  function changeCollapse(){
+    var width = \$(document).width();
+    if (width < 400) {
+      \$('body').addClass('sidebar-collapse');
+      \$( this ).find( 'a.sidebar-collapse' ).trigger('click');
+    } else {
+      \$('body').removeClass('sidebar-collapse');
+    }
+  }
+  \$(window).resize(function(){
+    changeCollapse();
+  });
+  \$(document).ready(function(){
+    changeCollapse();
+  });</script>
     <!-- AdminLTE for demo purposes -->
     <script src=\"views/app/template/demo.js\"></script>
     <!-- Alertas -->
     <script src=\"views/app/template/jquery-confirm/jquery-confirm.min.js\"></script>
 
     <script src=\"views/app/js/portal/portal.js\"></script>
-
     ";
-        // line 129
+        // line 143
         echo "    ";
         $this->displayBlock('appScript', $context, $blocks);
-        // line 132
+        // line 146
         echo "
   </body>
 </html>
@@ -243,10 +257,10 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
         echo "      ";
     }
 
-    // line 129
+    // line 143
     public function block_appScript($context, array $blocks = array())
     {
-        // line 130
+        // line 144
         echo "
     ";
     }
@@ -263,7 +277,7 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
 
     public function getDebugInfo()
     {
-        return array (  250 => 130,  247 => 129,  243 => 94,  240 => 93,  237 => 92,  226 => 81,  208 => 65,  205 => 64,  201 => 60,  198 => 59,  195 => 58,  191 => 56,  188 => 55,  185 => 54,  180 => 47,  177 => 46,  172 => 38,  169 => 37,  162 => 132,  159 => 129,  135 => 106,  131 => 104,  129 => 103,  125 => 101,  123 => 100,  120 => 99,  117 => 97,  115 => 96,  112 => 95,  109 => 92,  104 => 88,  102 => 64,  99 => 63,  96 => 61,  94 => 58,  91 => 57,  89 => 54,  82 => 49,  79 => 46,  73 => 43,  69 => 40,  67 => 37,  32 => 6,  26 => 1,);
+        return array (  264 => 144,  261 => 143,  257 => 94,  254 => 93,  251 => 92,  240 => 81,  222 => 65,  219 => 64,  215 => 60,  212 => 59,  209 => 58,  205 => 56,  202 => 55,  199 => 54,  194 => 47,  191 => 46,  186 => 38,  183 => 37,  176 => 146,  173 => 143,  135 => 106,  131 => 104,  129 => 103,  125 => 101,  123 => 100,  120 => 99,  117 => 97,  115 => 96,  112 => 95,  109 => 92,  104 => 88,  102 => 64,  99 => 63,  96 => 61,  94 => 58,  91 => 57,  89 => 54,  82 => 49,  79 => 46,  73 => 43,  69 => 40,  67 => 37,  32 => 6,  26 => 1,);
     }
 
     public function getSourceContext()
@@ -318,7 +332,7 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
     {% endblock %}
 
   </head>
-  <body class=\"hold-transition skin-blue sidebar-mini sidebar-collapse\"> <!--<body class=\"hold-transition skin-blue sidebar-mini\">-->
+  <body class=\"hold-transition skin-blue sidebar-mini\"> <!--<body class=\"hold-transition skin-blue sidebar-mini\">-->
     <div class=\"wrapper\">
 
         {% block appHead %}
@@ -388,13 +402,27 @@ class __TwigTemplate_96f01f46e0e68070ca5a042435b22570b6875959218c42f061bdf7c9618
     <script src=\"views/app/template/fastclick/lib/fastclick.js\"></script>
     <!-- AdminLTE App -->
     <script src=\"views/app/template/adminlte.min.js\"></script>
+    <script>  function changeCollapse(){
+    var width = \$(document).width();
+    if (width < 400) {
+      \$('body').addClass('sidebar-collapse');
+      \$( this ).find( 'a.sidebar-collapse' ).trigger('click');
+    } else {
+      \$('body').removeClass('sidebar-collapse');
+    }
+  }
+  \$(window).resize(function(){
+    changeCollapse();
+  });
+  \$(document).ready(function(){
+    changeCollapse();
+  });</script>
     <!-- AdminLTE for demo purposes -->
     <script src=\"views/app/template/demo.js\"></script>
     <!-- Alertas -->
     <script src=\"views/app/template/jquery-confirm/jquery-confirm.min.js\"></script>
 
     <script src=\"views/app/js/portal/portal.js\"></script>
-
     {# Scripts globales #}
     {% block appScript %}
 

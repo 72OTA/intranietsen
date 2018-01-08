@@ -48,7 +48,7 @@
     {% endblock %}
 
   </head>
-  <body class="hold-transition skin-blue sidebar-mini sidebar-collapse"> <!--<body class="hold-transition skin-blue sidebar-mini">-->
+  <body class="hold-transition skin-blue sidebar-mini"> <!--<body class="hold-transition skin-blue sidebar-mini">-->
     <div class="wrapper">
 
         {% block appHead %}
@@ -118,13 +118,27 @@
     <script src="views/app/template/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="views/app/template/adminlte.min.js"></script>
+    <script>  function changeCollapse(){
+    var width = $(document).width();
+    if (width < 400) {
+      $('body').addClass('sidebar-collapse');
+      $( this ).find( 'a.sidebar-collapse' ).trigger('click');
+    } else {
+      $('body').removeClass('sidebar-collapse');
+    }
+  }
+  $(window).resize(function(){
+    changeCollapse();
+  });
+  $(document).ready(function(){
+    changeCollapse();
+  });</script>
     <!-- AdminLTE for demo purposes -->
     <script src="views/app/template/demo.js"></script>
     <!-- Alertas -->
     <script src="views/app/template/jquery-confirm/jquery-confirm.min.js"></script>
 
     <script src="views/app/js/portal/portal.js"></script>
-
     {# Scripts globales #}
     {% block appScript %}
 

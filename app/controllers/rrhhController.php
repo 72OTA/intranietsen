@@ -114,6 +114,41 @@ class rrhhController extends Controllers implements IControllers {
 
              ));
               break;
+              // ------------------------------------------------------------------------------------------------------------------------------------------
+              //MODULO TECNICOS
+              // ------------------------------------------------------------------------------------------------------------------------------------------
+              case 'listar_tecnicos':
+                  echo $this->template->render('rrhh/tecnicos/listar_tecnicos', array(
+                    'menu_op' => $op,
+                    'tecnicos_db' => (new Model\Mdltecnicos)->verTecnicos()
+                  ));
+                  break;
+              case 'nuevo_tecnico':
+                  echo $this->template->render('rrhh/tecnicos/nuevo_tecnico', array(
+                    'menu_op' => $op
+                  ));
+                  break;
+              case 'importar_tecnico':
+                  echo $this->template->render('rrhh/tecnicos/importar_tecnico', array(
+                    'menu_op' => $op
+                  ));
+                  break;
+              case 'editar_tecnico':
+                  if($this->isset_id and false !== ($data = (new Model\Mdltecnicos)->getTecnicosById($router->getId()))) {
+                    echo $this->template->render('rrhh/tecnicos/editar_tecnicos', array(
+                      'menu_op' => $op,
+                      'db_tecnico' => $data[0]
+                    ));
+                  } else {
+                    $this->functions->redir($config['site']['url'] . 'rrhh/&error=true');
+                  }
+                  break;
+              case 'estado_tecnico':
+                      (new Model\Mdltecnicos)->update_estado_tecnico($router->getId(true));
+                  break;
+              // ------------------------------------------------------------------------------------------------------------------------------------------
+              // ------------------------------------------------------------------------------------------------------------------------------------------
+
           default:
             echo $this->template->render('rrhh/rrhh', array(
               'menu_op' => $op
