@@ -1,0 +1,130 @@
+{% extends 'portal/portal' %}
+{% block appBody %}
+  <section class="content-header">
+    <h1>
+      Programacion Nielsen
+      <small>Confirmaciones</small>
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <form id="formorden" name="formorden">
+      <div class="content">
+        <div class="row">
+          <div class="form-group">
+            <div class="col-md-4">
+              <label for="textuser">Operador:</label><input type="text" name="textuser" id="textuser" class="form-control" value="{{ owner_user['name'] }}">
+            </div>
+            <div class="col-md-4">
+              <label>Reg:</label><input type="text" name="textreg" id="textreg" class="form-control" value="">
+            </div>
+            <div class="col-md-4">
+              <label>Rut Cliente:</label><input type="text" name="textrutcliente" id="textrutcliente" class="form-control">
+            </div>
+            <div class="col-md-4">
+              <label>ID Orden:</label><input type="text" name="textidorden" id="textidorden" class="form-control">
+            </div>
+            <div class="col-md-4">
+              <label>FECHA:</label><input type="date" name="textfecha" min="{{ fecha }}" id="textfecha" class="form-control" value="{{ fecha }}">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="box-title">
+              <label>BLOQUE</label>
+            </h4>
+            <div class="row">
+              {% set No = 1 %}
+              {% for b in db_bloque if false != db_bloque %}
+                <div class="col-md-2" style="border: 1px solid white">
+                  <input type="radio" name="rbbloque" onchange="cargarblo('{{b.bloque}}')" id="{{b.bloque}}">
+                  <font size="4">{{b.bloque}}</font>
+                </div>
+                {% set No = No + 1 %}
+              {% endfor %}
+            </div>
+            <h4 class="box-title">
+              <label>MOTIVO DEL LLAMADO</label>
+            </h4>
+            <div class="row">
+              {% set No = 1 %}
+              {% for m in db_motivo if false != db_motivo %}
+                <div class="col-md-1" style="border: 1px solid white">
+                  <input type="radio" name="rbmotivo" id="{{m.motivo}}" onchange="cargarmot('{{m.motivo}}')">
+                  <font size="4">{{m.motivo}}</font>
+                </div>
+                {% set No = No + 1 %}
+              {% endfor %}
+            </div>
+            <div id="comunas" name="comuna">
+              <h4 class="box-title">
+                <label>COMUNA</label>
+              </h4>
+              <div class="row">
+                {% set No = 1 %}
+                {% for c in db_comuna if false != db_comuna %}
+                  <div class="col-md-2" style="border: 1px solid white">
+                    <input type="radio" name="rbcomuna" id="{{c.id_comuna}}" onchange="cargarcom('{{c.id_comuna}}')">
+                    <font size="4">{{c.id_comuna}}</font>
+                  </div>
+                  {% set No = No + 1 %}
+                {% endfor %}
+              </div>
+            </div>
+            <div id="actividad" name="actividad">
+              <h4 class="box-title">
+                <label>ACTIVIDAD</label>
+              </h4>
+              <div class="row">
+                {% set No = 1 %}
+                {% for a in db_actividad if false != db_actividad %}
+                  <div class="col-md-2" style="border: 1px solid white">
+                    <input type="radio" name="rbactividad" id="{{a.actividad}}" onchange="cargaract('{{a.actividad}}')">
+                    <font size="4">{{a.actividad}}</font>
+                  </div>
+                  {% set No = No + 1 %}
+                {% endfor %}
+              </div>
+            </div>
+            <div id="resultado" name="resultado">
+              <h4 class="box-title">
+                <label for="">RESULTADO</label>
+              </h4>
+              <table id="tabla" name="tabla" class="table table-bordered">
+                {% set No = 1 %}
+                {% for r in db_resultado if false != db_resultado %}
+                  <div class="col-md-3" style="border: 1px solid white">
+                    <input type="radio" name="rbresultado" id="{{r.nombre}}" onchange="cargarres('{{r.nombre}}')">
+                    <font size="4">{{r.nombre}}</font>
+                  </div>
+                  {% set No = No + 1 %}
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+        <div id="observacion" name="observacion">
+          <h4 class="box-title">
+            <label>OBSERVACION</label>
+          </h4>
+          <input type="text" name="textobservacion" id="textobservacion" placeholder="Ingrese una observacion correspondiente a la orden" class="form-control" value="">
+        </div>
+        <br>
+        <a data-toggle='tooltip' data-placement='top' name="btningresar" id="btningresar" class='btn btn-success btn-sm'>Ingresar Orden
+        </a>
+        <input type="hidden" name="textactividad" id="textactividad">
+        <input type="hidden" name="textbloque" id="textbloque">
+        <input type="hidden" name="textmotivo" id="textmotivo">
+        <input type="hidden" name="textcomuna" id="textcomuna">
+        <input type="hidden" name="textresultado" id="textresultado">
+        <input type="hidden" name="textid" id="textid" value="{{ owner_user['id_user'] }}">
+
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block appScript %}
+  <script src="views/app/js/confirmacion/confirmacion.js"></script>
+{% endblock %}

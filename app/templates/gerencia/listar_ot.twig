@@ -5,12 +5,8 @@
 {% block appBody %}
     <section class="content-header">
         <h1>
-            Confirmacion
-            <small>Listado de Bloque</small>
-
-          <a class="btn btn-primary btn-social pull-right" href="confirmacion/nuevo_bloque" title="Agregar" data-toggle="tooltip">
-            <i class="fa fa-plus"></i> Agregar
-          </a>
+            Gerencia
+            <small>Listado de Programadores</small>
         </h1>
     </section>
 
@@ -23,38 +19,25 @@
             <table id="dataTables1" class="table table-bordered">
               <thead>
                 <tr>
-                  <th>No</th>
-                	<th>Bloque</th>
-                  <th>Limite Q.</th>
-                	<th>Estado</th>
-                  <th>Acciones</th>
+                  <th>Programadores</th>
+                	<th>Cumplidas</th>
+                	<th>No Cumplidas</th>
+                  <th>%</th>
+                  <th>Subtotal</th>
+                  <th>Media</th>
                 </tr>
               </thead>
               <tbody>
                 {% set No = 1 %}
-                {% for d in bloques_db if false != bloques_db %}
+                {% for d in programadores_db if false != programadores_db %}
                   <tr>
+                    <td>{{ d.name }}</td>
                     <td>{{ No }}</td>
-                    <td>{{ d.bloque }}</td>
-                    <td>{{ d.limite_q_programacion }}</td>
-                    <td>{{ d.estado|raw|title }}</td>
+                    <td>{{ d.id_user }}</td>
+                    <td>{{ d.email }}</td>
+                    <td>{{ d.fono }}</td>
+                    <td>{{ d.cargo }}</td>
 
-                    <td class='center' width='80'>
-                      <a data-toggle='tooltip' data-placement='top' title='Modificar' class='btn btn-success btn-sm' href="confirmacion/editar_bloque/{{ d.id_bloque }}">
-                      <i class='glyphicon glyphicon-edit'></i>
-                      </a>
-
-                      {% if d.estado == 0 %}
-                          <a data-toggle='tooltip' data-placement='top' title='Bloqueado' class='btn btn-warning btn-sm' href="confirmacion/estado_bloque/{{ d.id_bloque }}">
-                          <i class='glyphicon glyphicon-off'></i>
-                          </a>
-
-                      {% else %}
-                          <a data-toggle='tooltip' data-placement='top' title='Activo' class='btn btn-danger btn-sm' href="confirmacion/estado_bloque/{{ d.id_bloque }}">
-                          <i class='glyphicon glyphicon-check'></i>
-                          </a>
-
-                      {% endif %}
 
                     </td>
                   </tr>
@@ -75,7 +58,7 @@
     <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
 
-    <script src="views/app/js/confirmacion/confirmacion.js"></script>
+    <script src="views/app/js/gerencia/gerencia.js"></script>
 
     <script>
      $("#dataTables1").dataTable({

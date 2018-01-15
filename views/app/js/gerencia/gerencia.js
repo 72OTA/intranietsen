@@ -46,9 +46,6 @@ function execute_accion_confirmacion(method,api_rest,formulario,accion,accion_re
     case "registra_nuevo_motivocall":
       title='Registro de Motivo llamado';
       break;
-    case "registra_nuevo_resultado":
-      title='Registro de Resultado';
-      break;
     case "editar_actividad":
       title='Modificar Actividad';
       break;
@@ -60,9 +57,6 @@ function execute_accion_confirmacion(method,api_rest,formulario,accion,accion_re
       break;
     case "editar_motivocall":
       title='Modificar Motivo llamado';
-      break;
-    case "editar_resultado":
-      title='Modificar Resultado';
       break;
     // CASOS DE HECTOR EL HECTORelfather
     case "ingresar_orden":
@@ -127,14 +121,6 @@ $('#update_motivocall').click(function(e) {
   execute_accion_confirmacion("POST","editar_motivocall",'editar_motivocall_form','redirect','confirmacion/listar_motivocall');
 });
 
-$('#register_resultado').click(function(e) {
-  e.defaultPrevented;
-  execute_accion_confirmacion("POST","registra_nuevo_resultado",'register_resultado_form','redirect','confirmacion/listar_resultado');
-});
-$('#update_resultado').click(function(e) {
-  e.defaultPrevented;
-  execute_accion_confirmacion("POST","editar_resultado",'editar_resultado_form','redirect','confirmacion/listar_resultado');
-});
 // CONFIRMACION JS HECTORELFATHER---------------------------------------------------------------
 $('#btningresar').click(function(e){
   e.defaultPrevented;

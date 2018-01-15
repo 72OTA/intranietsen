@@ -419,6 +419,26 @@ $app->post('/editar_motivocall', function() use($app) {
 
     return $app->json($e->editar_motivocall());
 });
+/**
+    * Registra nuevo resultado
+    *
+    * @return json
+*/
+$app->post('/registra_nuevo_resultado', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->registra_nuevo_resultado());
+});
+/**
+    * Modificar resultado
+    *
+    * @return json
+*/
+$app->post('/editar_resultado', function() use($app) {
+    $e = new Model\Mdlconfirmacion;
+
+    return $app->json($e->editar_resultado());
+});
 // -----------------------------------------------------------------------------
 /**
     * Importar tecnico
@@ -430,4 +450,36 @@ $app->post('/cargar_excel', function() use($app) {
 $u = new Model\Mdltecnicos;
 
 return $app->json($u->cargar_excel());
+});
+
+
+// HECTORelfather
+$app->post('/ingresar_orden', function() use($app) {
+
+
+$u = new Model\Mdlconfirmacion;
+
+
+return $app->json($u->ingresar_orden());
+
+});
+
+$app->post('/modificar_la_orden', function() use($app) {
+
+
+$u = new Model\Mdlconfirmacion;
+
+
+return $app->json($u->modificar_la_orden());
+
+});
+
+$app->post('/eliminarorden', function() use($app) {
+
+
+$u = new Model\Mdlconfirmacion;
+
+
+return $app->json($u->eliminarorden());
+
 });

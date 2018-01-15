@@ -65,6 +65,10 @@ class __TwigTemplate_d74c6834edaac34c5a3ce06584a64979b9b9960f27c0fc0d59caf9132b5
         // line 28
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_bloque"] ?? null), "bloque", array()), "html", null, true);
         echo "' required/>
+                    <input class=\"form-control\" name=\"limit\" id=\"limit\" type=\"number\" placeholder=\"Ingrese el limite de ordenes\" value='";
+        // line 29
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_bloque"] ?? null), "limite_q_programacion", array()), "html", null, true);
+        echo "' required/>
                 </div>
                 <div class=\"panel-footer text-center\">
                   <button type=\"button\" id=\"update_bloque\" class=\"btn btn-default\">Grabar</button>
@@ -80,10 +84,10 @@ class __TwigTemplate_d74c6834edaac34c5a3ce06584a64979b9b9960f27c0fc0d59caf9132b5
 ";
     }
 
-    // line 42
+    // line 43
     public function block_appScript($context, array $blocks = array())
     {
-        // line 43
+        // line 44
         echo "    <script src=\"views/app/js/confirmacion/confirmacion.js\"></script>
 ";
     }
@@ -100,7 +104,7 @@ class __TwigTemplate_d74c6834edaac34c5a3ce06584a64979b9b9960f27c0fc0d59caf9132b5
 
     public function getDebugInfo()
     {
-        return array (  87 => 43,  84 => 42,  66 => 28,  61 => 26,  38 => 5,  35 => 4,  30 => 2,  11 => 1,);
+        return array (  91 => 44,  88 => 43,  70 => 29,  66 => 28,  61 => 26,  38 => 5,  35 => 4,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -133,6 +137,7 @@ class __TwigTemplate_d74c6834edaac34c5a3ce06584a64979b9b9960f27c0fc0d59caf9132b5
                 <input type='hidden' name='id_bloque' id='id_bloque' value='{{ db_bloque.id_bloque }}' />
                 <div class=\"form-group\">
                     <input class=\"form-control\" name=\"bloque\" id=\"bloque\" type=\"text\" placeholder=\"Ingrese el bloque horario\" value='{{ db_bloque.bloque }}' required/>
+                    <input class=\"form-control\" name=\"limit\" id=\"limit\" type=\"number\" placeholder=\"Ingrese el limite de ordenes\" value='{{ db_bloque.limite_q_programacion }}' required/>
                 </div>
                 <div class=\"panel-footer text-center\">
                   <button type=\"button\" id=\"update_bloque\" class=\"btn btn-default\">Grabar</button>

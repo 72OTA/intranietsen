@@ -1,0 +1,156 @@
+{% extends 'portal/portal' %}
+{% block appBody %}
+  <section class="content-header">
+    <h1>
+      Programacion Nielsen
+      <small>Confirmaciones</small>
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <form id="formmodorden" name="formmodorden">
+      <div class="content">
+        <div class="row">
+          <div class="form-group">
+            <div class="col-md-4">
+              <label for="textuser">Operador:</label><input type="text" name="textuser" id="textuser" class="form-control" value="{{ db_modorden.name}}">
+            </div>
+            <div class="col-md-4">
+              <label>Reg:</label><input type="text" name="textreg" id="textreg" class="form-control" value="{{db_modorden.reg}}">
+            </div>
+            <div class="col-md-4">
+              <label>Rut Cliente:</label><input type="text" name="textmodrutcliente" id="textmodrutcliente" class="form-control" value="{{db_modorden.rut_cliente}}">
+            </div>
+            <div class="col-md-4">
+              <label>ID Orden:</label><input type="text" name="textmodidorden" id="textmodidorden" class="form-control" value="{{db_modorden.n_orden}}">
+            </div>
+            <div class="col-md-4">
+              <label>FECHA:</label><input type="date" name="textmodfecha" id="textmodfecha" class="form-control" value="{{db_modorden.fecha_compromiso}}">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="box-title">
+              <label>BLOQUE</label>
+            </h4>
+            <div class="row">
+              {% set No = 1 %}
+              {% for b in db_bloque if false != db_bloque %}
+                {% if b.bloque == db_modorden.bloque %}
+                  <div class="col-md-2" style="border: 1px solid white">
+                    <input type="radio" name="rbmodbloque" onchange="cargarmodblo('{{b.bloque}}')" id="{{b.bloque}}" checked="checked">{{b.bloque}}
+                  </div>
+                {% else %}
+                  <div class="col-md-2" style="border: 1px solid white">
+                    <input type="radio" name="rbmodbloque" onchange="cargarmodblo('{{b.bloque}}')" id="{{b.bloque}}">{{b.bloque}}
+                  </div>
+                {% endif %}
+                {% set No = No + 1 %}
+              {% endfor %}
+            </div>
+            <h4 class="box-title">
+              <label>MOTIVO DEL LLAMADO</label>
+            </h4>
+            <div class="row">
+              {% set No = 1 %}
+              {% for m in db_motivo if false != db_motivo %}
+                {% if m.motivo == db_modorden.motivo %}
+                  <div class="col-md-1" style="border: 1px solid white">
+                    <input type="radio" name="rbmodmotivo" id="{{m.motivo}}" onchange="cargarmodmot('{{m.motivo}}')" checked="checked">{{m.motivo}}
+                  </div>
+                {% else %}
+                  <div class="col-md-1" style="border: 1px solid white">
+                    <input type="radio" name="rbmodmotivo" id="{{m.motivo}}" onchange="cargarmodmot('{{m.motivo}}')">{{m.motivo}}
+                  </div>
+                {% endif %}
+                {% set No = No + 1 %}
+              {% endfor %}
+            </div>
+            <div id="comunas" name="comuna">
+              <h4 class="box-title">
+                <label>COMUNA</label>
+              </h4>
+              <div class="row">
+                {% set No = 1 %}
+                {% for c in db_comuna if false != db_comuna %}
+                  {% if c.id_comuna == db_modorden.comuna %}
+                    <div class="col-md-1" style="border: 1px solid white">
+                      <input type="radio" name="rbmodcomuna" id="{{c.id_comuna}}" onchange="cargarmodcom('{{c.id_comuna}}')" checked="checked">{{c.id_comuna}}
+                    </div>
+                  {% else %}
+                    <div class="col-md-1" style="border: 1px solid white">
+                      <input type="radio" name="rbmodcomuna" id="{{c.id_comuna}}" onchange="cargarmodcom('{{c.id_comuna}}')">{{c.id_comuna}}
+                    </div>
+                  {% endif %}
+                  {% set No = No + 1 %}
+                {% endfor %}
+              </div>
+            </div>
+            <div id="actividad" name="actividad">
+              <h4 class="box-title">
+                <label>ACTIVIDAD</label>
+              </h4>
+              <div class="row">
+                {% set No = 1 %}
+                {% for a in db_actividad if false != db_actividad %}
+                  {% if a.actividad == db_modorden.actividad %}
+                    <div class="col-md-2" style="border: 1px solid white">
+                      <input type="radio" name="rbmodactividad" id="{{a.actividad}}" onchange="cargarmodact('{{a.actividad}}')" checked="checked">{{a.actividad}}
+                    </div>
+                  {% else %}
+                    <div class="col-md-2" style="border: 1px solid white">
+                      <input type="radio" name="rbmodactividad" id="{{a.actividad}}" onchange="cargarmodact('{{a.actividad}}')">{{a.actividad}}
+                    </div>
+                  {% endif %}
+                  {% set No = No + 1 %}
+                {% endfor %}
+              </div>
+            </div>
+            <div id="resultado" name="resultado">
+              <h4 class="box-title">
+                <label for="">RESULTADO</label>
+              </h4>
+              <div class="row">
+                <table id="tabla" name="tabla" class="table-bordered">
+                  {% set No = 1 %}
+                  {% for r in db_resultado if false != db_resultado %}
+                    {% if r.nombre == db_modorden.resultado %}
+                      <div class="col-md-3" style="border: 1px solid white">
+                        <input type="radio" name="rbmodresultado" id="{{r.nombre}}" onchange="cargarmodres('{{r.nombre}}')" checked="checked">
+                        <font size="4" checked="checked">{{r.nombre}}</font>
+                      </div>
+                    {% else %}
+                      <div class="col-md-3" style="border: 1px solid white">
+                        <input type="radio" name="rbmodresultado" id="{{r.nombre}}" onchange="cargarmodres('{{r.nombre}}')">
+                        <font size="4">{{r.nombre}}</font>
+                      </div>
+                    {% endif %}
+                    {% set No = No + 1 %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="observacion" name="observacion">
+          <label>OBSERVACION</label>
+          <input type="text" name="textmodobservacion" id="{{db_modorden.observacion}}" class="form-control" value="{{db_modorden.observacion}}">
+        </div>
+        <br>
+        <a data-toggle='tooltip' data-placement='top' name="modbtningresar" id="modbtningresar" class='btn btn-success btn-sm'>Modificar Orden
+        </a>
+        <input type="hidden" name="textmodactividad" id="textmodactividad" value="{{ db_modorden.actividad }}">
+        <input type="hidden" name="textmodbloque" id="textmodbloque" value="{{ db_modorden.bloque }}">
+        <input type="hidden" name="textmodmotivo" id="textmodmotivo" value="{{ db_modorden.motivo }}">
+        <input type="hidden" name="textmodcomuna" id="textmodcomuna" value="{{ db_modorden.comuna }}">
+        <input type="hidden" name="textmodresultado" id="textmodresultado" value="{{ db_modorden.resultado }}">
+        <input type="hidden" name="textmodid" id="textmodid" value="{{ db_modorden.operador }}">
+        <input type="hidden" name="ordenid" id="ordenid" value="{{ db_modorden.id_orden }}">
+      </div>
+    </section>
+  {% endblock %}
+  {% block appScript %}
+    <script src="views/app/js/confirmacion/confirmacion.js"></script>
+  {% endblock %}

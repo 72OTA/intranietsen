@@ -113,6 +113,23 @@ class __TwigTemplate_ce3eb5433fba0cf971370204138f476525b1d5dc11c496585b8ea3cf1c5
             </fieldset>
           </form>
         </div>
+        <div class=\"col-lg-3\">
+          <form>
+            <fieldset>
+            <legend>Resultado</legend>
+              <div style=\"background-color:#bfe28d;color:#fff\" class=\"small-box\">
+                <div class=\"inner\">
+                  <h3>Listar</h3>
+                  <p>Todos</p>
+                </div>
+                <div class=\"icon\">
+                  <i class=\"fa fa-user-plus\"></i>
+                </div>
+                  <a href=\"confirmacion/listar_resultado\" class=\"small-box-footer\" title=\"Ver Bloques\" data-toggle=\"tooltip\"><i class=\"fa fa-eye\"></i></a>
+              </div>
+            </fieldset>
+          </form>
+        </div>
       </div>
     </section>
     <!-- /.content -->
@@ -220,6 +237,23 @@ class __TwigTemplate_ce3eb5433fba0cf971370204138f476525b1d5dc11c496585b8ea3cf1c5
                   <i class=\"fa fa-user-plus\"></i>
                 </div>
                   <a href=\"confirmacion/listar_bloque\" class=\"small-box-footer\" title=\"Ver Bloques\" data-toggle=\"tooltip\"><i class=\"fa fa-eye\"></i></a>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class=\"col-lg-3\">
+          <form>
+            <fieldset>
+            <legend>Resultado</legend>
+              <div style=\"background-color:#bfe28d;color:#fff\" class=\"small-box\">
+                <div class=\"inner\">
+                  <h3>Listar</h3>
+                  <p>Todos</p>
+                </div>
+                <div class=\"icon\">
+                  <i class=\"fa fa-user-plus\"></i>
+                </div>
+                  <a href=\"confirmacion/listar_resultado\" class=\"small-box-footer\" title=\"Ver Bloques\" data-toggle=\"tooltip\"><i class=\"fa fa-eye\"></i></a>
               </div>
             </fieldset>
           </form>

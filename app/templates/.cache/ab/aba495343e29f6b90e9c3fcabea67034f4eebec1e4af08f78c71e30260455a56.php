@@ -1,14 +1,14 @@
 <?php
 
-/* confirmacion/confirmacion.twig */
-class __TwigTemplate_6f034f9fd7a21a040b9be4b78e6338fee6207edf87fa616119edaf2f7a260a05 extends Twig_Template
+/* confirmacion/programacion.twig */
+class __TwigTemplate_fc9403a2d55f047a6742577cf08b927a427879a09a2ccc3be037aec625ee4112 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("portal/portal", "confirmacion/confirmacion.twig", 1);
+        $this->parent = $this->loadTemplate("portal/portal", "confirmacion/programacion.twig", 1);
         $this->blocks = array(
             'appStylos' => array($this, 'block_appStylos'),
             'appBody' => array($this, 'block_appBody'),
@@ -255,13 +255,13 @@ class __TwigTemplate_6f034f9fd7a21a040b9be4b78e6338fee6207edf87fa616119edaf2f7a2
     public function block_appScript($context, array $blocks = array())
     {
         // line 105
-        echo "  <script src=\"views/app/js/rrhh/confirmacion.js\"></script>
+        echo "  <script src=\"views/app/js/confirmacion/confirmacion.js\"></script>
 ";
     }
 
     public function getTemplateName()
     {
-        return "confirmacion/confirmacion.twig";
+        return "confirmacion/programacion.twig";
     }
 
     public function isTraitable()
@@ -380,8 +380,8 @@ class __TwigTemplate_6f034f9fd7a21a040b9be4b78e6338fee6207edf87fa616119edaf2f7a2
   </section>
 {% endblock %}
 {% block appScript %}
-  <script src=\"views/app/js/rrhh/confirmacion.js\"></script>
+  <script src=\"views/app/js/confirmacion/confirmacion.js\"></script>
 {% endblock %}
-", "confirmacion/confirmacion.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\confirmacion\\confirmacion.twig");
+", "confirmacion/programacion.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\confirmacion\\programacion.twig");
     }
 }

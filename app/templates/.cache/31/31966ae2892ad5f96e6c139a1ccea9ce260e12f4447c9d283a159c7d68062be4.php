@@ -1,14 +1,14 @@
 <?php
 
-/* confirmacion/bloque/listar_bloque.twig */
-class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f013b9 extends Twig_Template
+/* confirmacion/resultado/listar_resultado.twig */
+class __TwigTemplate_e5e4e43b84c6229da942e759c30832b5f68494c78cb3763b3275e843c27ea516 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("portal/portal", "confirmacion/bloque/listar_bloque.twig", 1);
+        $this->parent = $this->loadTemplate("portal/portal", "confirmacion/resultado/listar_resultado.twig", 1);
         $this->blocks = array(
             'appStylos' => array($this, 'block_appStylos'),
             'appBody' => array($this, 'block_appBody'),
@@ -41,9 +41,9 @@ class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f
         echo "    <section class=\"content-header\">
         <h1>
             Confirmacion
-            <small>Listado de Bloque</small>
+            <small>Listado de Resultados</small>
 
-          <a class=\"btn btn-primary btn-social pull-right\" href=\"confirmacion/nuevo_bloque\" title=\"Agregar\" data-toggle=\"tooltip\">
+          <a class=\"btn btn-primary btn-social pull-right\" href=\"confirmacion/nuevo_resultado\" title=\"Agregar\" data-toggle=\"tooltip\">
             <i class=\"fa fa-plus\"></i> Agregar
           </a>
         </h1>
@@ -59,85 +59,104 @@ class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f
               <thead>
                 <tr>
                   <th>No</th>
-                \t<th>Bloque</th>
-                  <th>Limite Q.</th>
+                \t<th>Resultado</th>
+                \t<th>Cumplimiento</th>
+                \t<th>Grupo</th>
                 \t<th>Estado</th>
                   <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 ";
-        // line 34
-        $context["No"] = 1;
         // line 35
+        $context["No"] = 1;
+        // line 36
         echo "                ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["bloques_db"] ?? null));
+        $context['_seq'] = twig_ensure_traversable(($context["resultado_db"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
-            if ((false != ($context["bloques_db"] ?? null))) {
-                // line 36
+            if ((false != ($context["resultado_db"] ?? null))) {
+                // line 37
                 echo "                  <tr>
                     <td>";
-                // line 37
+                // line 38
                 echo twig_escape_filter($this->env, ($context["No"] ?? null), "html", null, true);
                 echo "</td>
                     <td>";
-                // line 38
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "bloque", array()), "html", null, true);
-                echo "</td>
-                    <td>";
                 // line 39
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "limite_q_programacion", array()), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "nombre", array()), "html", null, true);
                 echo "</td>
-                    <td>";
+                    ";
                 // line 40
+                if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "cumplimiento", array()) == 0)) {
+                    // line 41
+                    echo "                        <td> No Cumple</td>
+                    ";
+                } else {
+                    // line 43
+                    echo "                        <td>Cumple</td>
+                    ";
+                }
+                // line 45
+                echo "                    ";
+                if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "grupo", array()) == 0)) {
+                    // line 46
+                    echo "                        <td> No Confirmado</td>
+                    ";
+                } else {
+                    // line 48
+                    echo "                        <td>Confirmado</td>
+                    ";
+                }
+                // line 50
+                echo "                    <td>";
                 echo twig_escape_filter($this->env, twig_title_string_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "estado", array())), "html", null, true);
                 echo "</td>
 
                     <td class='center' width='80'>
-                      <a data-toggle='tooltip' data-placement='top' title='Modificar' class='btn btn-success btn-sm' href=\"confirmacion/editar_bloque/";
-                // line 43
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_bloque", array()), "html", null, true);
+                      <a data-toggle='tooltip' data-placement='top' title='Modificar' class='btn btn-success btn-sm' href=\"confirmacion/editar_resultado/";
+                // line 53
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_resultado", array()), "html", null, true);
                 echo "\">
                       <i class='glyphicon glyphicon-edit'></i>
                       </a>
 
                       ";
-                // line 47
+                // line 57
                 if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "estado", array()) == 0)) {
-                    // line 48
-                    echo "                          <a data-toggle='tooltip' data-placement='top' title='Bloqueado' class='btn btn-warning btn-sm' href=\"confirmacion/estado_bloque/";
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_bloque", array()), "html", null, true);
+                    // line 58
+                    echo "                          <a data-toggle='tooltip' data-placement='top' title='Bloqueado' class='btn btn-warning btn-sm' href=\"confirmacion/estado_resultado/";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_resultado", array()), "html", null, true);
                     echo "\">
                           <i class='glyphicon glyphicon-off'></i>
                           </a>
 
                       ";
                 } else {
-                    // line 53
-                    echo "                          <a data-toggle='tooltip' data-placement='top' title='Activo' class='btn btn-danger btn-sm' href=\"confirmacion/estado_bloque/";
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_bloque", array()), "html", null, true);
+                    // line 63
+                    echo "                          <a data-toggle='tooltip' data-placement='top' title='Activo' class='btn btn-danger btn-sm' href=\"confirmacion/estado_resultado/";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_resultado", array()), "html", null, true);
                     echo "\">
                           <i class='glyphicon glyphicon-check'></i>
                           </a>
 
                       ";
                 }
-                // line 58
+                // line 68
                 echo "
                     </td>
                   </tr>
                   ";
-                // line 61
+                // line 71
                 $context["No"] = (($context["No"] ?? null) + 1);
-                // line 62
+                // line 72
                 echo "                ";
             }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 63
+        // line 73
         echo "              </tbody>
             </table>
             </div>
@@ -150,10 +169,10 @@ class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f
 ";
     }
 
-    // line 73
+    // line 83
     public function block_appScript($context, array $blocks = array())
     {
-        // line 74
+        // line 84
         echo "    <!-- DATA TABES SCRIPT -->
     <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
     <script src=\"views/app/template/datatables/dataTables.bootstrap.min.js\" type=\"text/javascript\"></script>
@@ -186,7 +205,7 @@ class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f
 
     public function getTemplateName()
     {
-        return "confirmacion/bloque/listar_bloque.twig";
+        return "confirmacion/resultado/listar_resultado.twig";
     }
 
     public function isTraitable()
@@ -196,7 +215,7 @@ class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f
 
     public function getDebugInfo()
     {
-        return array (  157 => 74,  154 => 73,  141 => 63,  134 => 62,  132 => 61,  127 => 58,  118 => 53,  109 => 48,  107 => 47,  100 => 43,  94 => 40,  90 => 39,  86 => 38,  82 => 37,  79 => 36,  73 => 35,  71 => 34,  41 => 6,  38 => 5,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  176 => 84,  173 => 83,  160 => 73,  153 => 72,  151 => 71,  146 => 68,  137 => 63,  128 => 58,  126 => 57,  119 => 53,  112 => 50,  108 => 48,  104 => 46,  101 => 45,  97 => 43,  93 => 41,  91 => 40,  87 => 39,  83 => 38,  80 => 37,  74 => 36,  72 => 35,  41 => 6,  38 => 5,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -209,9 +228,9 @@ class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f
     <section class=\"content-header\">
         <h1>
             Confirmacion
-            <small>Listado de Bloque</small>
+            <small>Listado de Resultados</small>
 
-          <a class=\"btn btn-primary btn-social pull-right\" href=\"confirmacion/nuevo_bloque\" title=\"Agregar\" data-toggle=\"tooltip\">
+          <a class=\"btn btn-primary btn-social pull-right\" href=\"confirmacion/nuevo_resultado\" title=\"Agregar\" data-toggle=\"tooltip\">
             <i class=\"fa fa-plus\"></i> Agregar
           </a>
         </h1>
@@ -227,33 +246,43 @@ class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f
               <thead>
                 <tr>
                   <th>No</th>
-                \t<th>Bloque</th>
-                  <th>Limite Q.</th>
+                \t<th>Resultado</th>
+                \t<th>Cumplimiento</th>
+                \t<th>Grupo</th>
                 \t<th>Estado</th>
                   <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 {% set No = 1 %}
-                {% for d in bloques_db if false != bloques_db %}
+                {% for d in resultado_db if false != resultado_db %}
                   <tr>
                     <td>{{ No }}</td>
-                    <td>{{ d.bloque }}</td>
-                    <td>{{ d.limite_q_programacion }}</td>
+                    <td>{{ d.nombre }}</td>
+                    {% if d.cumplimiento == 0 %}
+                        <td> No Cumple</td>
+                    {% else %}
+                        <td>Cumple</td>
+                    {% endif %}
+                    {% if d.grupo == 0 %}
+                        <td> No Confirmado</td>
+                    {% else %}
+                        <td>Confirmado</td>
+                    {% endif %}
                     <td>{{ d.estado|raw|title }}</td>
 
                     <td class='center' width='80'>
-                      <a data-toggle='tooltip' data-placement='top' title='Modificar' class='btn btn-success btn-sm' href=\"confirmacion/editar_bloque/{{ d.id_bloque }}\">
+                      <a data-toggle='tooltip' data-placement='top' title='Modificar' class='btn btn-success btn-sm' href=\"confirmacion/editar_resultado/{{ d.id_resultado }}\">
                       <i class='glyphicon glyphicon-edit'></i>
                       </a>
 
                       {% if d.estado == 0 %}
-                          <a data-toggle='tooltip' data-placement='top' title='Bloqueado' class='btn btn-warning btn-sm' href=\"confirmacion/estado_bloque/{{ d.id_bloque }}\">
+                          <a data-toggle='tooltip' data-placement='top' title='Bloqueado' class='btn btn-warning btn-sm' href=\"confirmacion/estado_resultado/{{ d.id_resultado }}\">
                           <i class='glyphicon glyphicon-off'></i>
                           </a>
 
                       {% else %}
-                          <a data-toggle='tooltip' data-placement='top' title='Activo' class='btn btn-danger btn-sm' href=\"confirmacion/estado_bloque/{{ d.id_bloque }}\">
+                          <a data-toggle='tooltip' data-placement='top' title='Activo' class='btn btn-danger btn-sm' href=\"confirmacion/estado_resultado/{{ d.id_resultado }}\">
                           <i class='glyphicon glyphicon-check'></i>
                           </a>
 
@@ -302,6 +331,6 @@ class __TwigTemplate_92ee4221cb0f1ee92d679dd23d6976556aae693a96b892bc4d2b3a73f2f
     </script>
 
 {% endblock %}
-", "confirmacion/bloque/listar_bloque.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\confirmacion\\bloque\\listar_bloque.twig");
+", "confirmacion/resultado/listar_resultado.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\confirmacion\\resultado\\listar_resultado.twig");
     }
 }
