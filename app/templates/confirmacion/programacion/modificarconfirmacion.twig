@@ -36,7 +36,6 @@
               <label>BLOQUE</label>
             </h4>
             <div class="row">
-              {% set No = 1 %}
               {% for b in db_bloque if false != db_bloque %}
                 {% if b.bloque == db_modorden.bloque %}
                   <div class="col-md-2" style="border: 1px solid white">
@@ -47,14 +46,12 @@
                     <input type="radio" name="rbmodbloque" onchange="cargarmodblo('{{b.bloque}}')" id="{{b.bloque}}">{{b.bloque}}
                   </div>
                 {% endif %}
-                {% set No = No + 1 %}
               {% endfor %}
             </div>
             <h4 class="box-title">
               <label>MOTIVO DEL LLAMADO</label>
             </h4>
             <div class="row">
-              {% set No = 1 %}
               {% for m in db_motivo if false != db_motivo %}
                 {% if m.motivo == db_modorden.motivo %}
                   <div class="col-md-1" style="border: 1px solid white">
@@ -65,7 +62,6 @@
                     <input type="radio" name="rbmodmotivo" id="{{m.motivo}}" onchange="cargarmodmot('{{m.motivo}}')">{{m.motivo}}
                   </div>
                 {% endif %}
-                {% set No = No + 1 %}
               {% endfor %}
             </div>
             <div id="comunas" name="comuna">
@@ -73,7 +69,6 @@
                 <label>COMUNA</label>
               </h4>
               <div class="row">
-                {% set No = 1 %}
                 {% for c in db_comuna if false != db_comuna %}
                   {% if c.id_comuna == db_modorden.comuna %}
                     <div class="col-md-1" style="border: 1px solid white">
@@ -84,8 +79,13 @@
                       <input type="radio" name="rbmodcomuna" id="{{c.id_comuna}}" onchange="cargarmodcom('{{c.id_comuna}}')">{{c.id_comuna}}
                     </div>
                   {% endif %}
-                  {% set No = No + 1 %}
                 {% endfor %}
+                <div class="col-md-2" style="border: 1px solid white">
+                  <input type="text" name="textnodo" id="textnodo" class="form-control" placeholder="Nodo" value="{{ c.nodo }}">
+                </div>
+                <div class="col-md-2" style="border: 1px solid white">
+                  <input type="text" name="textsubnodo" id="textsubnodo" class="form-control" placeholder="Subnodo" value="{{ c.subnodo }}">
+                </div>
               </div>
             </div>
             <div id="actividad" name="actividad">
@@ -93,7 +93,6 @@
                 <label>ACTIVIDAD</label>
               </h4>
               <div class="row">
-                {% set No = 1 %}
                 {% for a in db_actividad if false != db_actividad %}
                   {% if a.actividad == db_modorden.actividad %}
                     <div class="col-md-2" style="border: 1px solid white">
@@ -104,7 +103,6 @@
                       <input type="radio" name="rbmodactividad" id="{{a.actividad}}" onchange="cargarmodact('{{a.actividad}}')">{{a.actividad}}
                     </div>
                   {% endif %}
-                  {% set No = No + 1 %}
                 {% endfor %}
               </div>
             </div>
@@ -114,7 +112,6 @@
               </h4>
               <div class="row">
                 <table id="tabla" name="tabla" class="table-bordered">
-                  {% set No = 1 %}
                   {% for r in db_resultado if false != db_resultado %}
                     {% if r.nombre == db_modorden.resultado %}
                       <div class="col-md-3" style="border: 1px solid white">
@@ -127,7 +124,6 @@
                         <font size="4">{{r.nombre}}</font>
                       </div>
                     {% endif %}
-                    {% set No = No + 1 %}
                   {% endfor %}
                 </table>
               </div>

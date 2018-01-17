@@ -40,6 +40,8 @@
                         <th>Bloque</th>
                         <th>Motivo</th>
                         <th>Comuna</th>
+                        <th>Nodo</th>
+                        <th>Subnodo</th>
                         <th>Actividad</th>
                         <th>Resultado</th>
                         <th>Observacion</th>
@@ -59,6 +61,8 @@
                           <td>{{o.bloque}}</td>
                           <td>{{o.motivo}}</td>
                           <td>{{o.comuna}}</td>
+                          <td>{{o.nodo}}</td>
+                          <td>{{o.subnodo}}</td>
                           <td>{{o.actividad}}</td>
                           <td>{{o.resultado}}</td>
                           <td>{{o.observacion}}</td>
@@ -103,6 +107,7 @@
   <script>
 
     $("#dataTables5").dataTable({
+      "scrollX": true,
       "language": {
         "search": "Buscar:",
         "zeroRecords": "No hay datos para mostrar",

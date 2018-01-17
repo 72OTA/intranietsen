@@ -176,9 +176,9 @@ class confirmacionController extends Controllers implements IControllers {
                 'fecha' => date('Y-m-d')
                  ));
                  break;
-                case "revisarconfirmaciones":
-                echo $this->template->render('confirmacion/programacion/revisarconfirmaciones', array(
-                'db_ordenes'=>(new Model\Mdlconfirmacion)->revisarconfirmaciones(date('Y-m-d'))
+                case "listar_ordenes":
+                echo $this->template->render('confirmacion/programacion/listar_ordenes', array(
+                'db_ordenes'=>(new Model\Mdlconfirmacion)->listar_ordenes(date('Y-m-d'))
                 ));
                 break;
                 case "modificarconfirmacion":

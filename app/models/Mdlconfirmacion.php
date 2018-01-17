@@ -408,7 +408,7 @@ public function carga_actividad(){
 
     return $this->db->query_select("select * from tblactividad where estado='1'");
 }
-public function revisarconfirmaciones($fecha){
+public function listar_ordenes($fecha){
 
   return $this->db->query_select("select * from tblordenes where fecha_dia='$fecha'");
 }
@@ -482,6 +482,8 @@ public function modificar_la_orden(){
   $modbloque=$http->request->get('textmodbloque');
   $modmotivo=$http->request->get('textmodmotivo');
   $modcomuna=$http->request->get('textmodcomuna');
+  $modnodo=$http->request->get('textmodnodo');
+  $modsubnodo=$http->request->get('textmodsubnodo');
   $modactividad=$http->request->get('textmodactividad');
   $modresultado=$http->request->get('textmodresultado');
   $modobservacion=$http->request->get('textmodobservacion');
@@ -489,12 +491,12 @@ public function modificar_la_orden(){
   $idorden=$http->request->get('ordenid');
 
 
-   if ($this->functions->e($modorden,$modfechacompromiso,$modrutcliente,$modcomuna,$modbloque,$modmotivo,$modactividad,$modresultado)){
+   if ($this->functions->e($modorden,$modfechacompromiso,$modrutcliente,$modcomuna,$modbloque,$modmotivo,$modactividad,$modresultado,$modsubnodo,$modnodo)){
       return array('success' => 0, 'message' => $modorden.$modfechacompromiso.$modrutcliente.$modcomuna.$modbloque.$modmotivo.$modactividad,$modresultado);
    }
    else{
       $this->db->query("UPDATE tblordenes set n_orden='$modorden', rut_cliente='$modrutcliente', fecha_compromiso='$modfechacompromiso', bloque='$modbloque', motivo='$modmotivo',
-      comuna='$modcomuna', actividad='$modactividad', resultado='$modresultado', observacion='$modobservacion', fecha_dia='$modfecha_dia'  WHERE id_orden='$idorden'");
+      comuna='$modcomuna', actividad='$modactividad', resultado='$modresultado', observacion='$modobservacion', fecha_dia='$modfecha_dia',nodo='$modnodo', subnodo='$modsubnodo'  WHERE id_orden='$idorden'");
       return array('success' => 1, 'message' => 'Datos Modificados');
       }
 }

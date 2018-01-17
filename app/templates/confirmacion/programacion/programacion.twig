@@ -36,26 +36,22 @@
               <label>BLOQUE</label>
             </h4>
             <div class="row">
-              {% set No = 1 %}
               {% for b in db_bloque if false != db_bloque %}
                 <div class="col-md-2" style="border: 1px solid white">
                   <input type="radio" name="rbbloque" onchange="cargarblo('{{b.bloque}}')" id="{{b.bloque}}">
                   <font size="4">{{b.bloque}}</font>
                 </div>
-                {% set No = No + 1 %}
               {% endfor %}
             </div>
             <h4 class="box-title">
               <label>MOTIVO DEL LLAMADO</label>
             </h4>
             <div class="row">
-              {% set No = 1 %}
               {% for m in db_motivo if false != db_motivo %}
-                <div class="col-md-1" style="border: 1px solid white">
+                <div class="col-md-2" style="border: 1px solid white">
                   <input type="radio" name="rbmotivo" id="{{m.motivo}}" onchange="cargarmot('{{m.motivo}}')">
                   <font size="4">{{m.motivo}}</font>
                 </div>
-                {% set No = No + 1 %}
               {% endfor %}
             </div>
             <div id="comunas" name="comuna">
@@ -63,14 +59,18 @@
                 <label>COMUNA</label>
               </h4>
               <div class="row">
-                {% set No = 1 %}
                 {% for c in db_comuna if false != db_comuna %}
                   <div class="col-md-2" style="border: 1px solid white">
                     <input type="radio" name="rbcomuna" id="{{c.id_comuna}}" onchange="cargarcom('{{c.id_comuna}}')">
                     <font size="4">{{c.id_comuna}}</font>
                   </div>
-                  {% set No = No + 1 %}
                 {% endfor %}
+                <div class="col-md-2" style="border: 1px solid white">
+                  <input type="text" name="textnodo" id="textnodo" class="form-control" placeholder="Nodo">
+                </div>
+                <div class="col-md-2" style="border: 1px solid white">
+                  <input type="text" name="textsubnodo" id="textsubnodo" class="form-control" placeholder="Subnodo">
+                </div>
               </div>
             </div>
             <div id="actividad" name="actividad">
@@ -78,13 +78,11 @@
                 <label>ACTIVIDAD</label>
               </h4>
               <div class="row">
-                {% set No = 1 %}
                 {% for a in db_actividad if false != db_actividad %}
                   <div class="col-md-2" style="border: 1px solid white">
                     <input type="radio" name="rbactividad" id="{{a.actividad}}" onchange="cargaract('{{a.actividad}}')">
                     <font size="4">{{a.actividad}}</font>
                   </div>
-                  {% set No = No + 1 %}
                 {% endfor %}
               </div>
             </div>
@@ -92,16 +90,12 @@
               <h4 class="box-title">
                 <label for="">RESULTADO</label>
               </h4>
-              <table id="tabla" name="tabla" class="table table-bordered">
-                {% set No = 1 %}
-                {% for r in db_resultado if false != db_resultado %}
-                  <div class="col-md-3" style="border: 1px solid white">
-                    <input type="radio" name="rbresultado" id="{{r.nombre}}" onchange="cargarres('{{r.nombre}}')">
-                    <font size="4">{{r.nombre}}</font>
-                  </div>
-                  {% set No = No + 1 %}
-                {% endfor %}
-              </table>
+              {% for r in db_resultado if false != db_resultado %}
+                <div class="col-md-3" style="border: 1px solid white">
+                  <input type="radio" name="rbresultado" id="{{r.nombre}}" onchange="cargarres('{{r.nombre}}')">
+                  <font size="4">{{r.nombre}}</font>
+                </div>
+              {% endfor %}
             </div>
           </div>
         </div>

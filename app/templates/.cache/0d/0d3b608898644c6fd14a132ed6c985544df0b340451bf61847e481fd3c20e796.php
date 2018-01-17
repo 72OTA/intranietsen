@@ -1,14 +1,14 @@
 <?php
 
-/* confirmacion/programacion/revisarconfirmaciones.twig */
-class __TwigTemplate_6079f87e68604a9069d367b3634bba993b860084d1607407f865cfe41b2459d2 extends Twig_Template
+/* confirmacion/programacion/listar_ordenes.twig */
+class __TwigTemplate_a91a627c12cb82cc28e0c2d2fa48268bce4798611c278c81b51da9f2705df666 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("portal/portal", "confirmacion/programacion/revisarconfirmaciones.twig", 1);
+        $this->parent = $this->loadTemplate("portal/portal", "confirmacion/programacion/listar_ordenes.twig", 1);
         $this->blocks = array(
             'appStylos' => array($this, 'block_appStylos'),
             'appBody' => array($this, 'block_appBody'),
@@ -199,7 +199,7 @@ class __TwigTemplate_6079f87e68604a9069d367b3634bba993b860084d1607407f865cfe41b2
   </section>
   ";
         // line 98
-        $this->loadTemplate("confirmacion/programacion/eliminar", "confirmacion/programacion/revisarconfirmaciones.twig", 98)->display($context);
+        $this->loadTemplate("confirmacion/programacion/eliminar", "confirmacion/programacion/listar_ordenes.twig", 98)->display($context);
     }
 
     // line 100
@@ -215,6 +215,7 @@ class __TwigTemplate_6079f87e68604a9069d367b3634bba993b860084d1607407f865cfe41b2
   <script>
 
     \$(\"#dataTables5\").dataTable({
+      \"scrollX\": true,
       \"language\": {
         \"search\": \"Buscar:\",
         \"zeroRecords\": \"No hay datos para mostrar\",
@@ -238,7 +239,7 @@ class __TwigTemplate_6079f87e68604a9069d367b3634bba993b860084d1607407f865cfe41b2
 
     public function getTemplateName()
     {
-        return "confirmacion/programacion/revisarconfirmaciones.twig";
+        return "confirmacion/programacion/listar_ordenes.twig";
     }
 
     public function isTraitable()
@@ -362,6 +363,7 @@ class __TwigTemplate_6079f87e68604a9069d367b3634bba993b860084d1607407f865cfe41b2
   <script>
 
     \$(\"#dataTables5\").dataTable({
+      \"scrollX\": true,
       \"language\": {
         \"search\": \"Buscar:\",
         \"zeroRecords\": \"No hay datos para mostrar\",
@@ -381,6 +383,6 @@ class __TwigTemplate_6079f87e68604a9069d367b3634bba993b860084d1607407f865cfe41b2
     });
   </script>
 {% endblock %}
-", "confirmacion/programacion/revisarconfirmaciones.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\confirmacion\\programacion\\revisarconfirmaciones.twig");
+", "confirmacion/programacion/listar_ordenes.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\confirmacion\\programacion\\listar_ordenes.twig");
     }
 }
