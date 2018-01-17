@@ -1,0 +1,54 @@
+{% extends 'portal/portal' %}
+{% block appStylos %}
+{% endblock %}
+{% block appBody %}
+    <section class="content-header">
+        <h1>
+            Comunas
+            <small>Editar</small>
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="confirmacion/mantenedores_crud_masters">Mantenedores</a></li>
+        <li><a href="confirmacion/listar_comunas">Listado de Comunas</a></li>
+        <li class="active">Editar Comuna</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-primary">
+            <form id="editar_nodo_form"  action="" method="POST">
+              <div class="box-body col-sm-4"></div>
+              <div class="box-body col-sm-4">
+                <input type='hidden' name='id_nodo' id='id_nodo' value='{{ db_nodo.id_nodo }}' />
+                <div class="form-group">
+                    <input class="form-control" name="nodo" id="nodo" type="text" placeholder="Nombre del nodo" value='{{ db_nodo.nodo }}' required/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="subnodo" id="subnodo" type="text" placeholder="Nombre del subnodo" value='{{ db_nodo.subnodo }}' required/>
+                </div>
+                <div class="form-group">
+                    <select id="comuna" name="comuna" class="form-control">
+                          {% for d in comuna_db if false != comuna_db %}
+                            <option value="{{ d.id_comuna }}">{{ d.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="panel-footer text-center">
+                  <button type="button" id="update_nodo" class="btn btn-default">Grabar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+{% block appScript %}
+    <script src="views/app/js/coordinacion/coordinacion.js"></script>
+{% endblock %}

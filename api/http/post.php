@@ -439,6 +439,26 @@ $app->post('/editar_resultado', function() use($app) {
 
     return $app->json($e->editar_resultado());
 });
+/**
+    * Registra nuevo nodo
+    *
+    * @return json
+*/
+$app->post('/registra_nuevo_nodo', function() use($app) {
+    $e = new Model\Mdlcoordinacion;
+
+    return $app->json($e->registra_nuevo_nodo());
+});
+/**
+    * Modificar nodo
+    *
+    * @return json
+*/
+$app->post('/editar_nodo', function() use($app) {
+    $e = new Model\Mdlcoordinacion;
+
+    return $app->json($e->editar_nodo());
+});
 // -----------------------------------------------------------------------------
 /**
     * Importar tecnico

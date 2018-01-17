@@ -1,0 +1,97 @@
+{% extends 'portal/portal' %}
+{% block appStylos %}
+  <link rel="stylesheet" href="views/app/template/datatables/dataTables.bootstrap.css">
+{% endblock %}
+{% block appBody %}
+    <section class="content-header">
+        <h1>
+            Coordinacion
+            <small>Listado de Nodos</small>
+
+          <a class="btn btn-primary btn-social pull-right" href="coordinacion/nuevo_nodo" title="Agregar" data-toggle="tooltip">
+            <i class="fa fa-plus"></i> Agregar
+          </a>
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-primary">
+            <div class="box-body">
+            <table id="dataTables1" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Nodo</th>
+                  <th>SubNodo</th>
+                	<th>Comuna</th>
+                	<th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for d in nodo_db if false != nodo_db %}
+                  <tr>
+                    <td>{{ d.nodo }}</td>
+                    <td>{{ d.subnodo }}</td>
+                    <td>{{ d.comuna }}</td>
+                    <td>{{ d.estado|raw|title }}</td>
+
+                    <td class='center' width='80'>
+                      <a data-toggle='tooltip' data-placement='top' title='Modificar' class='btn btn-success btn-sm' href="coordinacion/editar_nodo/{{ d.id_nodo }}">
+                      <i class='glyphicon glyphicon-edit'></i>
+                      </a>
+
+                      {% if d.estado == 0 %}
+                          <a data-toggle='tooltip' data-placement='top' title='Bloqueado' class='btn btn-warning btn-sm' href="coordinacion/estado_nodo/{{ d.id_nodo }}">
+                          <i class='glyphicon glyphicon-off'></i>
+                          </a>
+
+                      {% else %}
+                          <a data-toggle='tooltip' data-placement='top' title='Activo' class='btn btn-danger btn-sm' href="coordinacion/estado_nodo/{{ d.id_nodo }}">
+                          <i class='glyphicon glyphicon-check'></i>
+                          </a>
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+{% block appScript %}
+    <!-- DATA TABES SCRIPT -->
+    <script src="views/app/template/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="views/app/template/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+
+    <script src="views/app/js/coordinacion/coordinacion.js"></script>
+
+    <script>
+     $("#dataTables1").dataTable({
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No hay datos para mostrar",
+                    "info":"Mostrando _END_ Registros, de un total de _TOTAL_ ",
+                    "loadingRecords": "Cargando...",
+                    "processing":"Procesando...",
+                    "infoEmpty":"No hay entradas para mostrar",
+                    "lengthMenu": "Mostrar _MENU_ Filas",
+                    "paginate":{
+                      "first":"Primera",
+                      "last":"Ultima",
+                      "next":"Siguiente",
+                      "previous":"Anterior",
+                    }
+                              },
+                "autoWidth": true
+            });
+    </script>
+
+{% endblock %}
