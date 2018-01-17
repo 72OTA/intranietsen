@@ -138,7 +138,7 @@ class __TwigTemplate_4f93fbe698f7b2e943f184a133c02c84600e3c8f9465fec420a807ee214
                 // line 61
                 if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["o"], "operador", array()) == twig_get_attribute($this->env, $this->getSourceContext(), ($context["owner_user"] ?? null), 0, array(), "array"))) {
                     // line 62
-                    echo "                              <a data-toggle='tooltip' data-placement='top' id=\"btnmodificar\" name=\"btnmodificar\" title='Modificar' class='btn btn-warning btn-sm' href=\"confirmacion/modificarconfirmacion/";
+                    echo "                              <a data-toggle='tooltip' data-placement='top' id=\"btnmodificar\" name=\"btnmodificar\" title='Modificar' class='btn btn-warning btn-sm' href=\"confirmacion/editar_confirmacion/";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["o"], "n_orden", array()), "html", null, true);
                     echo "\">
                                 <i class='glyphicon glyphicon-edit'></i>
@@ -299,7 +299,7 @@ class __TwigTemplate_4f93fbe698f7b2e943f184a133c02c84600e3c8f9465fec420a807ee214
                           <td>{{o.observacion}}</td>
                           <td>
                             {% if o.operador == owner_user[0] %}
-                              <a data-toggle='tooltip' data-placement='top' id=\"btnmodificar\" name=\"btnmodificar\" title='Modificar' class='btn btn-warning btn-sm' href=\"confirmacion/modificarconfirmacion/{{o.n_orden}}\">
+                              <a data-toggle='tooltip' data-placement='top' id=\"btnmodificar\" name=\"btnmodificar\" title='Modificar' class='btn btn-warning btn-sm' href=\"confirmacion/editar_confirmacion/{{o.n_orden}}\">
                                 <i class='glyphicon glyphicon-edit'></i>
                               </a>
                             {% else %}

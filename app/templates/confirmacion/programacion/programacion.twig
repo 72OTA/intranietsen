@@ -92,7 +92,7 @@
               </h4>
               {% for r in db_resultado if false != db_resultado %}
                 <div class="col-md-3" style="border: 1px solid white">
-                  <input type="radio" name="rbresultado" id="{{r.nombre}}" onchange="cargarres('{{r.nombre}}')">
+                  <input type="radio" name="rbresultado" id="{{r.nombre}}" onchange="cargarres('{{r.id_resultado}}','{{r.cumplimiento}}')">
                   <font size="4">{{r.nombre}}</font>
                 </div>
               {% endfor %}

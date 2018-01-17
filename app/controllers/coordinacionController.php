@@ -46,6 +46,14 @@ class coordinacionController extends Controllers implements IControllers {
           echo $this->template->render('coordinacion/listar_coordinadores', array(
           'menu_op' => $op
           ));
+            break;
+            case "asignar_comuna":
+            echo $this->template->render('coordinacion/asignar_comuna/asignar_comuna', array(
+            'menu_op' => $op,
+            'ejecutivos' => (new Model\Mdlcoordinacion)->getejecutivos()
+            ));
+              break;
+
           // -------------------------------------------------------------------------------------------------------------------------------------------------------
           case 'listar_nodo':
                 echo $this->template->render('coordinacion/nodo/listar_nodo', array(

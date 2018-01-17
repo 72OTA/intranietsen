@@ -219,7 +219,9 @@ class __TwigTemplate_b2b0fdc246f8d2ddbe0ad90f74a396bf2703728988b0455f4e3cf598df4
                 // line 95
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["r"], "nombre", array()), "html", null, true);
                 echo "\" onchange=\"cargarres('";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["r"], "nombre", array()), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["r"], "id_resultado", array()), "html", null, true);
+                echo "','";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["r"], "cumplimiento", array()), "html", null, true);
                 echo "')\">
                   <font size=\"4\">";
                 // line 96
@@ -281,7 +283,7 @@ class __TwigTemplate_b2b0fdc246f8d2ddbe0ad90f74a396bf2703728988b0455f4e3cf598df4
 
     public function getDebugInfo()
     {
-        return array (  268 => 123,  265 => 122,  255 => 116,  236 => 99,  226 => 96,  220 => 95,  217 => 94,  212 => 93,  204 => 87,  194 => 84,  188 => 83,  185 => 82,  180 => 81,  165 => 68,  155 => 65,  149 => 64,  146 => 63,  141 => 62,  133 => 56,  123 => 53,  117 => 52,  114 => 51,  109 => 50,  102 => 45,  92 => 42,  86 => 41,  83 => 40,  78 => 39,  62 => 28,  47 => 16,  32 => 3,  29 => 2,  11 => 1,);
+        return array (  270 => 123,  267 => 122,  257 => 116,  238 => 99,  228 => 96,  220 => 95,  217 => 94,  212 => 93,  204 => 87,  194 => 84,  188 => 83,  185 => 82,  180 => 81,  165 => 68,  155 => 65,  149 => 64,  146 => 63,  141 => 62,  133 => 56,  123 => 53,  117 => 52,  114 => 51,  109 => 50,  102 => 45,  92 => 42,  86 => 41,  83 => 40,  78 => 39,  62 => 28,  47 => 16,  32 => 3,  29 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -380,7 +382,7 @@ class __TwigTemplate_b2b0fdc246f8d2ddbe0ad90f74a396bf2703728988b0455f4e3cf598df4
               </h4>
               {% for r in db_resultado if false != db_resultado %}
                 <div class=\"col-md-3\" style=\"border: 1px solid white\">
-                  <input type=\"radio\" name=\"rbresultado\" id=\"{{r.nombre}}\" onchange=\"cargarres('{{r.nombre}}')\">
+                  <input type=\"radio\" name=\"rbresultado\" id=\"{{r.nombre}}\" onchange=\"cargarres('{{r.id_resultado}}','{{r.cumplimiento}}')\">
                   <font size=\"4\">{{r.nombre}}</font>
                 </div>
               {% endfor %}

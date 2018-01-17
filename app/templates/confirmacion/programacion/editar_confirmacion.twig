@@ -81,10 +81,10 @@
                   {% endif %}
                 {% endfor %}
                 <div class="col-md-2" style="border: 1px solid white">
-                  <input type="text" name="textnodo" id="textnodo" class="form-control" placeholder="Nodo" value="{{ c.nodo }}">
+                  <input type="text" name="textnodo" id="textnodo" class="form-control"value="{{ db_modorden.nodo }}">
                 </div>
                 <div class="col-md-2" style="border: 1px solid white">
-                  <input type="text" name="textsubnodo" id="textsubnodo" class="form-control" placeholder="Subnodo" value="{{ c.subnodo }}">
+                  <input type="text" name="textsubnodo" id="textsubnodo" class="form-control"value="{{ db_modorden.subnodo }}">
                 </div>
               </div>
             </div>
@@ -113,14 +113,14 @@
               <div class="row">
                 <table id="tabla" name="tabla" class="table-bordered">
                   {% for r in db_resultado if false != db_resultado %}
-                    {% if r.nombre == db_modorden.resultado %}
+                    {% if r.id_resultado == db_modorden.resultado %}
                       <div class="col-md-3" style="border: 1px solid white">
-                        <input type="radio" name="rbmodresultado" id="{{r.nombre}}" onchange="cargarmodres('{{r.nombre}}')" checked="checked">
+                        <input type="radio" name="rbmodresultado" id="{{r.id_resultado}}" onchange="cargarmodres('{{r.id_resultado}}')" checked="checked">
                         <font size="4" checked="checked">{{r.nombre}}</font>
                       </div>
                     {% else %}
                       <div class="col-md-3" style="border: 1px solid white">
-                        <input type="radio" name="rbmodresultado" id="{{r.nombre}}" onchange="cargarmodres('{{r.nombre}}')">
+                        <input type="radio" name="rbmodresultado" id="{{r.nombre}}" onchange="cargarmodres('{{r.id_resultado}}')">
                         <font size="4">{{r.nombre}}</font>
                       </div>
                     {% endif %}

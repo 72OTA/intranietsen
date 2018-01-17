@@ -181,9 +181,9 @@ class confirmacionController extends Controllers implements IControllers {
                 'db_ordenes'=>(new Model\Mdlconfirmacion)->listar_ordenes(date('Y-m-d'))
                 ));
                 break;
-                case "modificarconfirmacion":
+                case "editar_confirmacion":
                   if($this->isset_id and false !== ($orden=(new Model\Mdlconfirmacion)->get_orden_byId($router->getId(true)))){
-                     echo $this->template->render('confirmacion/programacion/modificarconfirmacion', array(
+                     echo $this->template->render('confirmacion/programacion/editar_confirmacion', array(
                     'db_modorden'=>$orden[0],
                     'db_motivo'=>(new Model\Mdlconfirmacion)->carga_motivo(),
                     'db_bloque'=>(new Model\Mdlconfirmacion)->carga_bloque(),

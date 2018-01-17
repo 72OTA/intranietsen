@@ -50,7 +50,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% set No = 1 %}
                       {% for o in db_ordenes if false != db_ordenes %}
                         <tr>
                           <td>{{ o.n_orden|raw|title }}</td>
@@ -64,11 +63,11 @@
                           <td>{{o.nodo}}</td>
                           <td>{{o.subnodo}}</td>
                           <td>{{o.actividad}}</td>
-                          <td>{{o.resultado}}</td>
+                          <td>{{o.nombre}}</td>
                           <td>{{o.observacion}}</td>
                           <td>
                             {% if o.operador == owner_user[0] %}
-                              <a data-toggle='tooltip' data-placement='top' id="btnmodificar" name="btnmodificar" title='Modificar' class='btn btn-warning btn-sm' href="confirmacion/modificarconfirmacion/{{o.n_orden}}">
+                              <a data-toggle='tooltip' data-placement='top' id="btnmodificar" name="btnmodificar" title='Modificar' class='btn btn-warning btn-sm' href="confirmacion/editar_confirmacion/{{o.n_orden}}">
                                 <i class='glyphicon glyphicon-edit'></i>
                               </a>
                             {% else %}
@@ -76,11 +75,7 @@
                                 <i class='glyphicon glyphicon-edit'></i>
                               </a>
                             {% endif %}
-                            <a data-placement='top' name="btneliminar" id="btneliminar" title="Eliminar" data-toggle="modal" data-target="#modaleliminar" onclick="asignardato({{o.id_orden}})" class='btn btn-danger btn-sm'>
-                              <i class='glyphicon glyphicon-remove'></i>
-                            </a>
                           </tr>
-                          {% set No = No + 1 %}
                         {% endfor %}
                       </td>
                       <input type="text" class="at" name="texteliminar" id="texteliminar">

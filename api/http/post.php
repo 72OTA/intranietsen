@@ -459,6 +459,26 @@ $app->post('/editar_nodo', function() use($app) {
 
     return $app->json($e->editar_nodo());
 });
+/**
+    * select_ejecutivo
+    *
+    * @return json
+*/
+$app->post('/select_ejecutivo', function() use($app) {
+    $e = new Model\Mdlcoordinacion;
+
+    return $app->json($e->select_ejecutivo());
+});
+/**
+    * traer_ejecutivos
+    *
+    * @return json
+*/
+$app->post('/traer_ejecutivos', function() use($app) {
+    $e = new Model\Mdlcoordinacion;
+
+    return $app->json($e->traer_ejecutivos());
+});
 // -----------------------------------------------------------------------------
 /**
     * Importar tecnico
@@ -473,7 +493,6 @@ return $app->json($u->cargar_excel());
 });
 
 
-// HECTORelfather
 $app->post('/ingresar_orden', function() use($app) {
 
 

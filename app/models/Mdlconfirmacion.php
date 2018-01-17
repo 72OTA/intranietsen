@@ -410,7 +410,9 @@ public function carga_actividad(){
 }
 public function listar_ordenes($fecha){
 
-  return $this->db->query_select("select * from tblordenes where fecha_dia='$fecha'");
+  $carusu=(new Model\Users)->getOwnerUser();
+  $usuario=$carusu['id_user'];
+  return $this->db->query_select("select tblordenes.*,tblresultado.nombre, users.name from  tblresultado inner join tblordenes on tblresultado.id_resultado=tblordenes.resultado inner join users on tblordenes.operador=users.id_user where tblordenes.fecha_dia='$fecha' and users.id_user='$usuario'");
 }
 
 
@@ -424,6 +426,8 @@ public function ingresar_orden(){
   $reg=$http->request->get('textreg');
   $rutcliente=$http->request->get('textrutcliente');
   $fechacompromiso=$http->request->get('textfecha');
+  $nodo=$http->request->get('textnodo');
+  $subnodo=$http->request->get('textsubnodo');
   $bloque=$http->request->get('textbloque');
   $motivo=$http->request->get('textmotivo');
   $comuna=$http->request->get('textcomuna');
@@ -432,7 +436,7 @@ public function ingresar_orden(){
   $observacion=$http->request->get('textobservacion');
   $fecha_dia=date('Y-m-d');
 
-  if ($this->functions->e($orden, $reg,$rutcliente,$fechacompromiso,$bloque,$motivo,$comuna,$actividad,$resultado,$observacion)) {
+  if ($this->functions->e($orden, $reg,$rutcliente,$fechacompromiso,$bloque,$motivo,$comuna,$actividad,$resultado,$observacion,$subnodo,$nodo)) {
        return array('success' => 0, 'message' => 'Debe ingresar todos los campos');
     }else {
 
@@ -447,6 +451,8 @@ public function ingresar_orden(){
                 'fecha_compromiso'=>$fechacompromiso,
                 'bloque'=>$bloque,
                 'motivo'=>$motivo,
+                'nodo' => $nodo,
+                'subnodo' => $subnodo,
                 'comuna'=>$comuna,
                 'actividad'=>$actividad,
                 'resultado'=>$resultado,

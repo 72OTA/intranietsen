@@ -13,8 +13,9 @@ document.formorden.textactividad.value=actividad;
 function cargarcom(comuna){
 document.formorden.textcomuna.value=comuna;
 }
-function cargarres(resultado){
+function cargarres(resultado,cumplimiento){
 document.formorden.textresultado.value=resultado;
+document.formorden.textcumplimiento.value=cumplimiento;
 }
 function cargarmodblo(modbloque){
 document.formmodorden.textmodbloque.value=modbloque;
