@@ -185,15 +185,13 @@ class __TwigTemplate_a91a627c12cb82cc28e0c2d2fa48268bce4798611c278c81b51da9f2705
       </div>
     </div>
   </section>
-  ";
-        // line 93
-        $this->loadTemplate("confirmacion/programacion/eliminar", "confirmacion/programacion/listar_ordenes.twig", 93)->display($context);
+";
     }
 
-    // line 95
+    // line 94
     public function block_appScript($context, array $blocks = array())
     {
-        // line 96
+        // line 95
         echo "
   <script src=\"views/app/template/datatables/jquery.dataTables.min.js\" type=\"text/javascript\"></script>
   <script src=\"views/app/template/datatables/dataTables.bootstrap.min.js\" type=\"text/javascript\"></script>
@@ -237,7 +235,7 @@ class __TwigTemplate_a91a627c12cb82cc28e0c2d2fa48268bce4798611c278c81b51da9f2705
 
     public function getDebugInfo()
     {
-        return array (  197 => 96,  194 => 95,  190 => 93,  175 => 80,  167 => 78,  161 => 74,  153 => 70,  151 => 69,  146 => 67,  142 => 66,  138 => 65,  134 => 64,  130 => 63,  126 => 62,  122 => 61,  118 => 60,  114 => 59,  110 => 58,  106 => 57,  102 => 56,  98 => 55,  95 => 54,  90 => 53,  46 => 11,  43 => 10,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  195 => 95,  192 => 94,  175 => 80,  167 => 78,  161 => 74,  153 => 70,  151 => 69,  146 => 67,  142 => 66,  138 => 65,  134 => 64,  130 => 63,  126 => 62,  122 => 61,  118 => 60,  114 => 59,  110 => 58,  106 => 57,  102 => 56,  98 => 55,  95 => 54,  90 => 53,  46 => 11,  43 => 10,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -334,7 +332,6 @@ class __TwigTemplate_a91a627c12cb82cc28e0c2d2fa48268bce4798611c278c81b51da9f2705
       </div>
     </div>
   </section>
-  {% include 'confirmacion/programacion/eliminar' %}
 {% endblock %}
 {% block appScript %}
 

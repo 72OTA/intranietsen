@@ -27,7 +27,7 @@ class confirmacionController extends Controllers implements IControllers {
     public function __construct(IRouter $router) {
         parent::__construct($router,array(
             'users_logged' => true,
-            'access_menu' => ['id_menu' => 2, 'access' => true]
+            'access_menu' => ['id_menu' => 1, 'access' => true]
         ));
         global $config;
         $op = '1';
@@ -181,6 +181,12 @@ class confirmacionController extends Controllers implements IControllers {
                 'db_ordenes'=>(new Model\Mdlconfirmacion)->listar_ordenes(date('Y-m-d'))
                 ));
                 break;
+                case "listar_allorden":
+                echo $this->template->render('confirmacion/programacion/listar_allorden', array(
+                'menu_op' => $op,
+                'db_todas'=>(new Model\Mdlconfirmacion)->listar_todas_ordenes(date('Y-m-d'))
+                ));
+                break;
                 case "editar_confirmacion":
                   if($this->isset_id and false !== ($orden=(new Model\Mdlconfirmacion)->get_orden_byId($router->getId(true)))){
                      echo $this->template->render('confirmacion/programacion/editar_confirmacion', array(
@@ -189,10 +195,16 @@ class confirmacionController extends Controllers implements IControllers {
                     'db_bloque'=>(new Model\Mdlconfirmacion)->carga_bloque(),
                     'db_comuna'=>(new Model\Mdlconfirmacion)->carga_comunas(),
                     'db_actividad'=>(new Model\Mdlconfirmacion)->carga_actividad(),
-                    'db_resultado'=>(new Model\Mdlconfirmacion)->carga_resultado(),
+                    'db_resultado'=>(new Model\Mdlconfirmacion)->carga_resultado()
                      ));
-                }
-                break;
+                   }
+                 break;
+                 case "listar_ejecutivos":
+                  echo $this->template->render('confirmacion/programacion/listar_ejecutivos', array(
+                  'menu_op'=>$op,
+                  'db_ejecutivos'=>(new Model\Mdlconfirmacion)->listar_ejecutivos()
+                  ));
+               break;
         // -------------------------------------------------------------------------------------------------------------------------------------------------------
           default:
             echo $this->template->render('confirmacion/confirmardefault', array(

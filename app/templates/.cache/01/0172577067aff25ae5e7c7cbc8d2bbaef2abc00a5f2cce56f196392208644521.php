@@ -73,6 +73,6 @@ class __TwigTemplate_e6942fc7f862125dd46315baa58f3ad32da737547cff2d7acb1e9629ef7
     </div>
   </div>
 </div>
-", "administracion/reset_pass_user.twig", "C:\\xampp\\htdocs\\proyectos\\login\\app\\templates\\administracion\\reset_pass_user.twig");
+", "administracion/reset_pass_user.twig", "C:\\xampp\\htdocs\\intranietsen\\app\\templates\\administracion\\reset_pass_user.twig");
     }
 }
