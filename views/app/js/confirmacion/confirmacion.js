@@ -151,14 +151,22 @@ $('#modbtningresar').click(function(e){
   execute_accion_confirmacion("post","modificar_la_orden",'formmodorden','redirect', 'confirmacion/listar_ordenes');
 });
 function asignardato(ordeneliminar){
-$('#texteliminar').val(ordeneliminar);
+$('#textlisteliminar').val(ordeneliminar);
+if (window.confirm("¿Está seguro que desea eliminar el registro seleccionado?")) {
+      $.ajax({
+          type : 'POST',
+          url : 'api/eliminarorden',
+          data : $('#formordenes').serialize(),
+          success : function(json) {
+          if ( json.success == 1 ){
+              msg_box_alert(1,'Eliminar Ausencia',json.message,'reload');
+          }else{
+              msg_box_alert(0,'Eliminar Ausencia',json.message);
+          }
+      },
+          error : function(xhr, status) {
+              msg_box_alert(99,title,xhr.responseText);
+          }
+      });
+  }
 }
-
-$('#btneliminarmodal').click(function(e){
-  e.defaultPrevented;
-  var clave=$('#textpassmodal').val();
-  $('#textpass').val(clave);
-
-  execute_accion_confirmacion("post","eliminarorden",'formrevisar','reload');
-
-});

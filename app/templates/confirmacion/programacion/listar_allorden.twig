@@ -12,13 +12,7 @@
     <h4>
       <i class="fa fa-user"></i>
       CONFIRMACIONES
-      <small>Revisar Confirmaciones</small>
-
-      <a class="btn btn-primary btn-social pull-right" href="confirmacion/programacion" title="Agregar" data-toggle="tooltip">
-        <i class="fa fa-plus"></i>
-        Confirmacion
-      </a>
-
+      <small>Ordenes</small>
     </h4>
   </section>
   <section class="content">
@@ -28,8 +22,8 @@
           <section class="content">
             <div class="row">
               <div class="col-md-12">
-                <form id="formrevisar" name="formrevisar">
-                  <table id="dataTables5" name="dataTables5" class="table table-bordered">
+                <form id="formordenes" name="formordenes">
+                  <table id="dataordenes" name="dataordenes" class="table table-bordered">
                     <thead>
                       <tr>
                         <th>Numero Orden</th>
@@ -40,8 +34,6 @@
                         <th>Bloque</th>
                         <th>Motivo</th>
                         <th>Comuna</th>
-                        <th>Nodo</th>
-                        <th>Subnodo</th>
                         <th>Actividad</th>
                         <th>Resultado</th>
                         <th>Observacion</th>
@@ -50,36 +42,31 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for o in db_ordenes if false != db_ordenes %}
+                      {% set No = 1 %}
+                      {% for t in db_todas if false != db_todas %}
                         <tr>
-                          <td>{{ o.n_orden|raw|title }}</td>
-                          <td>{{o.operador}}</td>
-                          <td>{{ o.reg }}</td>
-                          <td>{{ o.rut_cliente  }}</td>
-                          <td>{{ o.fecha_compromiso }}</td>
-                          <td>{{o.bloque}}</td>
-                          <td>{{o.motivo}}</td>
-                          <td>{{o.comuna}}</td>
-                          <td>{{o.nodo}}</td>
-                          <td>{{o.subnodo}}</td>
-                          <td>{{o.actividad}}</td>
-                          <td>{{o.nombre}}</td>
-                          <td>{{o.observacion}}</td>
+                          <td>{{ t.n_orden|raw|title }}</td>
+                          <td>{{t.name}}</td>
+                          <td>{{ t.reg }}</td>
+                          <td>{{ t.rut_cliente  }}</td>
+                          <td>{{ t.fecha_compromiso }}</td>
+                          <td>{{t.bloque}}</td>
+                          <td>{{t.motivo}}</td>
+                          <td>{{t.comuna}}</td>
+                          <td>{{t.actividad}}</td>
+                          <td>{{t.nombre}}</td>
+                          <td>{{t.observacion}}</td>
                           <td>
-                            {% if o.operador == owner_user[0] %}
-                              <a data-toggle='tooltip' data-placement='top' id="btnmodificar" name="btnmodificar" title='Modificar' class='btn btn-warning btn-sm' href="confirmacion/editar_confirmacion/{{o.n_orden}}">
+                              <a data-toggle='tooltip' data-placement='top' id="btnmodificar" name="btnmodificar" title='Modificar' class='btn btn-warning btn-sm' href="confirmacion/editar_confirmacion/{{t.n_orden}}">
                                 <i class='glyphicon glyphicon-edit'></i>
                               </a>
-                            {% else %}
-                              <a data-toggle='tooltip' data-placement='top' title='Modificar' class='btn btn-warning btn-sm' disabled="disabled">
-                                <i class='glyphicon glyphicon-edit'></i>
+                              <a data-placement='top' name="btnlisteliminar" id="btnlisteliminar" title="Eliminar" onclick="asignardato({{t.id_orden}})" class='btn btn-danger btn-sm'>
+                              <i class='glyphicon glyphicon-remove'></i>
                               </a>
-                            {% endif %}
-                          </tr>
+                          {% set No = No + 1 %}
                         {% endfor %}
                       </td>
-                      <input type="text" class="at" name="texteliminar" id="texteliminar">
-                      <input type="text" class="at" name="textpass" id="textpass">
+                      <input type="text" class="at" name="textlisteliminar" id="textlisteliminar">
                     </tbody>
                   </table>
                 </form>
@@ -100,8 +87,7 @@
 
   <script>
 
-    $("#dataTables5").dataTable({
-      "scrollX": true,
+    $("#dataordenes").dataTable({
       "language": {
         "search": "Buscar:",
         "zeroRecords": "No hay datos para mostrar",

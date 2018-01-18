@@ -48,7 +48,7 @@ class __TwigTemplate_3e3ac5e2d054f29deaf1165c153b504aa044a725bc339afb98363809c2f
         echo "\">
             </div>
             <div class=\"col-md-4\">
-              <label>Reg:</label><input type=\"text\" name=\"textreg\" id=\"textreg\" class=\"form-control\" value=\"";
+              <label>Reg:</label><input type=\"text\" name=\"textmodreg\" id=\"textmodreg\" class=\"form-control\" value=\"";
         // line 19
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_modorden"] ?? null), "reg", array()), "html", null, true);
         echo "\">
@@ -354,31 +354,31 @@ class __TwigTemplate_3e3ac5e2d054f29deaf1165c153b504aa044a725bc339afb98363809c2f
         <br>
         <a data-toggle='tooltip' data-placement='top' name=\"modbtningresar\" id=\"modbtningresar\" class='btn btn-success btn-sm'>Modificar Orden
         </a>
-        <input type=\"text\" name=\"textmodactividad\" id=\"textmodactividad\" value=\"";
+        <input type=\"hidden\" name=\"textmodactividad\" id=\"textmodactividad\" value=\"";
         // line 140
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_modorden"] ?? null), "actividad", array()), "html", null, true);
         echo "\">
-        <input type=\"text\" name=\"textmodbloque\" id=\"textmodbloque\" value=\"";
+        <input type=\"hidden\" name=\"textmodbloque\" id=\"textmodbloque\" value=\"";
         // line 141
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_modorden"] ?? null), "bloque", array()), "html", null, true);
         echo "\">
-        <input type=\"text\" name=\"textmodmotivo\" id=\"textmodmotivo\" value=\"";
+        <input type=\"hidden\" name=\"textmodmotivo\" id=\"textmodmotivo\" value=\"";
         // line 142
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_modorden"] ?? null), "motivo", array()), "html", null, true);
         echo "\">
-        <input type=\"text\" name=\"textmodcomuna\" id=\"textmodcomuna\" value=\"";
+        <input type=\"hidden\" name=\"textmodcomuna\" id=\"textmodcomuna\" value=\"";
         // line 143
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_modorden"] ?? null), "comuna", array()), "html", null, true);
         echo "\">
-        <input type=\"text\" name=\"textmodresultado\" id=\"textmodresultado\" value=\"";
+        <input type=\"hidden\" name=\"textmodresultado\" id=\"textmodresultado\" value=\"";
         // line 144
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_modorden"] ?? null), "resultado", array()), "html", null, true);
         echo "\">
-        <input type=\"text\" name=\"textmodid\" id=\"textmodid\" value=\"";
+        <input type=\"hidden\" name=\"textmodid\" id=\"textmodid\" value=\"";
         // line 145
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_modorden"] ?? null), "operador", array()), "html", null, true);
         echo "\">
-        <input type=\"text\" name=\"ordenid\" id=\"ordenid\" value=\"";
+        <input type=\"hidden\" name=\"ordenid\" id=\"ordenid\" value=\"";
         // line 146
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["db_modorden"] ?? null), "id_orden", array()), "html", null, true);
         echo "\">
@@ -430,7 +430,7 @@ class __TwigTemplate_3e3ac5e2d054f29deaf1165c153b504aa044a725bc339afb98363809c2f
               <label for=\"textuser\">Operador:</label><input type=\"text\" name=\"textuser\" id=\"textuser\" class=\"form-control\" value=\"{{ db_modorden.name}}\">
             </div>
             <div class=\"col-md-4\">
-              <label>Reg:</label><input type=\"text\" name=\"textreg\" id=\"textreg\" class=\"form-control\" value=\"{{db_modorden.reg}}\">
+              <label>Reg:</label><input type=\"text\" name=\"textmodreg\" id=\"textmodreg\" class=\"form-control\" value=\"{{db_modorden.reg}}\">
             </div>
             <div class=\"col-md-4\">
               <label>Rut Cliente:</label><input type=\"text\" name=\"textmodrutcliente\" id=\"textmodrutcliente\" class=\"form-control\" value=\"{{db_modorden.rut_cliente}}\">
@@ -551,13 +551,13 @@ class __TwigTemplate_3e3ac5e2d054f29deaf1165c153b504aa044a725bc339afb98363809c2f
         <br>
         <a data-toggle='tooltip' data-placement='top' name=\"modbtningresar\" id=\"modbtningresar\" class='btn btn-success btn-sm'>Modificar Orden
         </a>
-        <input type=\"text\" name=\"textmodactividad\" id=\"textmodactividad\" value=\"{{ db_modorden.actividad }}\">
-        <input type=\"text\" name=\"textmodbloque\" id=\"textmodbloque\" value=\"{{ db_modorden.bloque }}\">
-        <input type=\"text\" name=\"textmodmotivo\" id=\"textmodmotivo\" value=\"{{ db_modorden.motivo }}\">
-        <input type=\"text\" name=\"textmodcomuna\" id=\"textmodcomuna\" value=\"{{ db_modorden.comuna }}\">
-        <input type=\"text\" name=\"textmodresultado\" id=\"textmodresultado\" value=\"{{ db_modorden.resultado }}\">
-        <input type=\"text\" name=\"textmodid\" id=\"textmodid\" value=\"{{ db_modorden.operador }}\">
-        <input type=\"text\" name=\"ordenid\" id=\"ordenid\" value=\"{{ db_modorden.id_orden }}\">
+        <input type=\"hidden\" name=\"textmodactividad\" id=\"textmodactividad\" value=\"{{ db_modorden.actividad }}\">
+        <input type=\"hidden\" name=\"textmodbloque\" id=\"textmodbloque\" value=\"{{ db_modorden.bloque }}\">
+        <input type=\"hidden\" name=\"textmodmotivo\" id=\"textmodmotivo\" value=\"{{ db_modorden.motivo }}\">
+        <input type=\"hidden\" name=\"textmodcomuna\" id=\"textmodcomuna\" value=\"{{ db_modorden.comuna }}\">
+        <input type=\"hidden\" name=\"textmodresultado\" id=\"textmodresultado\" value=\"{{ db_modorden.resultado }}\">
+        <input type=\"hidden\" name=\"textmodid\" id=\"textmodid\" value=\"{{ db_modorden.operador }}\">
+        <input type=\"hidden\" name=\"ordenid\" id=\"ordenid\" value=\"{{ db_modorden.id_orden }}\">
       </div>
     </section>
   {% endblock %}

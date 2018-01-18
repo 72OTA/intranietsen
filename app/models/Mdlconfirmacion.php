@@ -414,6 +414,15 @@ public function listar_ordenes($fecha){
   $usuario=$carusu['id_user'];
   return $this->db->query_select("select tblordenes.*,tblresultado.nombre, users.name from  tblresultado inner join tblordenes on tblresultado.id_resultado=tblordenes.resultado inner join users on tblordenes.operador=users.id_user where tblordenes.fecha_dia='$fecha' and users.id_user='$usuario'");
 }
+public function listar_todas_ordenes($fecha){
+
+  return $this->db->query_select("select tblordenes.*,tblresultado.nombre, users.name from  tblresultado inner join tblordenes on tblresultado.id_resultado=tblordenes.resultado inner join users on tblordenes.operador=users.id_user where tblordenes.fecha_dia='$fecha'");
+}
+public function listar_ejecutivos(){
+
+return $this->db->query_select("select users.name, users.perfil, count(tblordenes.id_orden) as orden from users left join tblordenes on users.id_user=tblordenes.operador where perfil='CNF_USUARIO' group by users.id_user");
+
+}
 
 
 
@@ -483,6 +492,7 @@ public function modificar_la_orden(){
   global $http;
 
   $modorden=$http->request->get('textmodidorden');
+  $modreg=$http->request->get('textmodreg');
   $modrutcliente=$http->request->get('textmodrutcliente');
   $modfechacompromiso=$http->request->get('textmodfecha');
   $modbloque=$http->request->get('textmodbloque');
@@ -497,11 +507,11 @@ public function modificar_la_orden(){
   $idorden=$http->request->get('ordenid');
 
 
-   if ($this->functions->e($modorden,$modfechacompromiso,$modrutcliente,$modcomuna,$modbloque,$modmotivo,$modactividad,$modresultado)){
+   if ($this->functions->e($modorden,$modreg,$modfechacompromiso,$modrutcliente,$modcomuna,$modbloque,$modmotivo,$modactividad,$modresultado)){
       return array('success' => 0, 'message' => $modorden.$modfechacompromiso.$modrutcliente.$modcomuna.$modbloque.$modmotivo.$modactividad,$modresultado);
    }
    else{
-      $this->db->query("UPDATE tblordenes set n_orden='$modorden', rut_cliente='$modrutcliente', fecha_compromiso='$modfechacompromiso', bloque='$modbloque', motivo='$modmotivo',
+      $this->db->query("UPDATE tblordenes set n_orden='$modorden', rut_cliente='$modrutcliente',reg='$modreg', fecha_compromiso='$modfechacompromiso', bloque='$modbloque', motivo='$modmotivo',
       comuna='$modcomuna',nodo='$modnodo', subnodo='$modsubnodo', actividad='$modactividad', resultado='$modresultado', observacion='$modobservacion', fecha_dia='$modfecha_dia'  WHERE id_orden='$idorden'");
       return array('success' => 1, 'message' => 'Datos Modificados');
       }
@@ -511,19 +521,10 @@ public function eliminarorden(){
 
   global $http;
 
-  $clave=$http->request->get('textpass');
-  $norden=$http->request->get('texteliminar');
+  $norden=$http->request->get('textlisteliminar');
   $clave2=$this->db->query_select("select name,pass from users where perfil='HD_SUPERVISOR'");
-  $clave3=Strings::chash($clave2[0]['pass'],$clave);
-  if($clave3 ===true){
-
-    $this->db->query("delete from tblordenes where id_orden='$norden';");
-    return array('success' => 1, 'message' => "Registro eliminado");
- }else{
-
- return array('success' => 0, 'message' =>'Ingrese su contraseña nuevamente');
-
- }
+  $this->db->query("delete from tblordenes where id_orden='$norden';");
+  return array('success' => 1, 'message' => "Registro eliminado");
 }
 
 // ------------------------------------------------------------------------------------------------------
