@@ -479,6 +479,16 @@ $app->post('/traer_ejecutivos', function() use($app) {
 
     return $app->json($e->traer_ejecutivos());
 });
+/**
+    * traer_comunas
+    *
+    * @return json
+*/
+$app->post('/traer_comuna', function() use($app) {
+    $e = new Model\Mdlcoordinacion;
+
+    return $app->json($e->traer_comuna());
+});
 // -----------------------------------------------------------------------------
 /**
     * Importar tecnico

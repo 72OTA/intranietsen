@@ -133,7 +133,7 @@ public function carga_nodo(){
 }
 
 public function getejecutivos(){
-  return $this->db->select('*','users',"perfil LIKE '%DESPACHO%'");
+  return $this->db->select('*','users',"perfil LIKE '%DESPACHO%' LIMIT 1");
 }
 
 public function select_ejecutivo(): array {
@@ -141,35 +141,43 @@ public function select_ejecutivo(): array {
   global $http;
     $cargo = $http->request->get('select_ejecutivo');
 
-    $query=$this->db->select('nombre','tblcomuna');
+    $query=$this->db->select('name','users',"perfil='$cargo'");
 
-    $valor = $query[0][0];
-    $nombres = $this->db->select('id_personal,nombres','tblpersonal',"id_cargo='$valor'");
 
-    if ($nombres == true){
-        return array('success' => 1, 'message' => $nombres);
+    if ($query == true){
+        return array('success' => 1, 'message' => $query);
         # code...
     }else{
       return array('success' => 0, 'message' => 'Datos no encontrados');
       }
 }
-
-public function traer_usuarios(): array {
+// public function traer_comuna(): array{
+//     try {
+//         global $http;
+//         $comuna = $this->db->select('*','tblcomuna',"estado=1");
+//
+//         if ($comuna == true) {
+//           return array('success' => 1,'comuna' => $comuna);
+//        }
+//
+//     } catch (Exception $e) {
+//       return array('success' => 0, 'message' => 'Datos no encontrados');
+//     }
+// }
+public function traer_comuna(): array {
   try {
 
   global $http;
   $id_personal = $http->request->get('usuario');
 
+  $comuna = $this->db->select('*','tblcomuna','estado=1');
+   // $personalNombre = $this->db->select('nombres','tblpersonal',"id_personal='$selectAsignados'");   REVISAR SI ES POSIBLE UTILIZARLA COMO FUNCION
 
-  $selectAsignados = $this->db->select('*','tblpersonal',"id_super='$id_personal'");
-  $selectNoAsignados = $this->db->select('*','tblpersonal',"id_super='0' and id_personal<>'$id_personal'");
-  // $personalNombre = $this->db->select('nombres','tblpersonal',"id_personal='$selectAsignados'");   REVISAR SI ES POSIBLE UTILIZARLA COMO FUNCION
-
-  if ($selectAsignados != true) {
-    return array('success' => 1,'usuariosNoAsignados' => $selectNoAsignados);
+  if ($comuna != true) {
+    return array('success' => 1,'usuariosNoAsignados' => $comuna);
     # code... 'usuariosAsignados' => $selectAsignados,
 }else {
-    return array('success' => 1, 'usuariosAsignados' => $selectAsignados, 'usuariosNoAsignados' => $selectNoAsignados);
+    return array('success' => 1, 'usuariosAsignados' => $comuna, 'usuariosNoAsignados' => $comuna);
 }
 
 } catch (Exception $e) {

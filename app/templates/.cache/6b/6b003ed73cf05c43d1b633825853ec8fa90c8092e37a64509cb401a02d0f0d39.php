@@ -32,7 +32,7 @@ class __TwigTemplate_354c2ec8672dc9abd56efa41f9b30400fe491a30d1cbbc3f006b3264b07
         echo "  <section class=\"content-header\">
     <h4>
       <i class=\"fa fa-th\"></i>
-      ASIGNAR EJECUTIVOS
+      ASIGNAR COMUNAS
     </h4>
   </section>
 <div class=\"container\" id=\"controlTotal\">
@@ -56,7 +56,7 @@ class __TwigTemplate_354c2ec8672dc9abd56efa41f9b30400fe491a30d1cbbc3f006b3264b07
         <div class=\"nav-tabs-custom\">
           <ul class=\"nav nav-tabs pull-rigth\">
             <li class=\"active\">
-              <a href=\"#tab_2-2\" data-toggle=\"tab\">Seleccione Ejecutivo</a>
+              <a href=\"#tab_2-2\" data-toggle=\"tab\">Seleccione Cargo</a>
             </li>
 
             <li class=\"pull-left header\"></li>
@@ -76,7 +76,7 @@ class __TwigTemplate_354c2ec8672dc9abd56efa41f9b30400fe491a30d1cbbc3f006b3264b07
             if ((twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "id_user", array()) != 1)) {
                 // line 43
                 echo "                      <option>";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "name", array()), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["d"], "perfil", array()), "html", null, true);
                 echo "</option>
                     ";
             }
@@ -145,7 +145,7 @@ class __TwigTemplate_354c2ec8672dc9abd56efa41f9b30400fe491a30d1cbbc3f006b3264b07
   <section class=\"content-header\">
     <h4>
       <i class=\"fa fa-th\"></i>
-      ASIGNAR EJECUTIVOS
+      ASIGNAR COMUNAS
     </h4>
   </section>
 <div class=\"container\" id=\"controlTotal\">
@@ -169,7 +169,7 @@ class __TwigTemplate_354c2ec8672dc9abd56efa41f9b30400fe491a30d1cbbc3f006b3264b07
         <div class=\"nav-tabs-custom\">
           <ul class=\"nav nav-tabs pull-rigth\">
             <li class=\"active\">
-              <a href=\"#tab_2-2\" data-toggle=\"tab\">Seleccione Ejecutivo</a>
+              <a href=\"#tab_2-2\" data-toggle=\"tab\">Seleccione Cargo</a>
             </li>
 
             <li class=\"pull-left header\"></li>
@@ -182,7 +182,7 @@ class __TwigTemplate_354c2ec8672dc9abd56efa41f9b30400fe491a30d1cbbc3f006b3264b07
                   <select name='select_ejecutivo' id='select_ejecutivo'>
                     <option selected='selected'>--</option>
                     {% for d in ejecutivos if d.id_user != 1 %}
-                      <option>{{ d.name }}</option>
+                      <option>{{ d.perfil }}</option>
                     {% endfor %}
                   </label>
                   <input type='hidden' name='Submit' value='Consultar' id='submit'>
