@@ -78,7 +78,7 @@ $('#select_ejecutivo').on('change', function select_ejecutivo() {
 });
 $('#select_ejecutivo').one('click', function crear_select() {
   var sel = $('<select></select>');
-  var lab = $('<label><strong>Asignar ejecutivos a Supervisor</strong></label><br>');
+  var lab = $('<label><strong>Asignar comuna a ejecutivo</strong></label><br>');
   $('#resultado').append(lab);
   $('#resultado').append(sel);
   sel.attr('id', 'ejecutivos');

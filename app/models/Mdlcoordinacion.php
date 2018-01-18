@@ -136,12 +136,12 @@ public function getejecutivos(){
   return $this->db->select('*','users',"perfil LIKE '%DESPACHO%'");
 }
 
-public function select_perfil(): array {
+public function select_ejecutivo(): array {
 
   global $http;
-    $cargo = $http->request->get('select_perfil');
+    $cargo = $http->request->get('select_ejecutivo');
 
-    $query=$this->db->select('id_cargo','tblcargos',"descripcion='$cargo'");
+    $query=$this->db->select('nombre','tblcomuna');
 
     $valor = $query[0][0];
     $nombres = $this->db->select('id_personal,nombres','tblpersonal',"id_cargo='$valor'");
