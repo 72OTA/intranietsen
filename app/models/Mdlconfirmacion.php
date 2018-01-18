@@ -419,7 +419,7 @@ public function listar_todas_ordenes($fecha){
   return $this->db->query_select("select tblordenes.*,tblresultado.nombre, users.name from  tblresultado inner join tblordenes on tblresultado.id_resultado=tblordenes.resultado inner join users on tblordenes.operador=users.id_user where tblordenes.fecha_dia='$fecha'");
 }
 public function listar_ejecutivos(){
-
+$fecha=date('Y-m-d');
 return $this->db->query_select("select users.name, users.perfil, count(tblordenes.id_orden) as orden from users left join tblordenes on users.id_user=tblordenes.operador where perfil='CNF_USUARIO' group by users.id_user");
 
 }
@@ -452,23 +452,32 @@ public function ingresar_orden(){
       $consulta=$this->db->query_select("select n_orden from tblordenes where n_orden='$orden'");
       if($consulta[0][0]!=true){
 
-            $this->db->insert('tblordenes', array(
-                'n_orden'=>$orden,
-                'operador'=> $operador,
-                'reg'=>$reg,
-                'rut_cliente'=>$rutcliente,
-                'fecha_compromiso'=>$fechacompromiso,
-                'bloque'=>$bloque,
-                'motivo'=>$motivo,
-                'nodo' => $nodo,
-                'subnodo' => $subnodo,
-                'comuna'=>$comuna,
-                'actividad'=>$actividad,
-                'resultado'=>$resultado,
-                'observacion'=>$observacion,
-                'fecha_dia'=>$fecha_dia
-                ));
-                 return array('success' => 1, 'message' => 'Orden ingresada');
+        $datos=$this->db->query_select("select validate_rut('$rutcliente')");
+        if($datos[0][0]==1){
+
+          $this->db->insert('tblordenes', array(
+              'n_orden'=>$orden,
+              'operador'=> $operador,
+              'reg'=>$reg,
+              'rut_cliente'=>$rutcliente,
+              'fecha_compromiso'=>$fechacompromiso,
+              'bloque'=>$bloque,
+              'motivo'=>$motivo,
+              'nodo' => $nodo,
+              'subnodo' => $subnodo,
+              'comuna'=>$comuna,
+              'actividad'=>$actividad,
+              'resultado'=>$resultado,
+              'observacion'=>$observacion,
+              'fecha_dia'=>$fecha_dia
+              ));
+              return array('success' => 1, 'message' => 'Orden ingresada');
+
+      }else {
+        return array('success' => 0, 'message' => 'Rut Invalido');
+      }
+
+
 
       }else{
         return array('success' => 0, 'message' => 'No se puede ingresar ya que existe ese número de orden');
@@ -526,6 +535,9 @@ public function eliminarorden(){
   $this->db->query("delete from tblordenes where id_orden='$norden';");
   return array('success' => 1, 'message' => "Registro eliminado");
 }
+
+
+
 
 // ------------------------------------------------------------------------------------------------------
     /**
