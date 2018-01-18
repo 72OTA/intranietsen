@@ -497,12 +497,12 @@ public function modificar_la_orden(){
   $idorden=$http->request->get('ordenid');
 
 
-   if ($this->functions->e($modorden,$modfechacompromiso,$modrutcliente,$modcomuna,$modbloque,$modmotivo,$modactividad,$modresultado,$modsubnodo,$modnodo)){
+   if ($this->functions->e($modorden,$modfechacompromiso,$modrutcliente,$modcomuna,$modbloque,$modmotivo,$modactividad,$modresultado)){
       return array('success' => 0, 'message' => $modorden.$modfechacompromiso.$modrutcliente.$modcomuna.$modbloque.$modmotivo.$modactividad,$modresultado);
    }
    else{
       $this->db->query("UPDATE tblordenes set n_orden='$modorden', rut_cliente='$modrutcliente', fecha_compromiso='$modfechacompromiso', bloque='$modbloque', motivo='$modmotivo',
-      comuna='$modcomuna', actividad='$modactividad', resultado='$modresultado', observacion='$modobservacion', fecha_dia='$modfecha_dia',nodo='$modnodo', subnodo='$modsubnodo'  WHERE id_orden='$idorden'");
+      comuna='$modcomuna',nodo='$modnodo', subnodo='$modsubnodo', actividad='$modactividad', resultado='$modresultado', observacion='$modobservacion', fecha_dia='$modfecha_dia'  WHERE id_orden='$idorden'");
       return array('success' => 1, 'message' => 'Datos Modificados');
       }
 }
